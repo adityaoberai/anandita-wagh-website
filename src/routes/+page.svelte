@@ -26,7 +26,7 @@
     hr {
         width: 90%;
         margin: 1rem auto;
-        border: 1px solid var(--text-color);
+        border: 1px solid var(--accent-color);
     }
 
     @media (max-width: 768px) {

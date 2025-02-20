@@ -27,13 +27,8 @@
         max-width: 500px;
     }
 
-    @media (max-width: 768px) {
-        ul {
-            width: 100%;
-        }
-    }
-
     ul > li {
+        display: flex;
         list-style: none;
         width: 100%;
         height: max-content;
@@ -51,6 +46,7 @@
         border-radius: 1rem;
         color: var(--text-color);
         padding: 0.75rem 1rem;
+        text-align: left;
     }
 
     ul > li > a:hover {
@@ -59,5 +55,27 @@
 
     ul > li > a > span {
         font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        ul > li > a {
+            width: 90%;
+            margin: auto;
+        }
+
+        ul > li > a > span {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        ul > li > a {
+            padding: 0.5rem 0.75rem;
+            gap: 0.25rem;
+        }
+
+        ul > li > a > span {
+            font-size: 1rem;
+        }
     }
 </style>

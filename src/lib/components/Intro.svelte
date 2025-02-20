@@ -41,11 +41,11 @@
     .social-icon {
         border-radius: 50%;
         padding: 0.25rem;
-        color: var(--accent-color);
+        color: var(--text-color);
     }
 
     .social-icon:hover {
-        color: var(--text-color);
+        color: var(--accent-color);
     }
 
     .social-icon span {

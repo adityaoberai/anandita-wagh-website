@@ -15,6 +15,7 @@
         max-width: 800px;
         min-height: 100vh;
         margin: auto;
+        padding: 3rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -32,6 +33,13 @@
     @media (max-width: 768px) {
         main {
             gap: 0.5rem;
+            padding: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        hr {
+            width: 95%;
         }
     }
 </style>

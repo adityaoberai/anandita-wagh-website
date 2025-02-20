@@ -25,6 +25,7 @@
         gap: 1rem;
         width: 90%;
         max-width: 500px;
+        margin: 0;
     }
 
     ul > li {

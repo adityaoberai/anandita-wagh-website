@@ -25,6 +25,11 @@ export default defineConfig([
 	{
 		// Override or add rule settings here, such as:
 		// 'svelte/button-has-type': 'error'
-		rules: {}
+		rules: {
+			// This is a static, single-page site that only uses in-page hash
+			// anchors and external URLs — there are no SvelteKit routes to
+			// resolve(), so dynamic href bindings are expected.
+			'svelte/no-navigation-without-resolve': 'off'
+		}
 	}
 ]);

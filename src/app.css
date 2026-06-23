@@ -426,20 +426,6 @@ body.cursor-on .cursor {
 	background: var(--accent);
 	border-radius: 6px;
 }
-.hero__badge {
-	position: absolute;
-	top: -14px;
-	left: -14px;
-	z-index: 3;
-	background: var(--accent);
-	color: var(--ink);
-	font-size: 12px;
-	font-weight: 600;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-	padding: 8px 14px;
-	border-radius: 100px;
-}
 .hero__photo {
 	position: relative;
 	z-index: 2;
@@ -544,11 +530,18 @@ body.cursor-on .cursor {
 }
 .caps__head {
 	display: flex;
-	align-items: baseline;
+	align-items: flex-end;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 16px;
 	margin-bottom: 50px;
+}
+.caps__heading,
+.work__heading {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 18px;
 }
 .caps__title {
 	font-weight: 400;
@@ -791,7 +784,6 @@ body.cursor-on .cursor {
 	margin-top: 10px;
 	max-width: 58ch;
 }
-
 /* =========================================================================
    Recognition + Toolkit
    ========================================================================= */
@@ -811,6 +803,16 @@ body.cursor-on .cursor {
 	border-top: 1px solid var(--border);
 	font-size: 16px;
 	color: var(--ink);
+}
+.recog__link {
+	display: inline-block;
+	margin-top: 8px;
+	color: var(--teal);
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none;
+	border-bottom: 1px solid currentColor;
+	padding-bottom: 2px;
 }
 .recog__list .recog__item:last-child {
 	border-bottom: 1px solid var(--border);
@@ -837,19 +839,6 @@ body.cursor-on .cursor {
 	background: var(--ink);
 	color: var(--paper);
 	border-color: var(--ink);
-}
-
-.langs {
-	margin-top: 34px;
-}
-.langs__label {
-	font-size: 13px;
-	color: var(--muted);
-	display: block;
-	margin-bottom: 12px;
-}
-.langs__value {
-	font-size: 24px;
 }
 
 /* =========================================================================

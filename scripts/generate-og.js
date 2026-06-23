@@ -12,17 +12,29 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
+import { site } from '../src/lib/content/site.js';
+import { hero } from '../src/lib/content/hero.js';
 
 const ROOT = process.cwd();
 const FONT_DIR = join(ROOT, 'node_modules/@fontsource/lexend/files');
 const OUT = join(ROOT, 'static/og.png');
 
-// ---- brand tokens (from the site) -----------------------------------------
-const PAPER = '#FFFFFF';
-const INK = '#283F24';
-const ACCENT = '#FFBF00';
-const TEAL = '#099078';
-const MUTED = '#6B6055';
+// ---- brand tokens (single source of truth: the CSS :root in app.css) ------
+const css = readFileSync(join(ROOT, 'src/app.css'), 'utf8');
+const token = (name, fallback) => {
+	const m = css.match(new RegExp(`--${name}:\\s*(#[0-9a-fA-F]{3,8})`));
+	return m ? m[1] : fallback;
+};
+const PAPER = token('paper', '#FFFFFF');
+const INK = token('ink', '#283F24');
+const ACCENT = token('accent', '#FFBF00');
+const TEAL = token('teal', '#099078');
+const MUTED = token('muted', '#6B6055');
+
+// ---- copy (shared with the page via src/lib/content) -----------------------
+const EYEBROW = `${site.role} · ${site.location}`;
+const HEADLINE = hero.title.lines;
+const MARK = hero.title.mark;
 
 // ---- assets ----------------------------------------------------------------
 const font = (w) => readFileSync(join(FONT_DIR, `lexend-latin-${w}-normal.woff`));
@@ -81,16 +93,16 @@ const tree = el(
 							color: MUTED,
 							whiteSpace: 'nowrap'
 						},
-						'Brand & Graphic Designer · Bengaluru / Pune'
+						EYEBROW
 					)
 				]),
 
-				// headline
+				// headline — every line but the last on its own row; the last
+				// line sits beside the highlighted mark word.
 				el('div', { display: 'flex', flexDirection: 'column' }, [
-					el('div', { ...HEAD, display: 'flex' }, 'I turn'),
-					el('div', { ...HEAD, display: 'flex' }, 'businesses'),
+					...HEADLINE.slice(0, -1).map((line) => el('div', { ...HEAD, display: 'flex' }, line)),
 					el('div', { display: 'flex', alignItems: 'center', marginTop: 4 }, [
-						el('div', { ...HEAD, display: 'flex', marginRight: 16 }, 'into'),
+						el('div', { ...HEAD, display: 'flex', marginRight: 16 }, HEADLINE[HEADLINE.length - 1]),
 						el(
 							'div',
 							{
@@ -101,7 +113,7 @@ const tree = el(
 								borderRadius: 12,
 								padding: '0 16px 8px'
 							},
-							'brands.'
+							MARK
 						)
 					])
 				]),
@@ -112,12 +124,12 @@ const tree = el(
 					el(
 						'div',
 						{ display: 'flex', fontSize: 34, fontWeight: 600, color: INK, marginTop: 18 },
-						'Anandita Wagh'
+						site.name
 					),
 					el(
 						'div',
 						{ display: 'flex', fontSize: 18, color: MUTED, marginTop: 6 },
-						'Identity systems · Logos · Packaging · Web'
+						site.ogDisciplines
 					)
 				])
 			]

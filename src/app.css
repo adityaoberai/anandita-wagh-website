@@ -726,7 +726,7 @@ body.cursor-on .cursor {
 	grid-template-columns: minmax(250px, 0.5fr) minmax(0, 1fr);
 	gap: 48px;
 	align-items: start;
-	padding-top: 30px;
+	padding-top: 130px;
 	padding-bottom: 130px;
 }
 .exp__head,

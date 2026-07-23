@@ -15,18 +15,18 @@ export const work = {
 			name: 'Sovereign Cloud Platform',
 			meta: 'E2E · 2025',
 			accent: false,
-			desc: 'End-to-end website — logo, branding, information architecture, Figma design and launch in 1.5 months.'
+			desc: 'End-to-end website, logo, branding, information architecture, Figma design and launch in 1.5 months.'
 		},
 		{
 			category: 'Identity',
 			name: 'E2E Networks Brand System',
 			meta: 'Identity · 2025',
 			accent: false,
-			desc: 'Logos, brand guides and press kits for the core brand plus 4 product sub-brands — consistent across every touchpoint.'
+			desc: 'Logos, brand guides and press kits for the core brand plus 4 product sub-brands, consistent across every touchpoint.'
 		},
 		{
 			category: 'Product',
-			name: 'Rhythm — Breathing Device',
+			name: 'Rhythm, Breathing Device',
 			meta: 'Patent',
 			accent: true,
 			desc: "A breathing-guidance device. Patent awaited, copyrighted 2024, Viewer's Choice runner-up at India HCI 2023."

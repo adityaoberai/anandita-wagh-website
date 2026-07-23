@@ -20,7 +20,7 @@ export const site = {
 
 	// Long description for search engines (<meta name="description">).
 	metaDescription:
-		'Anandita Wagh — Brand & Graphic Designer based in Bengaluru / Pune. Four years shaping how brands look, feel and communicate, from identity systems to the screens that hold them together.',
+		'Anandita Wagh, Brand & Graphic Designer based in Bengaluru / Pune. Four years shaping how brands look, feel and communicate, from identity systems to the screens that hold them together.',
 
 	// Shorter description for social cards (Open Graph / Twitter).
 	socialDescription:

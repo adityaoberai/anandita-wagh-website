@@ -19,7 +19,7 @@ export const MONTHS = Object.freeze({
 	DEC: 'Dec'
 });
 
-export const formatPeriod = (start, end) => `${start.month} ${start.year} — ${end.month} ${end.year}`;
+export const formatPeriod = (start, end) => `${start.month} ${start.year} to ${end.month} ${end.year}`;
 
 export const experience = {
 	eyebrow: '(04) Experience',
@@ -31,7 +31,7 @@ export const experience = {
 			end: { month: MONTHS.APR, year: 2026 },
 			org: 'E2E Networks',
 			role: 'Graphic & Visual Designer',
-			desc: 'Sole designer owning the function end to end — branding, event collateral, websites and on-demand work. Built a company-wide design repository for 250+ employees and introduced motion into social, lifting engagement.'
+			desc: 'Sole designer owning the function end to end, branding, event collateral, websites and on-demand work. Built a company-wide design repository for 250+ employees and introduced motion into social, lifting engagement.'
 		},
 		{
 			start: { month: MONTHS.AUG, year: 2024 },

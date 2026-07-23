@@ -3,7 +3,7 @@
 export const capabilities = {
 	eyebrow: '(02) Capabilities',
 	title: 'What I do',
-	note: 'A full toolkit — from the strategy to the systems to the screens.',
+	note: 'A full toolkit from the strategy to the systems to the screens.',
 	items: [
 		{ title: 'Brand Strategy & Positioning', note: 'From business to brand' },
 		{ title: 'Brand Identity & Logo Design', note: 'Logos, marks & press kits' },

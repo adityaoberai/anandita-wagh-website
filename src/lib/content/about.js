@@ -9,9 +9,9 @@ export const about = {
 	lead: {
 		before: 'A designer who thinks like a ',
 		mark: 'strategist',
-		after: ' — building brands from the ground up, not just decorating them.'
+		after: ' building brands from the ground up, not just decorating them.'
 	},
-	text: "I've worked across design, tech and retail — independently with startups and local businesses, and in-house owning the design function end to end. Branding has been close to my heart since childhood, and I help businesses build a strong, cohesive identity so they can focus on their work while I take care of how they look and feel.",
+	text: "I've worked across design, tech and retail, independently with startups and local businesses, and in-house owning the design function end to end. Branding has been close to my heart since childhood, and I help businesses build a strong, cohesive identity so they can focus on their work while I take care of how they look and feel.",
 	stats: [
 		{ count: 4, suffix: '', label: 'years shaping brands' },
 		{ count: 250, suffix: '+', label: 'employees enabled with a design system' },

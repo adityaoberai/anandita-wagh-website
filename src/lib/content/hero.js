@@ -12,7 +12,7 @@ export const hero = {
 		lines: ['I turn', 'businesses', 'into'],
 		mark: 'brands.'
 	},
-	lede: 'Four years shaping how brands look, feel and communicate — from logos and identity systems to the visual language that holds a brand together across every platform.',
+	lede: 'Four years shaping how brands look, feel and communicate, from logos and identity systems to the visual language that holds a brand together across every platform.',
 	actions: [
 		{ label: 'View portfolio on Behance', href: behancePortfolioUrl, variant: 'solid', icon: '↗' },
 		{ label: 'Get in touch', href: '#contact', variant: 'text' }

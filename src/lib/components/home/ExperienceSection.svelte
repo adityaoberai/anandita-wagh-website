@@ -18,8 +18,8 @@
 	<div class="exp__list">
 		{#each experience.items as item (`${item.period}-${item.org}`)}
 			<div class="exp__item" data-reveal>
-				<span class="exp__year">{item.period}</span>
 				<div class="exp__detail">
+					<span class="exp__year">{item.period}</span>
 					<div class="exp__role">
 						<h3 class="exp__org">{item.org}</h3>
 						<span class="exp__title-role">{item.role}</span>

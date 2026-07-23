@@ -723,14 +723,20 @@ body.cursor-on .cursor {
    ========================================================================= */
 .exp {
 	display: grid;
-	grid-template-columns: 0.5fr 1fr;
+	grid-template-columns: minmax(250px, 0.5fr) minmax(0, 1fr);
 	gap: 48px;
+	align-items: start;
 	padding-top: 30px;
 	padding-bottom: 130px;
+}
+.exp__head,
+.exp__list {
+	min-width: 0;
 }
 .exp__sticky {
 	position: sticky;
 	top: 120px;
+	max-width: 30ch;
 }
 .exp__title {
 	font-weight: 400;
@@ -748,19 +754,26 @@ body.cursor-on .cursor {
 }
 .exp__item {
 	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 28px;
+	grid-template-columns: 1fr;
+	gap: 12px;
 	padding: 30px 0;
 	border-top: 1px solid var(--border);
 }
 .exp__item:last-child {
 	border-bottom: 1px solid var(--border);
 }
+.exp__detail {
+	display: grid;
+	gap: 10px;
+	min-width: 0;
+}
 .exp__year {
+	display: block;
 	font-size: 14px;
 	color: var(--muted);
 	font-variant-numeric: tabular-nums;
 	white-space: nowrap;
+	line-height: 1.4;
 }
 .exp__role {
 	display: flex;

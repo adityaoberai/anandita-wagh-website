@@ -11,10 +11,22 @@
 			{#each contact.title.lines as line, i (i)}{line}{#if i < contact.title.lines.length - 1}<br
 					/>{/if}{/each}<em>{contact.title.em}</em>
 		</h2>
-		<a href="mailto:{site.email}" class="contact__email" data-magnetic data-cursor>
-			{site.email}
-			<span aria-hidden="true">↗</span>
-		</a>
+		<div class="contact__actions">
+			<a href="mailto:{site.email}" class="contact__email" data-magnetic data-cursor>
+				{site.email}
+				<span aria-hidden="true">↗</span>
+			</a>
+			<a
+				href={contact.secondaryCta.href}
+				class="contact__resume"
+				target="_blank"
+				rel="noopener noreferrer"
+				data-cursor
+			>
+				{contact.secondaryCta.label}
+				<span aria-hidden="true">↗</span>
+			</a>
+		</div>
 
 		<div class="contact__bar">
 			<span class="contact__copyright">{copyright}</span>

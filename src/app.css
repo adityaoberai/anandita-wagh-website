@@ -871,25 +871,45 @@ body.cursor-on .cursor {
 .contact__title em {
 	color: var(--accent);
 } /* italic amber, matching the source */
-.contact__email {
+.contact__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 14px;
+	margin-top: 48px;
+}
+.contact__email,
+.contact__resume {
 	display: inline-flex;
 	align-items: center;
 	gap: 14px;
 	text-decoration: none;
-	color: var(--ink);
-	background: var(--paper);
-	font-size: clamp(16px, 2vw, 21px);
-	font-weight: 600;
-	padding: 20px 38px;
 	border-radius: 100px;
-	margin-top: 48px;
+	font-weight: 600;
 	transition:
 		background 0.3s ease,
 		color 0.3s ease;
 }
+.contact__email {
+	color: var(--ink);
+	background: var(--paper);
+	font-size: clamp(16px, 2vw, 21px);
+	padding: 20px 38px;
+}
 .contact__email:hover {
 	background: var(--accent);
 	color: var(--ink);
+}
+.contact__resume {
+	color: var(--paper);
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	font-size: clamp(16px, 2vw, 21px);
+	padding: 20px 38px;
+}
+.contact__resume:hover {
+	background: rgba(255, 255, 255, 0.12);
+	color: var(--paper);
 }
 
 .contact__bar {

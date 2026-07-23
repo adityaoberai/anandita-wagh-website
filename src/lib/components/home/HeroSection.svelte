@@ -21,7 +21,14 @@
 		<div class="hero__actions" data-reveal>
 			{#each hero.actions as action (action.href)}
 				{#if action.variant === 'solid'}
-					<a href={action.href} class="btn btn--solid" data-magnetic data-cursor>
+					<a
+						href={action.href}
+						class="btn btn--solid"
+						target="_blank"
+						rel="noopener noreferrer"
+						data-magnetic
+						data-cursor
+					>
 						{action.label}
 						<span class="btn__icon" aria-hidden="true">{action.icon}</span>
 					</a>

@@ -17,7 +17,15 @@
 
 	<div class="nav__menu" id="nav-menu">
 		{#each nav.links as link (link.href)}
-			<a href={link.href} class="nav__link" data-cursor>{link.label}</a>
+			<a
+				href={link.href}
+				class="nav__link"
+				target={link.external ? '_blank' : undefined}
+				rel={link.external ? 'noopener noreferrer' : undefined}
+				data-cursor
+			>
+				{link.label}
+			</a>
 		{/each}
 		<a href={nav.cta.href} class="nav__cta" data-magnetic data-cursor>{nav.cta.label}</a>
 	</div>

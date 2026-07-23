@@ -11,8 +11,7 @@
 		HeroSection,
 		MarqueeStrip,
 		RecognitionSection,
-		SiteNav,
-		WorkSection
+		SiteNav
 	} from '$lib/components/home/index.js';
 	import { hero, site } from '$lib/content/index.js';
 
@@ -66,7 +65,6 @@
 	<MarqueeStrip />
 	<AboutSection />
 	<CapabilitiesSection />
-	<WorkSection />
 	<ExperienceSection />
 	<RecognitionSection />
 </main>

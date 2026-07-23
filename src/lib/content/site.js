@@ -6,7 +6,7 @@
    ========================================================================= */
 
 const email = 'ananditawagh@gmail.com';
-const behanceUrl = 'https://behance.net/ananditawagh';
+const behanceUrl = 'https://www.behance.net/gallery/219592683/Graphic-and-Visual-Design-Portfolio';
 const linkedinUrl = 'https://linkedin.com/in/ananditawagh';
 
 export const site = {

@@ -1,45 +1,72 @@
 <script>
-    import Intro from "$lib/components/Intro.svelte";
-    import Links from "$lib/components/Links.svelte";
+	import { onMount } from 'svelte';
+	import { page } from '$app/state';
+	import { initInteractions } from '$lib/interactions.js';
+	import {
+		AboutSection,
+		CapabilitiesSection,
+		ContactFooter,
+		CustomCursor,
+		ExperienceSection,
+		HeroSection,
+		MarqueeStrip,
+		RecognitionSection,
+		SiteNav
+	} from '$lib/components/home/index.js';
+	import { hero, site } from '$lib/content/index.js';
+
+	// Run all DOM interactions on the client; onMount returns the teardown.
+	onMount(() => initInteractions());
+
+	// Derived copy built from the shared content modules.
+	const pageTitle = `${site.name} — ${site.role}`;
+	const heroTagline = [...hero.title.lines, hero.title.mark].join(' ');
+	const ogAlt = `${site.name} — ${heroTagline}`;
+
+	// Absolute URLs so social crawlers (which ignore relative paths) resolve
+	// the card and canonical on whatever domain the site is deployed to.
+	const ogImage = $derived(`${page.url.origin}/og.png`);
+	const canonical = $derived(page.url.href);
 </script>
 
-<main>
-    <Intro />
-    <hr>
-    <Links />
+<svelte:head>
+	<title>{pageTitle}</title>
+	<meta name="description" content={site.metaDescription} />
+	<meta name="author" content={site.name} />
+
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={site.socialDescription} />
+	<meta property="og:site_name" content={site.name} />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content={ogAlt} />
+	<link rel="canonical" href={canonical} />
+
+	<!-- Twitter / X -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={pageTitle} />
+	<meta name="twitter:description" content={site.socialDescription} />
+	<meta name="twitter:image" content={ogImage} />
+	<meta name="twitter:image:alt" content={ogAlt} />
+</svelte:head>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<CustomCursor />
+<SiteNav />
+
+<main id="main">
+	<HeroSection />
+	<MarqueeStrip />
+	<AboutSection />
+	<CapabilitiesSection />
+	<ExperienceSection />
+	<RecognitionSection />
 </main>
 
-<style>
-    main {
-        width: 100%;
-        max-width: 800px;
-        min-height: 100vh;
-        margin: auto;
-        padding: 3rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        box-sizing: border-box;
-    }
-
-    hr {
-        width: 90%;
-        margin: 1rem auto;
-        border: 1px solid var(--accent-color);
-    }
-
-    @media (max-width: 768px) {
-        main {
-            gap: 0.5rem;
-            padding: 2rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        hr {
-            width: 95%;
-        }
-    }
-</style>
+<ContactFooter />

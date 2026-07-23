@@ -1,5 +1,5 @@
 <script>
-	import { experience } from '$lib/content/index.js';
+	import { experience, formatPeriod } from '$lib/content/index.js';
 </script>
 
 <section id="experience" class="exp section">
@@ -16,10 +16,10 @@
 		</div>
 	</div>
 	<div class="exp__list">
-		{#each experience.items as item (`${item.period}-${item.org}`)}
+		{#each experience.items as item (`${item.start.month}-${item.start.year}-${item.end.month}-${item.end.year}-${item.org}`)}
 			<div class="exp__item" data-reveal>
 				<div class="exp__detail">
-					<span class="exp__year">{item.period}</span>
+					<span class="exp__year">{formatPeriod(item.start, item.end)}</span>
 					<div class="exp__role">
 						<h3 class="exp__org">{item.org}</h3>
 						<span class="exp__title-role">{item.role}</span>

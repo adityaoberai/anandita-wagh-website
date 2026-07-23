@@ -6,6 +6,6 @@ export { marqueeItems } from './marquee.js';
 export { about } from './about.js';
 export { capabilities } from './capabilities.js';
 export { work } from './work.js';
-export { experience } from './experience.js';
+export { experience, formatPeriod } from './experience.js';
 export { recognition, toolkit } from './recognition.js';
 export { contact } from './contact.js';

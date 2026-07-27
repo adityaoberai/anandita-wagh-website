@@ -1,27 +1,21 @@
 <script>
-	import { onMount } from 'svelte';
 	import { page } from '$app/state';
-	import { initInteractions } from '$lib/interactions.js';
 	import {
-		AboutSection,
-		CapabilitiesSection,
+		CommunitiesSection,
+		CompaniesSection,
 		ContactFooter,
-		CustomCursor,
-		ExperienceSection,
+		DaisyCursor,
 		HeroSection,
-		MarqueeStrip,
-		RecognitionSection,
-		SiteNav
+		NowSection,
+		ProjectsSection,
+		ServicesSection,
+		SiteNav,
+		TestimonialsSection
 	} from '$lib/components/home/index.js';
-	import { hero, site } from '$lib/content/index.js';
+	import { site } from '$lib/content/index.js';
 
-	// Run all DOM interactions on the client; onMount returns the teardown.
-	onMount(() => initInteractions());
-
-	// Derived copy built from the shared content modules.
 	const pageTitle = `${site.name} — ${site.role}`;
-	const heroTagline = [...hero.title.lines, hero.title.mark].join(' ');
-	const ogAlt = `${site.name} — ${heroTagline}`;
+	const ogAlt = `${site.name}, ${site.role.toLowerCase()} in ${site.location}`;
 
 	// Absolute URLs so social crawlers (which ignore relative paths) resolve
 	// the card and canonical on whatever domain the site is deployed to.
@@ -57,16 +51,17 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<CustomCursor />
+<DaisyCursor />
 <SiteNav />
 
 <main id="main">
 	<HeroSection />
-	<MarqueeStrip />
-	<AboutSection />
-	<CapabilitiesSection />
-	<ExperienceSection />
-	<RecognitionSection />
+	<NowSection />
+	<CompaniesSection />
+	<CommunitiesSection />
+	<ProjectsSection />
+	<ServicesSection />
+	<TestimonialsSection />
 </main>
 
 <ContactFooter />

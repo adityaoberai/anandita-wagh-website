@@ -1,48 +1,83 @@
 <script>
-	import { contact, site } from '$lib/content/index.js';
-
-	const copyright = `© ${site.copyrightYear} ${site.name} — ${site.location}`;
+	import { footer, site } from '$lib/content/index.js';
 </script>
 
-<footer id="contact" class="contact section--dark" data-dark>
-	<div class="contact__inner section">
-		<span class="eyebrow eyebrow--accent" data-reveal>{contact.eyebrow}</span>
-		<h2 class="contact__title" data-reveal>
-			{#each contact.title.lines as line, i (i)}{line}{#if i < contact.title.lines.length - 1}<br
-					/>{/if}{/each}<em>{contact.title.em}</em>
-		</h2>
-		<div class="contact__actions">
-			<a href="mailto:{site.email}" class="contact__email" data-magnetic data-cursor>
-				{site.email}
-				<span aria-hidden="true">↗</span>
-			</a>
-			<a
-				href={contact.secondaryCta.href}
-				class="contact__resume"
-				target="_blank"
-				rel="noopener noreferrer"
-				data-cursor
-			>
-				{contact.secondaryCta.label}
-				<span aria-hidden="true">↗</span>
-			</a>
+<footer class="footer">
+	<div class="footer__inner">
+		<div>
+			<h2 class="footer__heading">
+				{#each footer.heading as line, i (line)}{#if i > 0}<br />{/if}{line}{/each}
+			</h2>
+			<a class="footer__email" href="mailto:{site.email}">{site.email}</a>
 		</div>
 
-		<div class="contact__bar">
-			<span class="contact__copyright">{copyright}</span>
-			<div class="contact__social">
-				{#each site.social as link (link.href)}
-					<a
-						href={link.href}
-						class="contact__sociallink"
-						data-cursor
-						target={link.external ? '_blank' : null}
-						rel={link.external ? 'noopener' : null}
-					>
-						{link.label} ↗
-					</a>
+		{#each footer.columns as column, i (i)}
+			<ul class="footer__column">
+				{#each column as link (link.href)}
+					<li>
+						{#if link.download}
+							<a href={link.href} download={site.resume.filename}>{link.label}</a>
+						{:else}
+							<a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+						{/if}
+					</li>
 				{/each}
-			</div>
-		</div>
+			</ul>
+		{/each}
 	</div>
+
+	<p class="footer__colophon">{footer.colophon}</p>
 </footer>
+
+<style>
+	.footer {
+		padding: clamp(56px, 8vw, 96px) var(--gutter);
+		background: var(--yellow);
+		border-top: var(--rule);
+	}
+
+	.footer__inner {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(24px, 4vw, 48px);
+		width: 100%;
+		max-width: var(--maxw);
+		margin: 0 auto;
+	}
+
+	/* The sign-off is set to break in exactly two lines, so its column gets the
+	   room to hold them rather than an equal third. */
+	@media (min-width: 860px) {
+		.footer__inner {
+			grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr) minmax(0, 1fr);
+		}
+	}
+
+	.footer__heading {
+		margin-bottom: 14px;
+		font-family: var(--display);
+		font-weight: 800;
+		font-size: clamp(30px, 4.6vw, 52px);
+		line-height: 1;
+		letter-spacing: -0.035em;
+	}
+
+	.footer__email {
+		font-size: clamp(16px, 2vw, 20px);
+		font-weight: 600;
+	}
+
+	.footer__column {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		font-size: 16px;
+		font-weight: 500;
+	}
+
+	.footer__colophon {
+		max-width: var(--maxw);
+		margin: clamp(36px, 5vw, 56px) auto 0;
+		font-size: 14px;
+	}
+</style>

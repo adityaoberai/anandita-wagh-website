@@ -1,10 +1,10 @@
-export { default as AboutSection } from './AboutSection.svelte';
-export { default as CapabilitiesSection } from './CapabilitiesSection.svelte';
+export { default as CommunitiesSection } from './CommunitiesSection.svelte';
+export { default as CompaniesSection } from './CompaniesSection.svelte';
 export { default as ContactFooter } from './ContactFooter.svelte';
-export { default as CustomCursor } from './CustomCursor.svelte';
-export { default as ExperienceSection } from './ExperienceSection.svelte';
+export { default as DaisyCursor } from './DaisyCursor.svelte';
 export { default as HeroSection } from './HeroSection.svelte';
-export { default as MarqueeStrip } from './MarqueeStrip.svelte';
-export { default as RecognitionSection } from './RecognitionSection.svelte';
+export { default as NowSection } from './NowSection.svelte';
+export { default as ProjectsSection } from './ProjectsSection.svelte';
+export { default as ServicesSection } from './ServicesSection.svelte';
 export { default as SiteNav } from './SiteNav.svelte';
-export { default as WorkSection } from './WorkSection.svelte';
+export { default as TestimonialsSection } from './TestimonialsSection.svelte';

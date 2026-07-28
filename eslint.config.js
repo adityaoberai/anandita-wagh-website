@@ -9,6 +9,9 @@ const gitignorePath = path.resolve(import.meta.dirname, '.gitignore');
 
 export default defineConfig([
 	includeIgnoreFile(gitignorePath),
+	// The design handoff ships its own prototype runtime. It is reference
+	// material, not code we build, and it does not answer to our rules.
+	{ ignores: ['design_handoff_personal_site/**'] },
 	js.configs.recommended,
 	svelte.configs.recommended,
 	prettier,

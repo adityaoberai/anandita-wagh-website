@@ -49,7 +49,7 @@
 				<div class="card engagement">
 					<span class="engagement__no">{item.no}</span>
 					<h4 class="engagement__name">{item.name}</h4>
-					<p class="prose engagement__what">{item.what}</p>
+					<p class="prose">{item.what}</p>
 					<ul class="dot-list engagement__list">
 						{#each item.items as line (line)}
 							<li><span>{line}</span></li>
@@ -95,7 +95,7 @@
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 		gap: clamp(24px, 4vw, 56px);
 		align-items: start;
-		margin-bottom: clamp(40px, 6vw, 76px);
+		margin-bottom: clamp(44px, 6vw, 76px);
 	}
 
 	.pitch__title {
@@ -120,7 +120,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
-		padding: clamp(22px, 3vw, 32px);
 	}
 
 	.process__title {
@@ -216,7 +215,7 @@
 	.engagements,
 	.audience__grid {
 		display: grid;
-		gap: clamp(14px, 2vw, 22px);
+		gap: clamp(16px, 2.4vw, 28px);
 	}
 
 	.engagements {
@@ -248,19 +247,13 @@
 	.engagement__name {
 		font-family: var(--display);
 		font-weight: 600;
-		font-size: clamp(21px, 2.4vw, 26px);
-		letter-spacing: -0.025em;
-	}
-
-	.engagement__what {
-		font-size: 15px;
+		font-size: clamp(20px, 2.4vw, 26px);
+		letter-spacing: -0.02em;
 	}
 
 	.engagement__list {
 		flex: 1;
-		gap: 7px;
-		font-size: 14px;
-		line-height: 1.4;
+		gap: 8px;
 	}
 
 	.engagement__price {
@@ -282,10 +275,6 @@
 		font-size: 14px;
 	}
 
-	.group {
-		padding: clamp(22px, 3vw, 30px);
-	}
-
 	.group__name {
 		font-family: var(--display);
 		font-weight: 600;
@@ -300,7 +289,7 @@
 		gap: 24px;
 		align-items: center;
 		justify-content: space-between;
-		margin-top: clamp(40px, 6vw, 72px);
+		margin-top: clamp(44px, 6vw, 76px);
 		padding: clamp(28px, 4vw, 48px);
 	}
 
@@ -308,8 +297,8 @@
 		margin-bottom: 8px;
 		font-family: var(--display);
 		font-weight: 700;
-		font-size: clamp(24px, 3.4vw, 38px);
-		line-height: 1.05;
+		font-size: clamp(24px, 3.2vw, 34px);
+		line-height: 1.06;
 		letter-spacing: -0.03em;
 	}
 
@@ -329,5 +318,29 @@
 	.enquiry__cta:hover {
 		background: var(--muted);
 		color: var(--yellow);
+	}
+
+	@media (max-width: 760px) {
+		.pitch {
+			margin-bottom: 56px;
+		}
+
+		.audience,
+		.enquiry {
+			margin-top: 56px;
+		}
+
+		.subhead {
+			margin-bottom: 26px;
+		}
+
+		.engagements,
+		.audience__grid {
+			gap: 20px;
+		}
+
+		.enquiry {
+			padding: 32px 24px;
+		}
 	}
 </style>

@@ -33,29 +33,28 @@
 
 <section id="words" class="section section--dark">
 	<div class="section__inner words__inner">
-		<div class="words__head">
-			<h2 class="section__title">{testimonials.heading}</h2>
+		<h2 class="section__title words__title">{testimonials.heading}</h2>
 
-			<div class="controls">
-				<button type="button" onclick={() => go(index - 1)} aria-label="Previous testimonial">
-					←
-				</button>
-				<button type="button" onclick={() => go(index + 1)} aria-label="Next testimonial">
-					→
-				</button>
-				<button
-					type="button"
-					class="controls__play"
-					onclick={() => (playing = !playing)}
-					aria-label={playing ? 'Pause testimonials' : 'Play testimonials'}
-				>
-					{#if playing}
-						<span>❙❙</span>
-					{:else}
-						<span class="controls__glyph--nudged">▶</span>
-					{/if}
-				</button>
-			</div>
+		<!-- One control row, placed beside the heading on desktop and under the
+		     dots on mobile. Moved by grid placement rather than rendered twice,
+		     so the buttons stay single in the tab order either way. -->
+		<div class="controls">
+			<button type="button" onclick={() => go(index - 1)} aria-label="Previous testimonial"
+				>←</button
+			>
+			<button
+				type="button"
+				class="controls__play"
+				onclick={() => (playing = !playing)}
+				aria-label={playing ? 'Pause testimonials' : 'Play testimonials'}
+			>
+				{#if playing}
+					<span>❙❙</span>
+				{:else}
+					<span class="controls__glyph--nudged">▶</span>
+				{/if}
+			</button>
+			<button type="button" onclick={() => go(index + 1)} aria-label="Next testimonial">→</button>
 		</div>
 
 		<blockquote class="quote">
@@ -83,22 +82,24 @@
 
 <style>
 	.words__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		column-gap: 16px;
 		max-width: 960px;
 	}
 
-	.words__head {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 16px;
-		align-items: center;
-		justify-content: space-between;
-		margin-bottom: clamp(28px, 4vw, 44px);
+	.words__title {
+		grid-area: 1 / 1;
+		align-self: center;
 	}
 
 	.controls {
 		display: flex;
+		grid-area: 1 / 2;
 		gap: 10px;
 		align-items: center;
+		align-self: center;
+		justify-self: end;
 	}
 
 	.controls button {
@@ -139,10 +140,14 @@
 
 	.quote {
 		display: flex;
+		grid-area: 2 / 1 / auto / -1;
 		flex-direction: column;
 		gap: 22px;
-		/* Held tall enough that swapping quotes doesn't shift the page, but
-		   free to grow rather than clip the longest one. */
+		margin-top: clamp(28px, 4vw, 44px);
+		/* A floor rather than a fixed height. Every quote we carry clears it at
+		   every width, so the box still holds its size as the carousel advances
+		   and the page doesn't jump under the reader — but a longer one added
+		   later grows the box instead of spilling out the bottom of it. */
 		min-height: clamp(340px, 30vw, 360px);
 		padding: clamp(24px, 4vw, 48px);
 		border: 2px solid var(--cream);
@@ -152,6 +157,7 @@
 
 	.quote__text {
 		flex: 1;
+		min-height: 0;
 		font-family: var(--display);
 		font-weight: 400;
 		font-size: clamp(18px, 2.4vw, 26px);
@@ -185,9 +191,32 @@
 
 	.dots {
 		display: flex;
+		grid-area: 3 / 1 / auto / -1;
 		gap: 10px;
 		align-items: center;
 		margin-top: 22px;
+	}
+
+	/* Below the design's 760px flag the heading keeps the row to itself and the
+	   whole control row drops under the dots. */
+	@media (max-width: 760px) {
+		.words__inner {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.quote {
+			min-height: 360px;
+		}
+
+		.quote__text {
+			font-size: 17px;
+		}
+
+		.controls {
+			grid-area: 4 / 1;
+			margin-top: 20px;
+			justify-self: start;
+		}
 	}
 
 	.dots__dot {
@@ -202,5 +231,21 @@
 
 	.dots__dot.is-current {
 		background: var(--yellow);
+	}
+
+	/* The narrower the box the more lines a quote runs to, so the floor rises as
+	   the screen narrows. Each step is set about 15% above what the longest
+	   quote actually measures at that width, which is room for a longer one
+	   without leaving a crater under the short ones. */
+	@media (max-width: 560px) {
+		.quote {
+			min-height: 400px;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.quote {
+			min-height: 440px;
+		}
 	}
 </style>

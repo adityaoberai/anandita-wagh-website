@@ -29,12 +29,16 @@ const OUT = join(ROOT, 'static', 'assets');
 const PHOTOS = 'My Photos';
 const ICONS = 'Social Media Icons';
 const LOGOS = 'Company and Volunteering Logos PNGs';
+const COVERS = 'Project Covers';
 
 // Logos are never drawn taller than ~110 CSS px; this leaves headroom for 2x.
 const LOGO_BOX = { width: 900, height: 320 };
 // The hero photo caps at 900 CSS px wide, so this covers it on a 1.33x screen
 // and degrades gracefully above that. Going higher costs more than it shows.
 const HERO_BOX = { width: 1200, height: 1200 };
+// A project card is never wider than ~640 CSS px, so this clears 2x. Covers are
+// drawn with object-fit: cover, so the box is a ceiling, not a target shape.
+const COVER_BOX = { width: 1400, height: 1400 };
 
 /**
  * @typedef {object} Job
@@ -43,6 +47,7 @@ const HERO_BOX = { width: 1200, height: 1200 };
  * @property {{ width: number, height: number }} [box]  bounds to fit within
  * @property {number} [quality]
  * @property {boolean} [clear]  knock a flat white plate out to transparency
+ * @property {boolean} [bleed]  full-bleed artwork: keep the edges, skip the trim
  */
 
 /** @type {Job[]} */
@@ -55,7 +60,9 @@ const JOBS = [
 	// Companies.
 	{ from: `${LOGOS}/IKEA.png`, to: 'logos/ikea.webp' },
 	{ from: `${LOGOS}/E2E Networks.png`, to: 'logos/e2e-networks.webp' },
-	{ from: `${LOGOS}/Hettich.png`, to: 'logos/hettich.webp' },
+	// The design picks the stacked lockup over the square one, so this is
+	// "Hettich-up.png" rather than the "Hettich.png" sitting beside it.
+	{ from: `${LOGOS}/Hettich-up.png`, to: 'logos/hettich.webp' },
 	{ from: `${LOGOS}/Auctor Labs.png`, to: 'logos/auctor-labs.webp' },
 	{ from: `${LOGOS}/FineVision.png`, to: 'logos/finevision.webp' },
 	{ from: `${LOGOS}/Rejoice.png`, to: 'logos/rejoice.webp' },
@@ -76,7 +83,24 @@ const JOBS = [
 	{ from: `${LOGOS}/AIESEC.png`, to: 'logos/aiesec.webp', clear: true },
 	{ from: `${LOGOS}/The Writers' Room.png`, to: 'logos/the-writers-room.webp' },
 	{ from: `${LOGOS}/DevRelCon.png`, to: 'logos/devrelcon.webp' },
-	{ from: `${LOGOS}/UHackathon 4.0 META.png`, to: 'logos/uhackathon-4-meta.webp' }
+	{ from: `${LOGOS}/UHackathon 4.0 META.png`, to: 'logos/uhackathon-4-meta.webp' },
+
+	// Project covers. These are composed artboards, not marks on a plate — the
+	// framing is the design, so they go through whole and only get scaled.
+	{
+		from: `${COVERS}/Sovereign Cloud Platform.png`,
+		to: 'projects/sovereign-cloud-platform.webp',
+		box: COVER_BOX,
+		quality: 82,
+		bleed: true
+	},
+	{
+		from: `${COVERS}/Graphic and Visual Design Portfolio.png`,
+		to: 'projects/graphic-visual-portfolio.webp',
+		box: COVER_BOX,
+		quality: 82,
+		bleed: true
+	}
 ];
 
 /**
@@ -115,9 +139,12 @@ for (const job of JOBS) {
 		const cropped = job.clear ? await knockOutWhite(source) : source;
 		mkdirSync(dirname(to), { recursive: true });
 
-		const info = await cropped
-			// threshold 10 ignores the near-invisible halo some exports carry
-			.trim({ background: '#00000000', threshold: 10 })
+		const info = await (
+			job.bleed
+				? cropped
+				: // threshold 10 ignores the near-invisible halo some exports carry
+					cropped.trim({ background: '#00000000', threshold: 10 })
+		)
 			.resize({ ...box, fit: 'inside', withoutEnlargement: true })
 			.webp({ quality: job.quality ?? 88, alphaQuality: 100, effort: 6 })
 			.toFile(to);

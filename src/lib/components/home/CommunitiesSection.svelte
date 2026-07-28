@@ -32,14 +32,15 @@
 		margin-bottom: 12px;
 		font-family: var(--display);
 		font-weight: 700;
-		font-size: clamp(22px, 3vw, 34px);
-		letter-spacing: -0.025em;
+		font-size: clamp(24px, 3.2vw, 34px);
+		line-height: 1.06;
+		letter-spacing: -0.03em;
 	}
 
 	.offer__body {
 		margin-bottom: 24px;
 		max-width: 78ch;
-		font-size: 17px;
+		font-size: 16px;
 		line-height: 1.55;
 		text-wrap: pretty;
 	}

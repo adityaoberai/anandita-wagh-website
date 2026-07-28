@@ -7,6 +7,7 @@ import { site } from './site.js';
 
 export const footer = {
 	heading: ["Let's make something", 'that feels like you.'],
+	location: 'Based in Bangalore, working with people everywhere.',
 	columns: site.footerColumns,
 	colophon: `${site.location} · © ${site.copyrightYear} ${site.name}`
 };

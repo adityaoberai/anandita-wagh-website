@@ -68,19 +68,25 @@ export const site = {
 
 	/** Footer link columns, in the order they're laid out. */
 	footerColumns: [
-		[
-			{ label: 'LinkedIn', href: links.linkedin },
-			{ label: 'Behance', href: links.behance },
-			{ label: 'Instagram', href: links.instagram },
-			{ label: 'X (Twitter)', href: links.x },
-			{ label: 'Substack', href: links.substack }
-		],
-		[
-			{ label: 'GitHub', href: links.github },
-			{ label: 'Pexels', href: links.pexels },
-			{ label: 'Spotify', href: links.spotify },
-			{ label: '3 free months of IxDF', href: links.ixdf },
-			{ label: 'Resume (PDF)', href: '/assets/anandita-wagh-resume.pdf', download: true }
-		]
+		{
+			title: 'Elsewhere',
+			links: [
+				{ label: 'LinkedIn', href: links.linkedin },
+				{ label: 'Behance', href: links.behance },
+				{ label: 'Instagram', href: links.instagram },
+				{ label: 'X (Twitter)', href: links.x },
+				{ label: 'Substack', href: links.substack }
+			]
+		},
+		{
+			title: 'More',
+			links: [
+				{ label: 'GitHub', href: links.github },
+				{ label: 'Pexels', href: links.pexels },
+				{ label: 'Spotify', href: links.spotify },
+				{ label: '3 free months of IxDF', href: links.ixdf },
+				{ label: 'Resume (PDF)', href: '/assets/anandita-wagh-resume.pdf', download: true }
+			]
+		}
 	]
 };

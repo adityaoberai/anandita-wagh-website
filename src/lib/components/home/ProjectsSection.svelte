@@ -9,7 +9,10 @@
 		<div class="projects">
 			{#each projects.items as project (project.href)}
 				<a class="project" href={project.href} target="_blank" rel="noopener">
-					<div class="project__cover">
+					<div
+						class="project__cover"
+						style={project.coverBg ? `background:${project.coverBg}` : undefined}
+					>
 						{#if project.cover}
 							<img src={project.cover} alt="" loading="lazy" />
 						{:else}
@@ -38,6 +41,12 @@
 		gap: clamp(20px, 3vw, 32px);
 	}
 
+	@media (max-width: 760px) {
+		.projects {
+			gap: 20px;
+		}
+	}
+
 	.project {
 		display: flex;
 		flex-direction: column;
@@ -55,16 +64,21 @@
 
 	.project__cover {
 		position: relative;
+		flex: none;
 		height: clamp(200px, 26vw, 300px);
 		border-bottom: var(--rule);
 		background: var(--yellow);
 		overflow: hidden;
 	}
 
+	/* Contained, not cropped: these covers are composed artboards and losing
+	   their edges loses the composition. The frame's backdrop is set per
+	   project so the letterboxing reads as the artwork's own ground. */
 	.project__cover img {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
+		object-position: center;
 	}
 
 	.project__plate {
@@ -79,7 +93,13 @@
 		color: var(--yellow-deep);
 	}
 
+	/* Blurbs run to different lengths, so the body takes the leftover height and
+	   the CTA is pushed to the floor of it — titles line up at the top, links
+	   line up at the bottom, however many lines sit between them. */
 	.project__body {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
 		padding: clamp(20px, 3vw, 30px);
 	}
 
@@ -87,7 +107,7 @@
 		margin-bottom: 10px;
 		font-family: var(--display);
 		font-weight: 600;
-		font-size: clamp(22px, 2.6vw, 28px);
+		font-size: clamp(20px, 2.4vw, 26px);
 		letter-spacing: -0.02em;
 	}
 
@@ -96,6 +116,7 @@
 	}
 
 	.project__cta {
+		margin-top: auto;
 		font-size: 15px;
 		font-weight: 600;
 	}

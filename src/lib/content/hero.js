@@ -6,7 +6,7 @@
 
 export const hero = {
 	/** One line per entry, stacked and centred behind the photo. */
-	wordmark: ['anandita', 'wagh'],
+	wordmark: ["Hi, I'm", 'Anandita'],
 
 	/**
 	 * The photo swaps on hover: buttoned-up by default, off duty underneath.

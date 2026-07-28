@@ -40,7 +40,6 @@
 		display: flex;
 		flex-direction: column;
 		border-radius: 20px;
-		padding: clamp(24px, 3vw, 36px);
 	}
 
 	/* The freelance card carries the section, so it takes both columns and the
@@ -50,7 +49,14 @@
 		grid-column: span 2;
 	}
 
-	@media (max-width: 719px) {
+	@media (max-width: 760px) {
+		.now {
+			/* Stacked, the two cards match heights rather than each sizing to its
+			   own text — so the pair still reads as a set. */
+			grid-auto-rows: 1fr;
+			gap: 20px;
+		}
+
 		.now__work {
 			grid-column: auto;
 		}

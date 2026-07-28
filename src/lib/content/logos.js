@@ -14,37 +14,25 @@
 export const companies = {
 	heading: "Companies I've worked with",
 	standfirst: 'In-house, on contract, and freelance.',
+	// Order is part of the design: the best-known marks lead, and tall and wide
+	// shapes alternate so the wall never stacks two of a kind side by side.
 	items: [
 		{ name: 'IKEA', href: 'https://www.ikea.com/in/en/', logo: 'ikea', height: 47 },
+		{ name: 'Hettich', href: 'https://www.hettich.com/en-in/home', logo: 'hettich', height: 66 },
 		{
 			name: 'E2E Networks',
 			href: 'https://www.e2enetworks.com/',
 			logo: 'e2e-networks',
 			height: 31
 		},
-		{ name: 'Hettich', href: 'https://www.hettich.com/en-in/home', logo: 'hettich', height: 66 },
-		{ name: 'Auctor Labs', href: 'https://www.auctorlabs.in/', logo: 'auctor-labs', height: 32 },
-		{ name: 'FineVision', href: 'https://www.thefinevision.com/', logo: 'finevision', height: 30 },
 		{
-			name: 'Rejoice Speech and Hearing Clinic',
-			href: 'https://www.rejoicespeechandhearingclinic.in/',
-			logo: 'rejoice',
-			height: 59
+			name: 'Design Directions',
+			href: 'https://www.designdirections.net/',
+			logo: 'design-directions',
+			height: 19
 		},
 		{ name: 'Vucaware', href: 'https://www.vucaware.com/', logo: 'vucaware', height: 39 },
-		{
-			name: 'Ajeet Kumbhar Badminton Academy',
-			href: 'https://www.akbaofficial.in/',
-			logo: 'ajeet-kumbhar-badminton-academy',
-			height: 85
-		},
-		{ name: 'Kyitsel-ling', href: 'https://www.kyitseling.org/', logo: 'kyitsel-ling', height: 76 },
-		{
-			name: 'Hirali Foundation',
-			href: 'https://www.linkedin.com/company/hiralifoundation',
-			logo: 'hirali-foundation',
-			height: 76
-		},
+		{ name: 'Auctor Labs', href: 'https://www.auctorlabs.in/', logo: 'auctor-labs', height: 32 },
 		{
 			name: 'Pinnacle Media',
 			href: 'https://www.thepinnacle.media/',
@@ -52,11 +40,25 @@ export const companies = {
 			height: 24
 		},
 		{
-			name: 'Design Directions',
-			href: 'https://www.designdirections.net/',
-			logo: 'design-directions',
-			height: 19
-		}
+			name: 'Hirali Foundation',
+			href: 'https://www.linkedin.com/company/hiralifoundation',
+			logo: 'hirali-foundation',
+			height: 76
+		},
+		{ name: 'Kyitsel-ling', href: 'https://www.kyitseling.org/', logo: 'kyitsel-ling', height: 76 },
+		{
+			name: 'Rejoice Speech and Hearing Clinic',
+			href: 'https://www.rejoicespeechandhearingclinic.in/',
+			logo: 'rejoice',
+			height: 59
+		},
+		{
+			name: 'Ajeet Kumbhar Badminton Academy',
+			href: 'https://www.akbaofficial.in/',
+			logo: 'ajeet-kumbhar-badminton-academy',
+			height: 85
+		},
+		{ name: 'FineVision', href: 'https://www.thefinevision.com/', logo: 'finevision', height: 30 }
 	]
 };
 

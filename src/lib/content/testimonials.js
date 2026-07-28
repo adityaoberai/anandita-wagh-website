@@ -21,7 +21,7 @@ export const testimonials = {
 			quote:
 				'Working with Anandita was pure magic. She turned sketches into showstoppers, revamped our social posts and decks, lifted engagement and made deadlines a breeze. Talented, kind and full of joy: a dream collaborator.',
 			author: 'Pradeep Damle',
-			role: 'Marketing Lead, E2E Networks',
+			role: 'Marketing Lead, prev. E2E Networks',
 			href: 'https://www.linkedin.com/in/pradeepdamle/'
 		},
 		{

@@ -11,7 +11,7 @@
    ========================================================================= */
 
 /**
- * @typedef {{ label: string, viewBox: string, path: string }} SocialIcon
+ * @typedef {{ label: string, viewBox: string, path: string, clip?: string }} SocialIcon
  * @type {Record<string, SocialIcon>}
  */
 export const socialIcons = {
@@ -42,8 +42,14 @@ export const socialIcons = {
 	},
 	pexels: {
 		label: 'Pexels',
-		viewBox: '0 0 24 24',
-		path: 'M1.5 0A1.5 1.5 0 000 1.5v21A1.5 1.5 0 001.5 24h21a1.5 1.5 0 001.5-1.5v-21A1.5 1.5 0 0022.5 0h-21zm6.75 6.75h5.2715a3.843 3.843 0 01.627 7.6348V17.25H8.25V6.75zm1.5 1.5v7.5h2.8984v-2.8145h.873a2.343 2.343 0 100-4.6855H9.75Z'
+		viewBox: '0 0 192 192',
+		// Pexels' current mark, from their own safari-pinned-tab.svg. The stem of
+		// the P deliberately breaks out through the left edge of the tile. The
+		// source rounds the tile with a <clipPath>; that needs a document-unique
+		// id and this glyph renders twice per page, so the corners are rounded
+		// with CSS instead — 32 of 192 is 16.667%.
+		clip: 'inset(0 round 16.667%)',
+		path: 'M0 0h192v192H0v-61.632h61.536v61.536h24v-61.536h24.768c26.976 0 48.768-21.888 48.768-48.768h.096c0-26.976-21.888-48.768-48.768-48.768S61.632 54.72 61.632 81.6v24.768H0V0Zm135.168 81.6c0-13.632-11.136-24.768-24.768-24.768-13.632 0-24.768 11.136-24.768 24.768v24.768H110.4c13.632 0 24.768-11.136 24.768-24.768Z'
 	},
 	github: {
 		label: 'GitHub',

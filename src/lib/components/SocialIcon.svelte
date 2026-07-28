@@ -10,6 +10,13 @@
 	const icon = $derived(socialIcons[name]);
 </script>
 
-<svg viewBox={icon.viewBox} width={size} height={size} fill="currentColor" aria-hidden="true">
+<svg
+	viewBox={icon.viewBox}
+	width={size}
+	height={size}
+	fill="currentColor"
+	style:clip-path={icon.clip}
+	aria-hidden="true"
+>
 	<path d={icon.path} />
 </svg>

@@ -7,3 +7,7 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# Design handoff. Reference material, not source — it is the record of what the
+# design says, so it gets read and never rewritten.
+/design_handoff_personal_site/

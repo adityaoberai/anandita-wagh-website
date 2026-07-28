@@ -7,7 +7,7 @@ export const testimonials = {
 	heading: 'Kind words',
 
 	/** Seconds each quote holds before the carousel advances by itself. */
-	interval: 8,
+	interval: 5,
 
 	items: [
 		{

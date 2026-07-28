@@ -126,10 +126,21 @@
 		color: var(--ink);
 	}
 
-	.controls__play {
+	/* Qualified by the tag so this outweighs `.controls button` above, which is
+	   otherwise the more specific selector and flattens the play button back to
+	   cream. Still below `.controls button:hover`, so hover keeps inverting. */
+	button.controls__play {
 		border-color: var(--yellow);
 		color: var(--yellow);
 		font-size: 14px;
+	}
+
+	/* Paused is the state worth announcing: the arrows and dots pause the
+	   carousel as a side effect, so the button has to carry that news on its
+	   own. Filled yellow reads across the row where a glyph swap alone doesn't. */
+	button.controls__play[aria-label='Play testimonials'] {
+		background: var(--yellow);
+		color: var(--ink);
 	}
 
 	/* The triangle's own whitespace throws it left of centre. */

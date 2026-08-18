@@ -71,13 +71,14 @@
 		overflow: hidden;
 	}
 
-	/* Contained, not cropped: these covers are composed artboards and losing
-	   their edges loses the composition. The frame's backdrop is set per
-	   project so the letterboxing reads as the artwork's own ground. */
+	/* Filled, not letterboxed: the covers are cut to the frame's 2:1, so on
+	   desktop this is a fit rather than a crop, and the shallower mobile frame
+	   takes it off the sides where these compositions have room to give.
+	   `coverBg` still shows while the image loads. */
 	.project__cover img {
 		width: 100%;
 		height: 100%;
-		object-fit: contain;
+		object-fit: cover;
 		object-position: center;
 	}
 

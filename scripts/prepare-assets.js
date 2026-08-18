@@ -39,6 +39,10 @@ const HERO_BOX = { width: 1200, height: 1200 };
 // A project card is never wider than ~640 CSS px, so this clears 2x. Covers are
 // drawn with object-fit: cover, so the box is a ceiling, not a target shape.
 const COVER_BOX = { width: 1400, height: 1400 };
+// The shape the card frame wants, for sources that don't already arrive as 2:1
+// artboards. Cropping to it beats letterboxing when the artwork is a scene with
+// no edges worth keeping.
+const COVER_FRAME = { width: 1600, height: 800 };
 
 /**
  * @typedef {object} Job
@@ -48,6 +52,7 @@ const COVER_BOX = { width: 1400, height: 1400 };
  * @property {number} [quality]
  * @property {boolean} [clear]  knock a flat white plate out to transparency
  * @property {boolean} [bleed]  full-bleed artwork: keep the edges, skip the trim
+ * @property {boolean} [frame]  crop to COVER_FRAME instead of fitting `box`
  */
 
 /** @type {Job[]} */
@@ -100,6 +105,16 @@ const JOBS = [
 		box: COVER_BOX,
 		quality: 82,
 		bleed: true
+	},
+	// This one arrives 16:9 rather than as a 2:1 artboard, and it is a scene —
+	// newsprint running off every edge — so it is cropped to the frame instead
+	// of letterboxed against a ground it doesn't have.
+	{
+		from: `${COVERS}/The Writers' Room.png`,
+		to: 'projects/the-writers-room.webp',
+		quality: 82,
+		bleed: true,
+		frame: true
 	}
 ];
 
@@ -139,13 +154,16 @@ for (const job of JOBS) {
 		const cropped = job.clear ? await knockOutWhite(source) : source;
 		mkdirSync(dirname(to), { recursive: true });
 
+		const trimmed = job.bleed
+			? cropped
+			: // threshold 10 ignores the near-invisible halo some exports carry
+				cropped.trim({ background: '#00000000', threshold: 10 });
+
 		const info = await (
-			job.bleed
-				? cropped
-				: // threshold 10 ignores the near-invisible halo some exports carry
-					cropped.trim({ background: '#00000000', threshold: 10 })
+			job.frame
+				? trimmed.resize({ ...COVER_FRAME, fit: 'cover' })
+				: trimmed.resize({ ...box, fit: 'inside', withoutEnlargement: true })
 		)
-			.resize({ ...box, fit: 'inside', withoutEnlargement: true })
 			.webp({ quality: job.quality ?? 88, alphaQuality: 100, effort: 6 })
 			.toFile(to);
 

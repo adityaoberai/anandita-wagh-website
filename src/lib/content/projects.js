@@ -15,13 +15,13 @@ export const projects = {
 	heading: 'Selected projects',
 	items: [
 		{
-			name: 'Sovereign Cloud Platform',
+			name: "The Writers' Room",
 			blurb:
-				'Logo, brand system, information architecture and the full website, designed and shipped in six weeks.',
-			href: 'https://www.behance.net/gallery/247257791/Brand-and-Website-Design-for-SCP-Part-1?platform=direct',
-			cta: 'View on Behance ↗',
-			cover: '/assets/projects/sovereign-cloud-platform.webp',
-			coverBg: '#05070D'
+				'A newspaper-styled case study for a Bengaluru writing meetup, covering its brand, website, and print design.',
+			href: 'https://thewritersroom.club',
+			cta: 'Visit the site ↗',
+			cover: '/assets/projects/the-writers-room.webp',
+			coverBg: '#B8B6B6'
 		},
 		{
 			name: 'Graphic & visual design portfolio',
@@ -30,6 +30,15 @@ export const projects = {
 			cta: 'View on Behance ↗',
 			cover: '/assets/projects/graphic-visual-portfolio.webp',
 			coverBg: '#FFFFFF'
+		},
+		{
+			name: 'Sovereign Cloud Platform',
+			blurb:
+				'Logo, brand system, information architecture and the full website, designed and shipped in six weeks.',
+			href: 'https://www.behance.net/gallery/247257791/Brand-and-Website-Design-for-SCP-Part-1?platform=direct',
+			cta: 'View on Behance ↗',
+			cover: '/assets/projects/sovereign-cloud-platform.webp',
+			coverBg: '#05070D'
 		}
 	]
 };

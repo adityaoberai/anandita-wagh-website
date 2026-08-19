@@ -16,6 +16,20 @@
 	let offDuty = $state(false);
 	let box = $state(null);
 
+	/* The swap is the photo's own affair, not the hero's. Hovering anywhere in
+	   the yellow used to flip it, which on a full-viewport section meant it was
+	   flipped most of the time; the trigger now sits on the crops themselves,
+	   each of which is sized to its own artwork rather than to a shared frame.
+
+	   Only the visible crop takes the pointer, and only two of the four possible
+	   handlers exist — enter on the formal crop, leave on the casual one. The
+	   casual crop covers the formal one, so a swap never drops the pointer and
+	   the pair can't oscillate on the boundary. A click anywhere else in the
+	   hero puts the formal photo back, which is also the way out on a device
+	   that reports hover but has no pointer to move away. */
+	let heroEl = $state(null);
+	let photoEl = $state(null);
+
 	/* There is no hover on a phone, so the swap rides the scroll instead: the
 	   casual crop fades in across the first screenful and is fully resolved by
 	   the time the hero is behind you. Quantised to 1/25 so a slow drag repaints
@@ -78,14 +92,24 @@
 			progress = Math.round(raw * 25) / 25;
 		}
 
+		// Desktop only: on a phone the crop is driven by scroll, not by pointer.
+		function onClick(event) {
+			if (mobile) return;
+			if (!heroEl?.contains(event.target)) return;
+			if (photoEl?.contains(event.target)) return;
+			offDuty = false;
+		}
+
 		syncViewport();
 		onScroll();
 		narrow.addEventListener('change', syncViewport);
 		window.addEventListener('scroll', onScroll, { passive: true });
+		window.addEventListener('click', onClick);
 
 		return () => {
 			narrow.removeEventListener('change', syncViewport);
 			window.removeEventListener('scroll', onScroll);
+			window.removeEventListener('click', onClick);
 		};
 	});
 
@@ -103,12 +127,7 @@
 	});
 </script>
 
-<header
-	id="top"
-	class="hero"
-	onmouseenter={() => (offDuty = true)}
-	onmouseleave={() => (offDuty = false)}
->
+<header id="top" class="hero" bind:this={heroEl}>
 	<div class="hero__stage">
 		<div class="hero__wordmark" bind:this={box} aria-hidden="true">
 			{#each hero.wordmark as line (line)}
@@ -116,16 +135,21 @@
 			{/each}
 		</div>
 
-		<div class="hero__photo">
+		<div class="hero__photo" bind:this={photoEl}>
 			<img
+				class="hero__crop"
+				class:is-live={!offDuty}
 				src={formal.src}
 				alt={formal.alt}
 				width={formal.width}
 				height={formal.height}
 				style:opacity={formalOpacity}
 				fetchpriority="high"
+				onmouseenter={() => !mobile && (offDuty = true)}
 			/>
 			<img
+				class="hero__crop"
+				class:is-live={offDuty}
 				src={casual.src}
 				alt=""
 				width={casual.width}
@@ -133,6 +157,7 @@
 				style:opacity={casualOpacity}
 				fetchpriority="low"
 				aria-hidden="true"
+				onmouseleave={() => (offDuty = false)}
 			/>
 		</div>
 	</div>
@@ -196,19 +221,32 @@
 		flex: none;
 		width: min(92vw, 900px);
 		max-height: 100%;
-		/* Matches the wider of the two crops, so the box never resizes on hover. */
-		aspect-ratio: 1991 / 1552;
+		/* The wider of the two crops, so the stage never resizes on hover. */
+		aspect-ratio: 1200 / 935;
+		/* The frame is scaffolding, not a target — see .hero__crop. */
+		pointer-events: none;
 	}
 
-	.hero__photo img {
+	/* Each crop is given its own width off its own ratio rather than being
+	   contained in the shared frame, so its box stops at the edge of the artwork
+	   instead of reaching across the empty half of the frame. Both are anchored
+	   to the same bottom edge, so the two shapes still stand on one ground line. */
+	.hero__crop {
 		position: absolute;
-		inset: 0;
-		width: 100%;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: auto;
 		height: 100%;
+		max-width: 100%;
 		object-fit: contain;
-		/* Both crops stand on the same ground line despite different shapes. */
-		object-position: bottom center;
 		transition: opacity 0.32s ease;
+		pointer-events: none;
+	}
+
+	/* Only whichever crop is on screen answers the pointer. */
+	.hero__crop.is-live {
+		pointer-events: auto;
 	}
 
 	/* On a phone the name stops being a backdrop and becomes the headline: full
@@ -233,6 +271,12 @@
 
 		.hero__photo {
 			width: min(116vw, 720px);
+		}
+
+		/* The crop swaps on scroll here, so it takes no pointer at all — a tap
+		   should never latch a hover state that can't be left. */
+		.hero__crop.is-live {
+			pointer-events: none;
 		}
 	}
 </style>

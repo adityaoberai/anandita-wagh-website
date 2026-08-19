@@ -9,9 +9,10 @@ export const hero = {
 	wordmark: ["Hi, I'm", 'Anandita'],
 
 	/**
-	 * The photo swaps on hover: buttoned-up by default, off duty underneath.
-	 * The two crops differ (one portrait, one wider) — they're contained in a
-	 * shared box and anchored to its bottom edge, so the ground line holds.
+	 * The photo swaps when the pointer is on it: buttoned-up by default, off
+	 * duty underneath. The two crops differ (one portrait, one wider) — each is
+	 * drawn at its own width and anchored to the same bottom edge, so the ground
+	 * line holds and neither reaches past its own artwork.
 	 */
 	photos: {
 		formal: {

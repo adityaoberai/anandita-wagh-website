@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/state';
 	import {
+		BlogsSection,
 		CommunitiesSection,
 		CompaniesSection,
 		ContactFooter,
@@ -60,6 +61,7 @@
 	<CompaniesSection />
 	<CommunitiesSection />
 	<ProjectsSection />
+	<BlogsSection />
 	<ServicesSection />
 	<TestimonialsSection />
 </main>

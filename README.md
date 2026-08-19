@@ -27,7 +27,8 @@ components:
 | `now.js`          | "What I'm doing now"                                        |
 | `logos.js`        | both logo walls, plus the IxDF offer card                   |
 | `projects.js`     | "Selected projects"                                         |
-| `services.js`     | "Let's work together" — process, offer, audience            |
+| `blogs.js`        | "Writing" — the Substack posts                              |
+| `services.js`     | "Let's work together" — process and offer                   |
 | `testimonials.js` | "Kind words"                                                |
 | `footer.js`       | the sign-off                                                |
 

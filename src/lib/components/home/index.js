@@ -1,3 +1,4 @@
+export { default as BlogsSection } from './BlogsSection.svelte';
 export { default as CommunitiesSection } from './CommunitiesSection.svelte';
 export { default as CompaniesSection } from './CompaniesSection.svelte';
 export { default as ContactFooter } from './ContactFooter.svelte';

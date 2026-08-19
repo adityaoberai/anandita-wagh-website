@@ -12,7 +12,7 @@ export const now = {
 	heading: "What I'm doing now",
 
 	work: {
-		heading: 'Freelancing as a graphic and brand designer',
+		heading: 'Freelancing as a brand and visual designer',
 		body: 'Four years in, working with founders and teams who need their brand to look like it means business. Some want the whole system built from nothing. Others have a logo and no idea what to do next. Both are welcome.',
 		cta: { label: 'See everything I could make for you', href: '#services' }
 	},

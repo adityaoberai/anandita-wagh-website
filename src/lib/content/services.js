@@ -1,6 +1,6 @@
 /* =========================================================================
-   "Let's work together" — the offer, in four parts: the pitch, how a project
-   runs, what's actually for sale, and who it suits.
+   "Let's work together" — the offer, in three parts: the pitch, how a project
+   runs, and what's actually for sale.
    ========================================================================= */
 
 import { site } from './site.js';
@@ -73,37 +73,6 @@ export const services = {
 				],
 				price: 'On request',
 				unit: 'per month'
-			}
-		]
-	},
-
-	audience: {
-		heading: "Who it's for",
-		groups: [
-			{
-				name: 'Starting from scratch',
-				items: [
-					'Startups naming and launching something new',
-					'Founders building a personal brand',
-					'Anyone with a good idea and a bad logo'
-				]
-			},
-			{
-				name: 'Ready to look the part',
-				items: [
-					'Family businesses stepping up',
-					'Shops, cafes, studios and clinics',
-					'Schools, academies and institutes',
-					'NGOs, foundations and community projects'
-				]
-			},
-			{
-				name: 'Need a designer on the team',
-				items: [
-					'Marketing teams hiring for a season, not a headcount',
-					'Agencies with overflow work',
-					'Creators, writers and photographers'
-				]
 			}
 		]
 	},

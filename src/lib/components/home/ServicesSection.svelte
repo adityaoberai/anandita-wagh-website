@@ -1,7 +1,7 @@
 <script>
 	import { services } from '$lib/content/index.js';
 
-	const { process, engagements, audience, cta } = services;
+	const { process, engagements, cta } = services;
 </script>
 
 <section id="services" class="section section--cream">
@@ -61,22 +61,6 @@
 					</p>
 				</div>
 			{/each}
-		</div>
-
-		<div class="audience">
-			<h3 class="subhead">{audience.heading}</h3>
-			<div class="audience__grid">
-				{#each audience.groups as group (group.name)}
-					<div class="card group">
-						<h4 class="group__name">{group.name}</h4>
-						<ul class="dot-list">
-							{#each group.items as line (line)}
-								<li><span>{line}</span></li>
-							{/each}
-						</ul>
-					</div>
-				{/each}
-			</div>
 		</div>
 
 		<div class="card card--yellow enquiry">
@@ -203,7 +187,7 @@
 		font-weight: 700;
 	}
 
-	/* ----- what I make / who it's for ----- */
+	/* ----- what I make ----- */
 	.subhead {
 		margin-bottom: clamp(22px, 3vw, 32px);
 		font-family: var(--display);
@@ -212,26 +196,13 @@
 		letter-spacing: -0.025em;
 	}
 
-	.engagements,
-	.audience__grid {
+	.engagements {
 		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		gap: clamp(16px, 2.4vw, 28px);
 	}
 
-	.engagements {
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	}
-
-	.audience {
-		margin-top: clamp(44px, 6vw, 76px);
-	}
-
-	.audience__grid {
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	}
-
-	.engagement,
-	.group {
+	.engagement {
 		display: flex;
 		flex-direction: column;
 		gap: 14px;
@@ -273,13 +244,6 @@
 
 	.engagement__unit {
 		font-size: 14px;
-	}
-
-	.group__name {
-		font-family: var(--display);
-		font-weight: 600;
-		font-size: 19px;
-		letter-spacing: -0.02em;
 	}
 
 	/* ----- enquiry ----- */
@@ -325,21 +289,16 @@
 			margin-bottom: 56px;
 		}
 
-		.audience,
-		.enquiry {
-			margin-top: 56px;
-		}
-
 		.subhead {
 			margin-bottom: 26px;
 		}
 
-		.engagements,
-		.audience__grid {
+		.engagements {
 			gap: 20px;
 		}
 
 		.enquiry {
+			margin-top: 56px;
 			padding: 32px 24px;
 		}
 	}

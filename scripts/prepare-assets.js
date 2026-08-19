@@ -30,6 +30,7 @@ const PHOTOS = 'My Photos';
 const ICONS = 'Social Media Icons';
 const LOGOS = 'Company and Volunteering Logos PNGs';
 const COVERS = 'Project Covers';
+const BLOGS = 'Blog Covers';
 
 // Logos are never drawn taller than ~110 CSS px; this leaves headroom for 2x.
 const LOGO_BOX = { width: 900, height: 320 };
@@ -58,7 +59,7 @@ const COVER_FRAME = { width: 1600, height: 800 };
 /** @type {Job[]} */
 const JOBS = [
 	// Hero portraits. Cropped to the subject and drawn bottom-anchored, so the
-	// two crops don't need to match — the page contains them in a shared box.
+	// two crops don't need to match — the page draws each at its own width.
 	{ from: `${ICONS}/Formal Photo.png`, to: 'hero/formal.webp', box: HERO_BOX, quality: 82 },
 	{ from: `${PHOTOS}/Casual Photo.png`, to: 'hero/casual.webp', box: HERO_BOX, quality: 82 },
 
@@ -112,6 +113,25 @@ const JOBS = [
 	{
 		from: `${COVERS}/The Writers' Room.png`,
 		to: 'projects/the-writers-room.webp',
+		quality: 82,
+		bleed: true,
+		frame: true
+	},
+
+	// Blog covers. Substack hero images, which arrive at whatever shape the post
+	// wanted rather than as artboards — so like The Writers' Room they are cropped
+	// to the frame. Both are scenes with the subject in the middle, which is where
+	// the shallower mobile frame keeps looking.
+	{
+		from: `${BLOGS}/The Answer They Didn't Write Down.png`,
+		to: 'blogs/the-answer-they-didnt-write-down.webp',
+		quality: 82,
+		bleed: true,
+		frame: true
+	},
+	{
+		from: `${BLOGS}/Two Fields One Purpose.png`,
+		to: 'blogs/two-fields-one-purpose.webp',
 		quality: 82,
 		bleed: true,
 		frame: true

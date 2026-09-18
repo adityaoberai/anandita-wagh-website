@@ -69,3 +69,8 @@ file list.
 `npm run og` renders `static/og.png` (1200×630) with satori + resvg, pulling its
 colours from the `:root` block in `app.css` and its copy from `site.js`. Re-run
 it after changing either.
+
+The `og:image`, `og:url` and canonical tags need absolute URLs, and a
+prerendered site has no request to take a host from, so `site.url` in `site.js`
+is passed to SvelteKit as `prerender.origin` (see `vite.config.js`). If the site
+ever moves domain, change it there.

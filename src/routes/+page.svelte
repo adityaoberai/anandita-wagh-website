@@ -18,8 +18,9 @@
 	const pageTitle = `${site.name} — ${site.role}`;
 	const ogAlt = `${site.name}, ${site.role.toLowerCase()} in ${site.location}`;
 
-	// Absolute URLs so social crawlers (which ignore relative paths) resolve
-	// the card and canonical on whatever domain the site is deployed to.
+	// Absolute URLs, since social crawlers ignore relative paths. At build time
+	// the origin is `site.url` (kit.prerender.origin in vite.config.js), so the
+	// static HTML crawlers read carries the production domain.
 	const ogImage = $derived(`${page.url.origin}/og.png`);
 	const canonical = $derived(page.url.href);
 </script>

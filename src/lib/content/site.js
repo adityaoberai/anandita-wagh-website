@@ -27,6 +27,11 @@ export const site = {
 	role: 'Graphic & Brand Designer',
 	location: 'Bangalore, India',
 
+	// Production origin, no trailing slash. Prerendering has no request to read
+	// a host from, so SvelteKit is told this is `page.url.origin` at build time
+	// (vite.config.js) — it is what makes the OG card and canonical absolute.
+	url: 'https://www.ananditawagh.in',
+
 	email,
 	links,
 

@@ -19,7 +19,11 @@ export const links = {
 	spotify: 'https://open.spotify.com/user/d5sx1wo9hn2mo485anij19mhv?si=acfba678a66940ac',
 	gmail: `mailto:${email}`,
 	ixdf: 'https://ixdf.org/?r=anandita-wagh',
-	writersRoom: 'https://thewritersroom.club/'
+	writersRoom: 'https://thewritersroom.club/',
+	chess: 'https://link.chess.com/friend/3nsKpg',
+	artGallery: 'https://www.behance.net/gallery/163062357/Art-Gallery',
+	jhol: 'https://open.spotify.com/track/4XTgFBxBHN6var1BzAgE1m?si=1ed572ee43404acf',
+	tedLasso: 'https://tv.apple.com/in/show/ted-lasso/umc.cmc.vtoh0mn0xn7t3c643xqonfzy'
 };
 
 export const site = {

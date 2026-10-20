@@ -24,7 +24,7 @@
 		<h2 class="section__title section__lede">{now.heading}</h2>
 
 		<div class="now">
-			<div class="card now__work">
+			<div class="card card--yellow now__work">
 				<h3 class="now__heading">{now.work.heading}</h3>
 				<p class="prose now__body">{now.work.body}</p>
 
@@ -134,6 +134,15 @@
 		/* Pinned to the bottom so the link sits on the card's baseline however
 		   tall the card ends up. */
 		margin-top: auto;
+
+		/* The accent rule under a link is yellow, which is invisible on the
+		   yellow card, so it inverts to ink: faint at rest, full on hover, the
+		   same quiet-to-strong move the rule makes everywhere else. */
+		border-color: color-mix(in srgb, var(--ink) 35%, transparent);
+	}
+
+	.now__cta:hover {
+		border-color: var(--ink);
 	}
 
 	.now__aside-title {

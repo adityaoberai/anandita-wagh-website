@@ -68,13 +68,13 @@
 </section>
 
 <style>
-	/* The work card carries the section, so it keeps two thirds of the top row
-	   with the asides beside it. "Off the clock" runs the full width below. */
+	/* One card per row, all three the same width, each as tall as its own text.
+	   The work card stays first and stays the longest, which is what keeps it
+	   reading as the main one now that it no longer has a column to itself. */
 	.now {
 		display: grid;
-		grid-template-columns: 2fr 1fr;
+		grid-template-columns: 1fr;
 		gap: clamp(16px, 2.4vw, 28px);
-		align-items: stretch;
 	}
 
 	.now__work,
@@ -85,21 +85,6 @@
 		border-radius: 20px;
 	}
 
-	.now__off {
-		grid-column: 1 / -1;
-	}
-
-	/* Below three comfortable columns the top row stops being a row: the work
-	   card and the asides each take the full width, stacked. */
-	@media (max-width: 980px) {
-		.now {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	/* Stacked, each card sizes to its own text. The work card carries three
-	   points the others don't, so matching their heights to it would leave the
-	   short cards mostly empty. */
 	@media (max-width: 760px) {
 		.now {
 			gap: 20px;
@@ -145,12 +130,10 @@
 
 	.now__body {
 		margin-bottom: 22px;
-		max-width: 56ch;
 	}
 
 	.now__work .now__items {
 		margin-bottom: 24px;
-		max-width: 56ch;
 	}
 
 	.now__cta {

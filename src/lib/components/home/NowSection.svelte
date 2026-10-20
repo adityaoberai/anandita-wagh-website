@@ -68,13 +68,17 @@
 </section>
 
 <style>
-	/* One card per row, all three the same width, each as tall as its own text.
-	   The work card stays first and stays the longest, which is what keeps it
-	   reading as the main one now that it no longer has a column to itself. */
+	/* The work card runs the full width on top, where it stays the first thing
+	   read. "Away from the desk" and "Off the clock" split the row under it,
+	   half each, and match heights so the pair reads as one band. */
 	.now {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr 1fr;
 		gap: clamp(16px, 2.4vw, 28px);
+	}
+
+	.now__work {
+		grid-column: 1 / -1;
 	}
 
 	.now__work,
@@ -85,8 +89,11 @@
 		border-radius: 20px;
 	}
 
+	/* Half a narrow screen is too little to read in, so the pair stacks at the
+	   same width the section's padding tightens. */
 	@media (max-width: 760px) {
 		.now {
+			grid-template-columns: 1fr;
 			gap: 20px;
 		}
 	}

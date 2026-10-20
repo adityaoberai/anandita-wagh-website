@@ -54,7 +54,7 @@
 
 			<div class="card now__off">
 				<h3 class="now__heading">{now.offTheClock.heading}</h3>
-				<div class="now__items now__items--columns">
+				<div class="now__items">
 					{#each now.offTheClock.items as item (item.title[0])}
 						<div>
 							<p class="now__aside-title"><RichText parts={item.title} /></p>
@@ -91,25 +91,11 @@
 		}
 	}
 
+	/* Every card runs its items in one column, so the three read the same way
+	   down the page. */
 	.now__items {
 		display: grid;
 		gap: 22px;
-	}
-
-	.now__items--columns {
-		grid-template-columns: repeat(4, 1fr);
-	}
-
-	@media (max-width: 980px) {
-		.now__items--columns {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (max-width: 620px) {
-		.now__items--columns {
-			grid-template-columns: 1fr;
-		}
 	}
 
 	.now__heading {

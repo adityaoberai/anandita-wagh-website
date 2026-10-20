@@ -2,7 +2,7 @@
 export { site, links } from './site.js';
 export { hero } from './hero.js';
 export { blogs } from './blogs.js';
-export { now } from './now.js';
+export { now, chessStreak } from './now.js';
 export { companies, communities } from './logos.js';
 export { projects } from './projects.js';
 export { services } from './services.js';

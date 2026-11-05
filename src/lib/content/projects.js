@@ -19,7 +19,9 @@ export const projects = {
 			blurb:
 				'Event identity and print collateral for a Hacktoberfest open-source AI hackathon, from a 6 ft standee to an A6 passport.',
 			href: '/work/hack-day-bengaluru/',
-			cta: 'Read the case study →'
+			cta: 'Read the case study →',
+			cover: '/assets/projects/hack-day-bengaluru.webp',
+			coverBg: '#10201D'
 		},
 		{
 			name: "The Writers' Room",

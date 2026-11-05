@@ -107,6 +107,13 @@ const JOBS = [
 		quality: 82,
 		bleed: true
 	},
+	{
+		from: `${COVERS}/Hack Day Bengaluru.png`,
+		to: 'projects/hack-day-bengaluru.webp',
+		quality: 82,
+		bleed: true,
+		frame: true
+	},
 	// This one arrives 16:9 rather than as a 2:1 artboard, and it is a scene —
 	// newsprint running off every edge — so it is cropped to the frame instead
 	// of letterboxed against a ground it doesn't have.

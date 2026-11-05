@@ -11,7 +11,7 @@ export default defineConfig([
 	includeIgnoreFile(gitignorePath),
 	// The design handoff ships its own prototype runtime. It is reference
 	// material, not code we build, and it does not answer to our rules.
-	{ ignores: ['design_handoff_personal_site/**'] },
+	{ ignores: ['design_handoff_personal_site/**', 'static/work/**'] },
 	js.configs.recommended,
 	svelte.configs.recommended,
 	prettier,
@@ -30,8 +30,8 @@ export default defineConfig([
 		// 'svelte/button-has-type': 'error'
 		rules: {
 			// This is a static, single-page site that only uses in-page hash
-			// anchors and external URLs — there are no SvelteKit routes to
-			// resolve(), so dynamic href bindings are expected.
+			// anchors, external URLs and pages served from static/ — there are no
+			// SvelteKit routes to resolve(), so dynamic href bindings are expected.
 			'svelte/no-navigation-without-resolve': 'off'
 		}
 	}

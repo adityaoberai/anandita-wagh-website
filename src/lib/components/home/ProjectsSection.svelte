@@ -8,7 +8,13 @@
 
 		<div class="projects">
 			{#each projects.items as project (project.href)}
-				<a class="project" href={project.href} target="_blank" rel="noopener">
+				<a
+					class="project"
+					href={project.href}
+					target={project.href.startsWith('http') ? '_blank' : undefined}
+					rel={project.href.startsWith('http') ? 'noopener' : undefined}
+					data-sveltekit-reload
+				>
 					<div
 						class="project__cover"
 						style={project.coverBg ? `background:${project.coverBg}` : undefined}

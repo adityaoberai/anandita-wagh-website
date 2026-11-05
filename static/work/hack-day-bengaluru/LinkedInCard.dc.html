@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700;800&family=Martian+Mono:wght@700&display=swap">
+<script src="./image-slot.js"></script>
+<style>body{margin:0}a{color:#10201d}a:hover{color:#671912}</style>
+</helmet>
+<div data-screen-label="LinkedIn card" style="box-sizing:border-box;width:1920px;height:1008px;padding:72px;background:{{ panel }};border:4.8px solid #10201d;box-shadow:19.2px 19.2px 0 {{ shadow }};display:flex;flex-direction:column;justify-content:space-between;font-family:'Barlow Semi Condensed','Arial Narrow',Arial,sans-serif;color:#10201d">
+  <div style="height:126.72px;display:flex;gap:24px">
+    <div style="box-sizing:border-box;height:100%;padding:33.6px;background:#3d5f58;border:4.8px solid #10201d;display:flex;align-items:center"><img src="assets/wordmark-light.svg" alt="Hacktoberfest 26" style="display:block;height:100%;width:auto"></div>
+    <div style="box-sizing:border-box;height:100%;padding:24px 33.6px;background:#f7f7f2;border:4.8px solid #10201d;box-shadow:9.6px 9.6px 0 #2e4742;display:flex;align-items:center;gap:19.2px"><img src="assets/mlh-logo.svg" alt="MLH" style="display:block;width:135px;height:57px;object-fit:contain"><span style="font-family:'Martian Mono',ui-monospace,Menlo,monospace;font-size:28px;font-weight:700;color:#52635f">×</span><img src="assets/dev-logo.svg" alt="DEV" style="display:block;width:57px;height:57px;object-fit:contain"></div>
+    <div style="box-sizing:border-box;height:100%;padding:24px 33.6px;background:#f7f7f2;border:4.8px solid #10201d;display:flex;align-items:center;gap:19.2px"><span style="font-family:'Martian Mono',ui-monospace,Menlo,monospace;font-size:21.6px;font-weight:700;letter-spacing:1.728px;text-transform:uppercase;color:#52635f">Hosted by</span><img src="assets/flo101-on-light.png" alt="flo101" style="display:block;width:139px;height:34px;object-fit:contain"></div>
+  </div>
+  <div style="height:674.88px;display:flex;gap:72px">
+    <div style="box-sizing:border-box;flex:none;width:552px;height:100%;background:#f7f7f2;border:4.8px solid #10201d;box-shadow:14.4px 14.4px 0 {{ shadow }};overflow:hidden">
+      <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}"><img src="{{ photo }}" alt="{{ person }}" style="display:block;width:100%;height:100%;object-fit:cover"></sc-if>
+      <sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ false }}"><image-slot id="{{ slotId }}" shape="rect" placeholder="Headshot" style="display:block;width:100%;height:100%"></image-slot></sc-if>
+    </div>
+    <div style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center">
+      <h3 style="margin:0;font-size:134.4px;font-weight:800;line-height:121px;letter-spacing:-5.376px"><span style="display:block;color:#10201d">See you at</span><span style="display:block;color:{{ accent }}">Hack Day Bengaluru.</span></h3>
+      <div style="margin-top:38.4px;padding-top:38.4px;border-top:4.8px solid #10201d;display:flex;align-items:center;justify-content:space-between;gap:32px">
+        <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+          <span style="font-size:96px;font-weight:700;line-height:1;letter-spacing:-1.92px;color:#10201d">{{ person }}</span>
+          <span style="font-family:'Martian Mono',ui-monospace,Menlo,monospace;font-size:31.2px;font-weight:700;letter-spacing:1.872px;text-transform:uppercase;color:{{ accent }}">{{ role }}</span>
+        </div>
+        <div style="flex:none;padding:14.4px 33.6px;background:{{ stickerBg }};border:4.8px solid #10201d;box-shadow:9.6px 9.6px 0 {{ shadow }};font-size:72px;font-weight:800;line-height:1;letter-spacing:-1.44px;text-transform:uppercase;color:{{ stickerInk }}">{{ sticker }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1960,&quot;height&quot;:1048},&quot;person&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Aditya Oberai&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;role&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;DevRel Lead, Appwrite&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;photo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;colorway&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Coral&quot;,&quot;Sky&quot;,&quot;Ochre&quot;],&quot;default&quot;:&quot;Coral&quot;,&quot;tsType&quot;:&quot;'Coral'|'Sky'|'Ochre'&quot;},&quot;sticker&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Mentor&quot;,&quot;Team&quot;,&quot;Organizer&quot;,&quot;Volunteer&quot;,&quot;Judge&quot;],&quot;default&quot;:&quot;Team&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stickerColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#f5b726&quot;,&quot;#8bb2de&quot;,&quot;#e97b77&quot;,&quot;#f7f7f2&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;slotId&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+const COLORWAYS = {
+  Coral: { panel: '#e97b77', accent: '#671912', shadow: '#671912', sticker: '#8bb2de' },
+  Sky: { panel: '#8bb2de', accent: '#1f4e6b', shadow: '#671912', sticker: '#f5b726' },
+  Ochre: { panel: '#f5b726', accent: '#8a5d13', shadow: '#8a5d13', sticker: '#e97b77' }
+};
+const STICKER_INK = { '#3d5f58': '#f7f7f2' };
+class Component extends DCLogic {
+  renderVals() {
+    const cw = COLORWAYS[this.props.colorway] ?? COLORWAYS.Coral;
+    const person = this.props.person ?? 'Aditya Oberai';
+    const photo = this.props.photo ?? '';
+    const stickerBg = this.props.stickerColor || cw.sticker;
+    return {
+      person,
+      role: this.props.role ?? 'DevRel Lead, Appwrite',
+      photo,
+      hasPhoto: !!photo,
+      noPhoto: !photo,
+      slotId: this.props.slotId || 'li-' + person.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      sticker: this.props.sticker ?? 'Team',
+      stickerBg,
+      stickerInk: STICKER_INK[stickerBg] ?? '#10201d',
+      panel: cw.panel,
+      accent: cw.accent,
+      shadow: cw.shadow
+    };
+  }
+}
+</script>
+</body>
+</html>

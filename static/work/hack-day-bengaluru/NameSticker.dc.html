@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700&family=Martian+Mono:wght@700&display=swap">
+<style>body{margin:0}a{color:#10201d}a:hover{color:#671912}</style>
+</helmet>
+<div data-screen-label="Name sticker" style="box-sizing:border-box;width:387px;height:185px;padding:23.2px;background:{{ bg }};border:2.2px solid #10201d;box-shadow:8.9px 8.9px 0 {{ shadow }};display:flex;flex-direction:column;justify-content:space-between;font-family:'Barlow Semi Condensed','Arial Narrow',Arial,sans-serif;color:#10201d">
+  <sc-if value="{{ isNamed }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:4px;padding-bottom:10px;border-bottom:2.2px solid #10201d;min-height:73px;box-sizing:border-box">
+      <span style="font-size:44.5px;font-weight:700;line-height:45px;letter-spacing:-0.89px;white-space:nowrap;overflow:hidden">{{ person }}</span>
+      <span style="font-family:'Martian Mono',ui-monospace,Menlo,monospace;font-size:14.5px;font-weight:700;letter-spacing:0.87px;text-transform:uppercase;color:{{ roleColor }};white-space:nowrap;overflow:hidden">{{ role }}</span>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isWriteIn }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:34px;padding-top:30px">
+      <div style="height:2.2px;background:#10201d"></div>
+      <div style="height:2.2px;background:#10201d"></div>
+    </div>
+  </sc-if>
+  <div style="height:30px;display:flex;gap:23px">
+    <div style="box-sizing:border-box;width:118px;height:100%;padding:5px 8px;background:#3d5f58;border:2.2px solid #10201d;display:flex;align-items:center"><img src="assets/wordmark-light.svg" alt="Hacktoberfest 26" style="display:block;width:100%;height:100%;object-fit:contain"></div>
+    <div style="box-sizing:border-box;height:100%;padding:5px 8px;background:#f7f7f2;border:2.2px solid #10201d;box-shadow:2.3px 2.3px 0 #2e4742;display:flex;align-items:center;gap:5px"><img src="assets/mlh-logo.svg" alt="MLH" style="display:block;width:34px;height:14px;object-fit:contain"><span style="font-family:'Martian Mono',ui-monospace,Menlo,monospace;font-size:7px;font-weight:700;color:#52635f">×</span><img src="assets/dev-logo.svg" alt="DEV" style="display:block;width:14px;height:14px;object-fit:contain"></div>
+    <div style="box-sizing:border-box;height:100%;padding:5px 8px;background:#f7f7f2;border:2.2px solid #10201d;display:flex;align-items:center;gap:5px"><span style="font-family:'Martian Mono',ui-monospace,Menlo,monospace;font-size:5.1px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:#52635f;white-space:nowrap">Hosted by</span><img src="assets/flo101-on-light.png" alt="flo101" style="display:block;width:35px;height:9px;object-fit:contain"></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:220},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Team&quot;,&quot;Mentor&quot;,&quot;Write-in&quot;],&quot;default&quot;:&quot;Team&quot;,&quot;tsType&quot;:&quot;'Team'|'Mentor'|'Write-in'&quot;},&quot;person&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;role&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const STYLES = {
+  Team: { bg: '#f5b726', role: '#8a5d13', shadow: '#671912' },
+  Mentor: { bg: '#8bb2de', role: '#1f4e6b', shadow: '#671912' },
+  'Write-in': { bg: '#f2f2eb', role: '#10201d', shadow: '#8bb2de' }
+};
+class Component extends DCLogic {
+  renderVals() {
+    const variant = this.props.variant ?? 'Team';
+    const s = STYLES[variant] ?? STYLES.Team;
+    const writeIn = variant === 'Write-in';
+    return {
+      person: this.props.person ?? '',
+      role: this.props.role ?? '',
+      isNamed: !writeIn,
+      isWriteIn: writeIn,
+      bg: s.bg, roleColor: s.role, shadow: s.shadow
+    };
+  }
+}
+</script>
+</body>
+</html>

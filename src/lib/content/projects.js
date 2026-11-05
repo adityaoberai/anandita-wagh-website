@@ -15,6 +15,13 @@ export const projects = {
 	heading: 'Selected projects',
 	items: [
 		{
+			name: 'Hack Day Bengaluru',
+			blurb:
+				'Event identity and print collateral for a Hacktoberfest open-source AI hackathon, from a 6 ft standee to an A6 passport.',
+			href: '/work/hack-day-bengaluru/',
+			cta: 'Read the case study →'
+		},
+		{
 			name: "The Writers' Room",
 			blurb:
 				'A newspaper-styled case study for a Bengaluru writing meetup, covering its brand, website, and print design.',

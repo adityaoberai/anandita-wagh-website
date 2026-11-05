@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700;800&family=Martian+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<script>window.OM_SCENES = '[{"name":"Fold","dur":2.4,"desc":"Each sheet folds at the crease, then the bottom base folds in"},{"name":"Stick","dur":0.9,"desc":"The top glue tab folds under and sticks onto the base"},{"name":"Place","dur":1.0,"desc":"The tents drop onto the table and their shadows appear"},{"name":"Hold","dur":1.6,"desc":"Both tents stand on the table"},{"name":"Reset","dur":0.8,"desc":"The tents lift and unfold back to flat sheets for the loop"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"loop"}';</script>
+<style>body{margin:0;background:#e4e5da}a{color:#10201d}a:hover{color:#671912}</style>
+</helmet>
+<x-import component-from-global-scope="TentFoldAnimation" from="./tent-pieces.js ./animations-v3.jsx ./tent-fold-scene.jsx" hint-size="100%,100vh"></x-import>
+</x-dc>
+</body>
+</html>

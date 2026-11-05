@@ -17,7 +17,15 @@ export default defineConfig({
 			// Static output has no request to derive a host from; without this the
 			// prerendered <head> points og:image and canonical at the placeholder
 			// http://sveltekit-prerender/ and social crawlers find no card.
-			prerender: { origin: site.url }
+			prerender: {
+				origin: site.url,
+				// The case study is a finished page served from static/, so it has no
+				// route for the crawler to find behind its trailing-slash link.
+				handleHttpError: ({ path, message }) => {
+					if (path === '/work/hack-day-bengaluru/') return;
+					throw new Error(message);
+				}
+			}
 		})
 	]
 });

@@ -109,7 +109,8 @@ function TentPiece() {
   const D = window.TENT_PIECES;
   const C = CUES;
   const unfold = MOTION.fold(T, C.Reset + 0.25, C.Reset + 0.85);
-  const fF = MOTION.fold(T, C.Fold + 0.2, C.Fold + 1.8) * (1 - unfold);
+  // Starts with the later tent, so the zoom can't crop it while it's still tall.
+  const fF = MOTION.fold(T, C.Fold + 0.45, C.Fold + 2.05) * (1 - unfold);
   const pl = MOTION.drop(T, C.Place, C.Place + 0.6) * (1 - MOTION.fold(T, C.Reset - 0.05, C.Reset + 0.35));
   const cam = [[712, 343, 1.2], [712, 392, 1.58], [715, 463, 1.45]];
   const mix = (i) => lerp(lerp(cam[0][i], cam[1][i], fF), cam[2][i], pl);

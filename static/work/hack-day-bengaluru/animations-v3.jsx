@@ -403,7 +403,7 @@ function Stage({
     if (!stageRef.current) return;
     const el = stageRef.current;
     const measure = () => {
-      const s = Math.min(
+      const s = Math.max(
         el.clientWidth / width,
         el.clientHeight / height
       );
@@ -609,8 +609,7 @@ function Stage({
             transform: `scale(${scale})`,
             transformOrigin: 'center',
             flexShrink: 0,
-            boxShadow: '0 20px 60px rgba(0,0,0,0.4)',
-            display: 'block',
+                        display: 'block',
           }}
         >
           <foreignObject x="0" y="0" width="100%" height="100%">

@@ -382,40 +382,10 @@ footer .bot{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);di
 
 /* features: 3D legacy stack */
 .stackfig{display:flex;flex-direction:column;align-items:center;gap:8px}
-.stack3d{position:relative;width:480px;height:540px;perspective:1500px;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
-.lay,.slab{position:absolute;left:50%;top:50%;width:290px;height:290px;margin:-145px 0 0 -145px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-42deg) translateZ(calc(var(--z)*1px));transition:transform .9s cubic-bezier(.65,0,.35,1),opacity .6s cubic-bezier(.4,0,.2,1)}
-.face{position:absolute;inset:0;border-radius:12px;overflow:hidden;padding:20px 22px 14px;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;
-  background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,0) 38%),repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),linear-gradient(160deg,#3B3F4E,#262935 60%,#1E2029);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 0 0 1px rgba(201,204,232,.16)}
-.face b{color:#E8EAF6;font-size:17px;font-weight:500;letter-spacing:-.01em}
-.face small{color:#A6A9C8;font-size:13px}
-.face em{position:absolute;right:16px;top:16px;font-style:normal;font-size:11px;color:#FFC877;padding:4px 9px;border-radius:999px;background:rgba(255,181,71,.12);box-shadow:inset 0 0 0 1px rgba(255,181,71,.35)}
-.lic{position:absolute;left:20px;top:18px;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(160deg,#4A4F61,#2D303D);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 4px 10px rgba(0,0,0,.35)}
-.lic svg{width:19px;height:19px;fill:none;stroke:#C9CCE8;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.ex,.ey{position:absolute;background:linear-gradient(180deg,#2C2F3C,#15171F)}
-.ex{left:10px;right:0;bottom:0;height:16px;transform-origin:50% 100%;transform:rotateX(-90deg);border-radius:0 0 4px 4px}
-.ey{top:10px;bottom:0;left:0;width:16px;transform-origin:0 50%;transform:rotateY(90deg);background:linear-gradient(90deg,#11131A,#24272F)}
-.l1{--z:236}.l2{--z:164}.l3{--z:92}.l4{--z:20}.l5{--z:-52}
-.hw{background:radial-gradient(circle,rgba(0,0,0,.55) 1.4px,transparent 1.8px) 0 0/9px 9px,linear-gradient(160deg,#2E323D,#1A1C24);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(61,220,151,.35)}
-.hw .vents{position:absolute;left:20px;right:20px;top:20px;height:70px;border-radius:8px;background:repeating-linear-gradient(90deg,#0B0C10 0 3px,#22252E 3px 7px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
-.hw .bays{position:absolute;left:20px;right:20px;top:104px;display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-.hw .bays i{height:30px;border-radius:4px;background:linear-gradient(180deg,#2C303B,#191B22);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);position:relative}
-.hw .bays i::after{content:"";position:absolute;left:6px;bottom:5px;width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
-.hw b{color:#BFF5DC}
-.l5 .ex,.l5 .ey{background:linear-gradient(180deg,#22252E,#0E0F14)}
-.slab{--z:40;opacity:0;transform:rotateX(58deg) rotateZ(-42deg) translateZ(300px)}
-.slab .face{background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,0) 40%),linear-gradient(135deg,#3FB6F2,#5A48F0 55%,#9B5CF6);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 0 80px -10px rgba(90,72,240,.9)}
-.slab .face b{color:#fff;font-size:19px}.slab .face small{color:rgba(255,255,255,.85)}
-.slab .scl{position:absolute;left:18px;top:14px;width:84px;height:54px}
-.slab .ex,.slab .ey{background:linear-gradient(180deg,#4B3BD6,#2B1F8C)}
-.sshadow{position:absolute;left:50%;top:50%;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.65),transparent);transform:rotateX(58deg) rotateZ(-42deg) translateZ(-70px)}
-.stack3d.sov .l1,.stack3d.sov .l2,.stack3d.sov .l3,.stack3d.sov .l4{opacity:0}
-.stack3d.sov .l1{transform:rotateX(58deg) rotateZ(-42deg) translateZ(260px) translate(-220px,-60px)}
-.stack3d.sov .l2{transform:rotateX(58deg) rotateZ(-42deg) translateZ(200px) translate(220px,-120px)}
-.stack3d.sov .l3{transform:rotateX(58deg) rotateZ(-42deg) translateZ(140px) translate(-220px,140px)}
-.stack3d.sov .l4{transform:rotateX(58deg) rotateZ(-42deg) translateZ(80px) translate(200px,180px)}
-.stack3d.sov .slab{opacity:1;transform:rotateX(58deg) rotateZ(-42deg) translateZ(40px)}
-.stack3d .wrap3{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.stackgl{position:relative;width:100%;max-width:580px;aspect-ratio:1/1;cursor:grab;touch-action:pan-y}
+.stackgl canvas{width:100%!important;height:100%!important;display:block}
+.stackgl .hint3d{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--mist);background:rgba(10,11,16,.7);padding:7px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
+.stackfb{list-style:none;display:grid;gap:8px;padding:20px}.stackfb li{padding:14px 18px;border-radius:12px;background:var(--slab);box-shadow:inset 0 0 0 1px var(--line2);color:var(--white)}
 .stackctl{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
 .stackctl figcaption{margin-top:6px;min-height:20px}
 .stackctl .btn[aria-pressed="true"]{background:var(--grad);box-shadow:0 10px 30px -10px rgba(90,72,240,.9);color:#fff}
@@ -661,7 +631,6 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 @media (max-width:1080px){
   .phero{padding:88px 0 88px}.phero.short{padding:80px 0 56px}
   .phgrid,.phgrid.pr,.phgrid.ct{grid-template-columns:1fr;gap:48px}
-  .stack3d{width:360px;height:340px;transform:scale(.92)}
   .flips{grid-template-columns:1fr 1fr}
   .wfgrid{grid-template-columns:1fr;gap:36px}.wfgrid h2{max-width:none}
   .exgrid{grid-template-columns:1fr}
@@ -684,7 +653,6 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 @media (max-width:640px){
   .phero{padding:64px 0 72px}.phero.short{padding:60px 0 44px}
   .phero h1{font-size:clamp(40px,11.5vw,56px)}
-  .stack3d{width:100%;height:300px;transform:scale(.68);margin:10px 0 -10px}
   .logo small{display:none}
   .navcta .btn-sig{height:38px;padding:0 14px;font-size:13px}
   .ctable{min-width:0;display:block}.ctable thead{display:none}.ctable tbody{display:block}
@@ -1141,14 +1109,8 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       <div class="ctas"><a class="btn btn-sig" href="#/contact">Request a demo</a><a class="btn btn-ghost" href="#/pricing">See pricing</a></div>
     </div>
     <figure class="stackfig">
-      <div class="stack3d" id="stack3d" aria-hidden="true">
-        <div class="sshadow"></div>
-        <div class="lay l1"><div class="face"><i class="lic"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></i><b>Support contract</b><small>Renewed every year</small><em>₹ / year</em></div><div class="ex"></div><div class="ey"></div></div>
-        <div class="lay l2"><div class="face"><i class="lic"><svg viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></svg></i><b>Monitoring add-on</b><small>Licensed per host</small><em>₹ / year</em></div><div class="ex"></div><div class="ey"></div></div>
-        <div class="lay l3"><div class="face"><i class="lic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg></i><b>Management console</b><small>Licensed per CPU</small><em>₹ / year</em></div><div class="ex"></div><div class="ey"></div></div>
-        <div class="lay l4"><div class="face"><i class="lic"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></i><b>Hypervisor</b><small>Licensed per core</small><em>₹ / year</em></div><div class="ex"></div><div class="ey"></div></div>
-        <div class="lay l5"><div class="face hw"><div class="vents"></div><div class="bays"><i></i><i></i><i></i><i></i><i></i><i></i></div><b>Your hardware</b><small>Servers you own</small></div><div class="ex"></div><div class="ey"></div></div>
-        <div class="slab"><div class="face"><svg class="scl" viewBox="60 0 100 64" aria-hidden="true"><use href="#scp-logo"/></svg><b>Sovereign Cloud Platform</b><small>50+ services, one per-core price</small></div><div class="ex"></div><div class="ey"></div></div>
+      <div class="stackgl" id="stackgl" role="img" aria-label="A 3D stack: support contract, monitoring add-on, management console and hypervisor licences sitting on your hardware. Replacing them leaves one Sovereign Cloud Platform layer.">
+        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg>Drag to rotate</span>
       </div>
       <div class="stackctl">
         <button class="btn btn-ghost sm" id="unbundle" type="button" aria-pressed="false">Replace the legacy stack</button>
@@ -1565,7 +1527,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       ctl.enableZoom = false; ctl.enablePan = false; ctl.enableDamping = true; ctl.dampingFactor = .07; ctl.rotateSpeed = .55;
       ctl.minPolarAngle = THREE.MathUtils.degToRad(40); ctl.maxPolarAngle = THREE.MathUtils.degToRad(70);
       ctl.minAzimuthAngle = -Infinity; ctl.maxAzimuthAngle = Infinity;
-      ctl.target.set(0, .9, 0); ctl.update();
+      ctl.target.set(this.o.gate === false && this.o.link !== false ? 1.05 : 0, .9, 0); ctl.update();
       ctl.addEventListener('start', () => { this.userMoved = true; host.classList.add('grabbing'); });
       ctl.addEventListener('end', () => host.classList.remove('grabbing'));
       // lights
@@ -1671,11 +1633,22 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       // outside link
       if (o.link) {
         const lmat = this.linkMat = new THREE.MeshBasicMaterial({ color: C.s2.clone().multiplyScalar(1.6) });
-        const x0 = W / 2, len = 3.4; this.linkA = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, len / 2, 10), lmat); this.linkB = this.linkA.clone();
-        this.linkA.rotation.z = this.linkB.rotation.z = Math.PI / 2; this.linkA.position.set(x0 + len / 4, -.2, -D / 4); this.linkB.position.set(x0 + 3 * len / 4, -.2, -D / 4); s.add(this.linkA, this.linkB);
-        this.linkEnd = new THREE.Mesh(new THREE.TorusGeometry(.22, .025, 8, 40), new THREE.MeshBasicMaterial({ color: '#7C82B8' })); this.linkEnd.rotation.x = Math.PI / 2; this.linkEnd.position.set(x0 + len + .25, -.2, -D / 4); s.add(this.linkEnd);
+        const dir = this.linkDir = 1, x0 = dir * W / 2, len = o.gate ? 3.4 : 1.6; this.linkA = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, len / 2, 10), lmat); this.linkB = this.linkA.clone();
+        this.linkA.rotation.z = this.linkB.rotation.z = Math.PI / 2; this.linkA.position.set(x0 + dir * len / 4, -.2, -D / 4); this.linkB.position.set(x0 + dir * 3 * len / 4, -.2, -D / 4); s.add(this.linkA, this.linkB);
+        this.linkEnd = new THREE.Mesh(new THREE.TorusGeometry(.22, .025, 8, 40), new THREE.MeshBasicMaterial({ color: '#7C82B8' })); this.linkEnd.rotation.x = Math.PI / 2; this.linkEnd.position.set(x0 + dir * (len + .25), -.2, -D / 4); s.add(this.linkEnd);
+        // what the link leads to, per mode: your office network (private), a region (sovereign), nothing (air-gapped)
+        const ex = x0 + dir * (len + .4), ez = -D / 4;
+        const office = this.endP = new THREE.Group(); const om = new THREE.MeshStandardMaterial({ color: '#2A2E3A', metalness: .5, roughness: .45 });
+        const ob = new THREE.Mesh(new RoundedBoxGeometry(.62, .8, .5, 2, .03), om); ob.position.y = .2; office.add(ob);
+        const wm = new THREE.MeshBasicMaterial({ color: new THREE.Color('#9FDBFF').multiplyScalar(1.4) });
+        for (let r = 0; r < 4; r++) for (let q = 0; q < 3; q++) { const w = new THREE.Mesh(new THREE.BoxGeometry(.11, .07, .01), wm); w.position.set(-.18 + q * .18, -.05 + r * .17, .255); office.add(w); }
+        office.position.set(ex, -.3, ez); s.add(office);
+        const region = this.endS = new THREE.Group(); const pm2 = new THREE.MeshBasicMaterial({ color: C.s3.clone().multiplyScalar(1.6) });
+        const pin = new THREE.Mesh(new THREE.ConeGeometry(.09, .32, 20), pm2); pin.rotation.x = Math.PI; pin.position.y = .1; region.add(pin);
+        const head = new THREE.Mesh(new THREE.SphereGeometry(.12, 20, 14), pm2); head.position.y = .3; region.add(head);
+        region.position.set(ex, -.2, ez); s.add(region);
         this.sparkMat = new THREE.MeshBasicMaterial({ color: C.red.clone().multiplyScalar(2.5), transparent: true, opacity: 0 });
-        this.spark = new THREE.Mesh(new THREE.SphereGeometry(.07, 12, 10), this.sparkMat); this.spark.position.set(x0 + len / 2, -.2, -D / 4); s.add(this.spark);
+        this.spark = new THREE.Mesh(new THREE.SphereGeometry(.07, 12, 10), this.sparkMat); this.spark.position.set(x0 + dir * len / 2, -.2, -D / 4); s.add(this.spark);
         this.linkPkt = new THREE.Mesh(new THREE.SphereGeometry(.055, 12, 10), new THREE.MeshBasicMaterial({ color: '#CFEFFF' })); s.add(this.linkPkt); this.linkX0 = x0; this.linkLen = len;
       }
       // repair arcs pool
@@ -1793,11 +1766,13 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       }
       // outside link
       if (this.o.link) {
-        this.linkCut += (this.linkCutTarget - this.linkCut) * .08; const k = this.linkCut, x0 = this.linkX0, L = this.linkLen;
-        this.linkA.scale.y = 1 - k * .55; this.linkA.position.x = x0 + (L / 4) * (1 - k * .55);
-        this.linkB.scale.y = 1 - k * .55; this.linkB.position.x = x0 + L - (L / 4) * (1 - k * .55); this.linkB.material = this.linkMat;
+        this.linkCut += (this.linkCutTarget - this.linkCut) * .08; const k = this.linkCut, x0 = this.linkX0, L = this.linkLen, dr = this.linkDir;
+        this.linkA.scale.y = 1 - k * .55; this.linkA.position.x = x0 + dr * (L / 4) * (1 - k * .55);
+        this.linkB.scale.y = 1 - k * .55; this.linkB.position.x = x0 + dr * (L - (L / 4) * (1 - k * .55)); this.linkB.material = this.linkMat;
         this.sparkMat.opacity = k * (.7 + .3 * Math.sin(t * 6)); this.linkEnd.material.color.set(k > .5 ? '#3A3D55' : '#8C91C4');
-        const u = (t * .35) % 1; this.linkPkt.visible = k < .3; this.linkPkt.position.set(x0 + .1 + u * (L - .2), -.2, -this.D / 4);
+        const m = this.o.mode; this.endPk = (this.endPk || 0) + ((m === 0 ? 1 : 0) - (this.endPk || 0)) * .1; this.endSk = (this.endSk || 0) + ((m === 1 ? 1 : 0) - (this.endSk || 0)) * .1;
+        this.endP.scale.setScalar(Math.max(.001, this.endPk)); this.endS.scale.setScalar(Math.max(.001, this.endSk)); this.endS.position.y = -.2 + Math.sin(t * 2) * .04; this.linkEnd.visible = m !== 0;
+        const u = (t * .35) % 1; this.linkPkt.visible = k < .3; this.linkPkt.position.set(x0 + dr * (.1 + u * (L - .2)), -.2, -this.D / 4);
       }
       this.stepFault();
       // hover pick
@@ -1809,6 +1784,83 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     stop() { this.running = false; }
   }
   window.Fleet = Fleet;
+  /* Legacy stack (Features hero): four licence layers on your hardware, replaced by one platform slab */
+  class LegacyStack {
+    constructor(host) {
+      this.host = host; const w = host.clientWidth || 480, h = host.clientHeight || 480;
+      const r = this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); r.setPixelRatio(Math.min(devicePixelRatio || 1, 2)); r.setSize(w, h);
+      r.toneMapping = THREE.ACESFilmicToneMapping; r.outputColorSpace = THREE.SRGBColorSpace; host.appendChild(r.domElement);
+      const s = this.scene = new THREE.Scene(); const pm = new THREE.PMREMGenerator(r); s.environment = pm.fromScene(new RoomEnvironment(), .04).texture; s.environmentIntensity = .45;
+      const cam = this.camera = new THREE.PerspectiveCamera(28, w / h, .1, 100); this.dist = 16; cam.position.setFromSphericalCoords(this.dist, THREE.MathUtils.degToRad(56), THREE.MathUtils.degToRad(40));
+      const ctl = this.controls = new OrbitControls(cam, r.domElement); ctl.enableZoom = false; ctl.enablePan = false; ctl.enableDamping = true; ctl.dampingFactor = .08; ctl.rotateSpeed = .5;
+      ctl.minPolarAngle = THREE.MathUtils.degToRad(35); ctl.maxPolarAngle = THREE.MathUtils.degToRad(72); ctl.target.set(0, 2.05, 0); ctl.update();
+      ctl.addEventListener('start', () => this.userMoved = true);
+      s.add(new THREE.HemisphereLight('#AEB8FF', '#06070B', .55));
+      const key = new THREE.DirectionalLight('#E6EBFF', 1.6); key.position.set(-5, 9, 6); s.add(key);
+      const rim = new THREE.PointLight('#5A48F0', 26, 20, 1.6); rim.position.set(5, 3, -4); s.add(rim);
+      // contact shadow
+      const sh = new THREE.Mesh(new THREE.PlaneGeometry(7, 7), new THREE.MeshBasicMaterial({ map: radialTexture([[0, 'rgba(0,0,0,.7)'], [.6, 'rgba(0,0,0,.25)'], [1, 'rgba(0,0,0,0)']]), transparent: true, depthWrite: false })); sh.rotation.x = -Math.PI / 2; sh.position.y = -.12; s.add(sh);
+      const L = [['headset', 'Support contract', 'Renewed every year'], ['chart', 'Monitoring add-on', 'Licensed per host'], ['window', 'Management console', 'Licensed per CPU'], ['layers', 'Hypervisor', 'Licensed per core']];
+      this.layers = []; const S = 3.0;
+      const edge = new THREE.MeshPhysicalMaterial({ color: '#272A35', metalness: .55, roughness: .4, clearcoat: .3 });
+      const mk = (tex, y, emat) => { const g = new THREE.Group(); const body = new THREE.Mesh(new RoundedBoxGeometry(S, .18, S, 4, .06), emat || edge.clone()); g.add(body);
+        const top = new THREE.Mesh(new THREE.PlaneGeometry(S - .1, S - .1), new THREE.MeshStandardMaterial({ map: tex, metalness: .35, roughness: .55, transparent: true })); top.rotation.x = -Math.PI / 2; top.position.y = .092; g.add(top);
+        g.position.y = y; s.add(g); g.userData = { y0: y, body, top }; return g; };
+      this.hw = mk(this.tex('hw'), 0, new THREE.MeshPhysicalMaterial({ color: '#1C1F27', metalness: .6, roughness: .45 }));
+      L.forEach((d, i) => this.layers.push(mk(this.tex('lic', d), 1 + (3 - i) * 1)));
+      this.layers.reverse();
+      this.slab = mk(this.tex('scp'), 1, new THREE.MeshPhysicalMaterial({ color: '#4F3FE0', metalness: .3, roughness: .3, clearcoat: .6, emissive: '#2A1F9A', emissiveIntensity: .6 }));
+      this.slab.userData.top.material.emissive = new THREE.Color('#FFFFFF'); this.slab.userData.top.material.emissiveMap = this.slab.userData.top.material.map; this.slab.userData.top.material.emissiveIntensity = .55;
+      this.k = 0; this.target = 0; this.t = 0; this.clock = new THREE.Clock(); this.apply();
+      new ResizeObserver(() => this.resize()).observe(host);
+      new IntersectionObserver(([e]) => e.isIntersecting ? this.start() : this.stop(), { threshold: .05 }).observe(host);
+      this.render();
+    }
+    tex(kind, d) {
+      const c = document.createElement('canvas'); c.width = c.height = 1024; const g = c.getContext('2d'); const W = 1024;
+      const rr = (x, y, w, h, r) => { g.beginPath(); g.roundRect(x, y, w, h, r); };
+      if (kind === 'lic' || kind === 'hw') { const gr = g.createLinearGradient(0, 0, W, W); gr.addColorStop(0, kind === 'hw' ? '#2C303B' : '#454A5B'); gr.addColorStop(.6, kind === 'hw' ? '#1C1F27' : '#2C2F3C'); gr.addColorStop(1, kind === 'hw' ? '#16181F' : '#23252F'); g.fillStyle = gr; g.fillRect(0, 0, W, W);
+        g.globalAlpha = .05; g.fillStyle = '#fff'; for (let x = 0; x < W; x += 3) g.fillRect(x, 0, 1, W); g.globalAlpha = 1; }
+      if (kind === 'lic') {
+        const [icon, title, sub] = d;
+        rr(64, 64, 132, 132, 30); g.fillStyle = '#3A3E4E'; g.fill(); g.strokeStyle = 'rgba(255,255,255,.18)'; g.lineWidth = 3; g.stroke();
+        const P = { headset: 'M4 14v-2a8 8 0 0 1 16 0v2M3 14h4v6H3zM17 14h4v6h-4z', chart: 'M4 20h16M7 16v-5M12 16V7M17 16V8', window: 'M3 4h18v16H3zM3 9h18M8 9v11', layers: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5' }[icon];
+        g.save(); g.translate(130 - 48, 130 - 48); g.scale(4, 4); g.strokeStyle = '#D5D8F0'; g.lineWidth = 1.7; g.lineCap = g.lineJoin = 'round'; g.stroke(new Path2D(P)); g.restore();
+        rr(W - 300, 70, 236, 76, 38); g.fillStyle = 'rgba(255,181,71,.14)'; g.fill(); g.strokeStyle = 'rgba(255,181,71,.55)'; g.lineWidth = 3; g.stroke();
+        g.fillStyle = '#FFC877'; g.font = '500 40px Geist, system-ui'; g.textAlign = 'center'; g.fillText('₹ / year', W - 182, 122); g.textAlign = 'left';
+        g.fillStyle = '#EEF0FA'; g.font = '600 92px Geist, system-ui'; g.fillText(title, 64, W - 150);
+        g.fillStyle = '#AEB2CF'; g.font = '400 54px Geist, system-ui'; g.fillText(sub, 66, W - 74);
+      } else if (kind === 'hw') {
+        g.fillStyle = 'rgba(0,0,0,.6)'; for (let y = 24; y < W; y += 26) for (let x = 24; x < W; x += 26) { g.beginPath(); g.arc(x, y, 5, 0, 7); g.fill(); }
+        rr(64, 64, W - 128, 230, 22); g.fillStyle = '#0D0E13'; g.fill(); g.fillStyle = '#262934'; for (let x = 84; x < W - 84; x += 22) g.fillRect(x, 84, 10, 190);
+        for (let i = 0; i < 6; i++) { const x = 64 + i * ((W - 128) / 6); rr(x + 6, 330, (W - 128) / 6 - 12, 150, 12); g.fillStyle = '#232631'; g.fill(); g.fillStyle = '#3DDC97'; g.shadowColor = '#3DDC97'; g.shadowBlur = 18; g.beginPath(); g.arc(x + 34, 452, 9, 0, 7); g.fill(); g.shadowBlur = 0; }
+        g.fillStyle = '#C6F5DF'; g.font = '600 92px Geist, system-ui'; g.fillText('Your hardware', 64, W - 150); g.fillStyle = '#8FC9AE'; g.font = '400 54px Geist, system-ui'; g.fillText('Servers you own', 66, W - 74);
+      } else {
+        const gr = g.createLinearGradient(0, 0, W, W); gr.addColorStop(0, '#3FB6F2'); gr.addColorStop(.55, '#5A48F0'); gr.addColorStop(1, '#9B5CF6'); g.fillStyle = gr; g.fillRect(0, 0, W, W);
+        const hl = g.createLinearGradient(0, 0, W * .6, W * .6); hl.addColorStop(0, 'rgba(255,255,255,.3)'); hl.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = hl; g.fillRect(0, 0, W, W);
+        g.strokeStyle = '#fff'; g.lineWidth = 16; g.lineCap = 'round'; g.save(); g.translate(64, 60); g.scale(3.2, 3.2); g.stroke(new Path2D('M14 44 C8 44 6 37 10 33 C9 26 15 21 21 23 C24 15 34 12 41 17 M49 33 C55 35 56 44 49 46 L20 46')); g.fillStyle = '#fff'; g.fill(new Path2D('M47 10 C48 19 50 21 58 22 C50 23 48 25 47 34 C46 25 44 23 36 22 C44 21 46 19 47 10Z')); g.restore();
+        g.fillStyle = '#fff'; g.font = '600 86px Geist, system-ui'; g.fillText('Sovereign Cloud', 64, W - 230); g.fillText('Platform', 64, W - 140); g.globalAlpha = .9; g.font = '400 50px Geist, system-ui'; g.fillText('50+ services, one per-core price', 66, W - 64); g.globalAlpha = 1;
+      }
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
+    }
+    set(on) { this.target = on ? 1 : 0; this.start(); }
+    apply() {
+      const k = this.k, e = k * k * (3 - 2 * k), dirs = [[-1.6, -.4], [1.7, -.9], [-1.5, 1.2], [1.6, 1.3]];
+      this.layers.forEach((g, i) => { const u = THREE.MathUtils.clamp(e * 1.25 - i * .08, 0, 1), d = dirs[i]; g.position.set(d[0] * u * 2.4, g.userData.y0 + u * 1.6, d[1] * u * 2.4); g.rotation.z = d[0] * u * .25;
+        const op = 1 - u; g.visible = op > .01; g.userData.body.material.transparent = op < 1; g.userData.body.material.opacity = op; g.userData.top.material.opacity = op; });
+      const v = THREE.MathUtils.clamp((e - .35) / .65, 0, 1), sv = v * v * (3 - 2 * v); this.slab.visible = sv > .01; this.slab.position.y = 1 + (1 - sv) * 3;
+      this.slab.userData.body.material.transparent = true; this.slab.userData.body.material.opacity = sv; this.slab.userData.top.material.opacity = sv;
+    }
+    resize() { const w = this.host.clientWidth, h = this.host.clientHeight; if (!w || !h) return; this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h); this.render(); }
+    render() { this.renderer.render(this.scene, this.camera); }
+    start() { if (this.running) return; this.running = true; this.clock.getDelta(); const loop = () => { if (!this.running) return; const dt = Math.min(this.clock.getDelta(), .05); this.t += dt;
+      this.k += (this.target - this.k) * (REDUCE ? 1 : Math.min(1, dt * 2.4)); if (Math.abs(this.target - this.k) < .002) this.k = this.target; this.apply();
+      if (!this.userMoved && !REDUCE) { const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.theta = THREE.MathUtils.degToRad(40 + Math.sin(this.t * .3) * 10); this.camera.position.setFromSpherical(sp).add(this.controls.target); }
+      this.controls.update(); this.render(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+    stop() { this.running = false; }
+  }
+  window.LegacyStack = LegacyStack;
+
 })();
 </script>
 <script>(() => {
@@ -1905,7 +1957,7 @@ inits['/'] = () => {
   let mode = 1;
   const host1 = $('#fleet3d'), host2 = $('#repair3d');
   const fail = h => { h.innerHTML += '<div class="fallback3d">This interactive model needs WebGL, which your browser has turned off.</div>'; };
-  onView(host1, v => { if (v && !fleet) { if (!has3D) return fail(host1); fleet = new Fleet(host1, { tooltip: $('#tip1'), mode, interactive: 'hover' }); fleet.setMode(mode); } }, .01);
+  onView(host1, v => { if (v && !fleet) { if (!has3D) return fail(host1); fleet = new Fleet(host1, { tooltip: $('#tip1'), mode, interactive: 'hover', gate: false }); fleet.setMode(mode); } }, .01);
   const mbtn = $$('#modes button'), knob = $('#knob');
   function setMode(m) { mode = m; mbtn.forEach(b => b.setAttribute('aria-pressed', +b.dataset.m === m)); const on = mbtn[m]; knob.style.left = on.offsetLeft + 'px'; knob.style.width = on.offsetWidth + 'px'; $('#mtitle').textContent = MODES[m].t; $('#mtext').textContent = MODES[m].x; $('#mwhere').textContent = MODES[m].w; $('#mlink').textContent = MODES[m].l; fleet && fleet.setMode(m); }
   mbtn.forEach(b => b.addEventListener('click', () => setMode(+b.dataset.m)));
@@ -2076,10 +2128,12 @@ const SERV = [
    ['train', 'Training pipeline integration', 'Streamlined automation for model training.', 'scp train run asr-finetune --pool train-a --checkpoint 30m', ['job asr-finetune started on train-a', 'checkpoints every 30 min · encrypted']],
    ['infer', 'Inference scaling', 'Dynamic scaling for real-time model serving.', 'scp serve scale indic-asr --min 2 --max 24 --p95 120ms', ['autoscaling 2 → 24 replicas', 'p95 latency target 120 ms']]]];
 inits['/features'] = p => {
-  /* legacy stack */
-  const st = $('#stack3d', p), ub = $('#unbundle', p), cap = $('#stackcap', p);
-  ub.addEventListener('click', () => { const on = !st.classList.contains('sov'); st.classList.toggle('sov', on); ub.setAttribute('aria-pressed', on); ub.textContent = on ? 'Show the legacy stack' : 'Replace the legacy stack'; cap.textContent = on ? 'One platform, one per-core price, on hardware you own.' : 'Four vendors, four bills, one roadmap you don\'t own.'; });
-  if (!REDUCE) { const fig = $('.stackfig', p); fig.addEventListener('pointermove', e => { const r = fig.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; st.style.transform = `${innerWidth <= 640 ? 'scale(.78) ' : innerWidth <= 1080 ? 'scale(.92) ' : ''}rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`; }); fig.addEventListener('pointerleave', () => st.style.transform = ''); }
+  /* legacy stack (3D) */
+  const host = $('#stackgl', p), ub = $('#unbundle', p), cap = $('#stackcap', p); let ls = null, on = false;
+  const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+  const boot = () => { if (ls) return; if (!gl) { host.innerHTML = '<ul class="stackfb"><li>Support contract</li><li>Monitoring add-on</li><li>Management console</li><li>Hypervisor</li><li>Your hardware</li></ul>'; return; } ls = new LegacyStack(host); ls.set(on); };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(boot);
+  ub.addEventListener('click', () => { on = !on; ls && ls.set(on); ub.setAttribute('aria-pressed', on); ub.textContent = on ? 'Show the legacy stack' : 'Replace the legacy stack'; cap.textContent = on ? 'One platform, one per-core price, on hardware you own.' : 'Four vendors, four bills, one roadmap you don\'t own.'; });
   /* flips */
   $$('.flip', p).forEach(f => f.addEventListener('click', () => f.setAttribute('aria-pressed', f.getAttribute('aria-pressed') !== 'true')));
   /* explorer */

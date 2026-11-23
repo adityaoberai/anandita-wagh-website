@@ -19,10 +19,11 @@ export default defineConfig({
 			// http://sveltekit-prerender/ and social crawlers find no card.
 			prerender: {
 				origin: site.url,
-				// The case study is a finished page served from static/, so it has no
-				// route for the crawler to find behind its trailing-slash link.
+				// The case studies are finished pages served from static/, so they have no
+				// route for the crawler to find behind their trailing-slash links.
 				handleHttpError: ({ path, message }) => {
-					if (path === '/work/hack-day-bengaluru/') return;
+					if (path === '/work/hack-day-bengaluru/' || path === '/work/sovereign-cloud-platform/')
+						return;
 					throw new Error(message);
 				}
 			}

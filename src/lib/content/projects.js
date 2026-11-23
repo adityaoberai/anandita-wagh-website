@@ -43,9 +43,9 @@ export const projects = {
 		{
 			name: 'Sovereign Cloud Platform',
 			blurb:
-				'Logo, brand system, information architecture and the full website, designed and shipped in six weeks.',
-			href: 'https://www.behance.net/gallery/247257791/Brand-and-Website-Design-for-SCP-Part-1?platform=direct',
-			cta: 'View on Behance ↗',
+				'Logo, brand system and website I designed for E2E Networks, reimagined as an interactive concept with 3D fleet models, live attestation and self-repair.',
+			href: '/work/sovereign-cloud-platform/',
+			cta: 'Explore the redesign →',
 			cover: '/assets/projects/sovereign-cloud-platform.webp',
 			coverBg: '#05070D'
 		}

@@ -755,8 +755,9 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
   .navcta .btn-ghost{display:none}
   .drawer{display:block;position:fixed;inset:70px 0 auto 0;z-index:59;background:rgba(10,11,16,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px var(--pad) 28px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s}
   .nav.open + .drawer{opacity:1;transform:none;pointer-events:auto}
-  .drawer a{display:block;padding:14px 0;border-bottom:1px solid var(--line);color:var(--white);font-size:20px;letter-spacing:-.01em}
-  .drawer .btn{margin-top:20px;width:100%}
+  .drawer a:not(.btn){display:block;padding:14px 0;border-bottom:1px solid var(--line);color:var(--white);font-size:20px;letter-spacing:-.01em}
+  .drawer .btn{display:flex;margin-top:22px;width:100%;height:52px;font-size:16px}
+  .drawer{top:var(--navb,70px)!important;max-height:calc(100vh - var(--navb,70px));overflow:auto}
   .head{grid-template-columns:1fr;gap:24px;margin-bottom:44px}.head .lede{justify-self:start}
   .proof .grid{grid-template-columns:1fr;gap:44px}
   .deploy .stage{grid-template-columns:1fr;gap:32px}
@@ -1847,7 +1848,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         const gr = g.createLinearGradient(0, 0, W, W); gr.addColorStop(0, '#3FB6F2'); gr.addColorStop(.55, '#5A48F0'); gr.addColorStop(1, '#9B5CF6'); g.fillStyle = gr; g.fillRect(0, 0, W, W);
         const hl = g.createLinearGradient(0, 0, W * .6, W * .6); hl.addColorStop(0, 'rgba(255,255,255,.3)'); hl.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = hl; g.fillRect(0, 0, W, W);
         // the Sovereign Cloud Platform logo, drawn from the same paths as the site logo, in white
-        const sc = 5.1; g.save(); g.translate(64 + 2 * sc, 96 + 2 * sc); g.scale(sc, sc);
+        const sc = 3.1; g.save(); g.translate(64 + 2 * sc, 64 + 2 * sc); g.scale(sc, sc);
         g.strokeStyle = '#fff'; g.lineWidth = 3.4; g.lineCap = g.lineJoin = 'round';
         g.stroke(new Path2D('M68.6 33 C66.5 25 71 18.5 79.7 18.3 C82 8 90 2.9 100.3 2.9 C108 2.9 113.5 7 115.7 12.3 C118.5 9.6 122.5 8.6 126 9.2 M148 36.6 C151 39 152.5 43 151.7 47.4 C150.7 54 146.5 59.4 140 59.4 L80.5 59.4 C78.6 59.4 77.3 58 77.3 56.4'));
         g.fillStyle = '#fff'; g.fill(new Path2D('M141.4 7.1 C142.6 17.5 145.6 20.5 156.8 21.7 C145.6 22.9 142.6 25.9 141.4 36.3 C140.2 25.9 137.2 22.9 126 21.7 C137.2 20.5 140.2 17.5 141.4 7.1Z'));
@@ -1896,7 +1897,7 @@ $('#noticex').addEventListener('click', () => { notice.hidden = true; try { loca
 
 /* ---------- mobile drawer ---------- */
 const burger = $('#burger');
-burger.addEventListener('click', () => { const o = !nav.classList.contains('open'); nav.classList.toggle('open', o); burger.setAttribute('aria-expanded', o); burger.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
+burger.addEventListener('click', () => { const o = !nav.classList.contains('open'); nav.classList.remove('hide'); document.documentElement.style.setProperty('--navb', Math.max(0, nav.getBoundingClientRect().bottom) + 'px'); nav.classList.toggle('open', o); burger.setAttribute('aria-expanded', o); burger.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
 $$('#drawer a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); }));
 
 /* ---------- router ---------- */

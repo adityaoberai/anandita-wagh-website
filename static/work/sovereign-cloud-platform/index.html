@@ -721,6 +721,31 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 @media (max-width:1080px){.adgrid{grid-template-columns:1fr;gap:32px}}
 @media (max-width:640px){.addonsec .addons{grid-template-columns:1fr}.addonsec .btn{width:100%}}
 
+/* core services cards */
+.svcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.svcard{position:relative;border-radius:24px;background:linear-gradient(180deg,rgba(27,30,40,.9),rgba(16,17,24,.92));box-shadow:inset 0 0 0 1px var(--line2),0 40px 80px -50px rgba(90,72,240,.7);padding:30px 28px 18px;overflow:hidden}
+.svcard::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(159,219,255,.5),transparent)}
+.svcard header{padding-bottom:22px;border-bottom:1px solid var(--line)}
+.svcard header .ic{margin-bottom:18px}
+.svcard h3{font-size:21px;margin-bottom:8px}
+.svcard header p{font-size:15px;line-height:1.55;color:var(--dim)}
+.svcard ul{list-style:none}
+.svcard li{display:grid;grid-template-columns:20px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid rgba(201,204,232,.07);align-items:start}
+.svcard li:last-child{border-bottom:0}
+.svcard li svg{width:20px;height:20px;margin-top:2px;fill:none;stroke:#9FDBFF;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.svcard li b{display:block;color:var(--white);font-weight:500;font-size:16px;margin-bottom:3px}
+.svcard li span{font-size:14px;line-height:1.5;color:var(--dim)}
+@media (max-width:1080px){.svcards{grid-template-columns:1fr 1fr}.svcard:last-child{grid-column:1/-1}}
+@media (max-width:640px){.svcards{grid-template-columns:1fr;gap:18px}.svcard{padding:24px 22px 12px}}
+.back{font-size:15px;margin-bottom:22px}.back a{color:var(--mist)}.back a:hover{color:var(--white)}
+/* page change and nav indicator */
+.page.on{animation:pagein .5s cubic-bezier(.4,0,.2,1)}
+@keyframes pagein{from{opacity:0;transform:translateY(10px)}}
+.links{position:relative}
+.links a[aria-current="page"]::after{display:none}
+.links .ind{position:absolute;bottom:-2px;height:2px;border-radius:2px;background:var(--grad);left:0;width:0;opacity:0;transition:left .55s cubic-bezier(.65,0,.35,1),width .55s cubic-bezier(.65,0,.35,1),opacity .35s cubic-bezier(.4,0,.2,1);pointer-events:none}
+@media (min-width:1081px){.svcard header p{min-height:4.65em}}
+
 
 /* TABLET */
 @media (max-width:1080px){
@@ -1103,7 +1128,6 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
   <div class="beam"></div><div class="dots"></div>
   <div class="wrap phgrid">
     <div>
-      <p class="crumb"><a href="#/">Home</a><span>/</span>Features</p>
       <h1 id="fh1">Legacy isn't sovereignty.</h1>
       <p class="lede">Owning your infrastructure doesn't mean you control your cloud. Legacy platforms like VMware and Nutanix weren't built for today's realities: AI, data sovereignty and regulatory pressure. Sovereign Cloud gives you a clean break, and a platform that's completely under your control.</p>
       <div class="ctas"><a class="btn btn-sig" href="#/contact">Request a demo</a><a class="btn btn-ghost" href="#/pricing">See pricing</a></div>
@@ -1148,22 +1172,9 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
   <div class="wrap">
     <div class="head">
       <h2 id="exh">Core services that power the platform.</h2>
-      <p class="lede">A unified platform combining robust cloud infrastructure with enterprise-grade management and AI readiness. Pick a service to see it at work.</p>
+      <p class="lede">A unified platform combining robust cloud infrastructure with enterprise-grade management and AI readiness.</p>
     </div>
-    <div class="exgrid">
-      <div class="extabs" role="tablist" aria-label="Service groups">
-        <button role="tab" aria-selected="true" aria-controls="exp0" id="ext0" data-g="0"><b>Infrastructure management</b><span>Run, scale and secure critical workloads with a full suite of foundational cloud services.</span></button>
-        <button role="tab" aria-selected="false" aria-controls="exp1" id="ext1" data-g="1" tabindex="-1"><b>Administrative control</b><span>Stay in control with tools designed for enterprise governance and operational efficiency.</span></button>
-        <button role="tab" aria-selected="false" aria-controls="exp2" id="ext2" data-g="2" tabindex="-1"><b>TIR AI services</b><span>Accelerate AI workloads with GPU-powered infrastructure and smart automation.</span></button>
-      </div>
-      <div class="expanel">
-        <div class="exitems" id="exitems" role="tabpanel" aria-labelledby="ext0"></div>
-        <div class="term3" aria-live="polite">
-          <div class="tbar"><i></i><i></i><i></i><span>scp · illustrative CLI</span></div>
-          <pre id="termout"></pre>
-        </div>
-      </div>
-    </div>
+    <div class="svcards" id="svcards"></div>
   </div>
 </section>
 
@@ -1196,7 +1207,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
   <div class="beam"></div><div class="dots"></div>
   <div class="wrap">
     <div class="head">
-      <div><p class="crumb"><a href="#/">Home</a><span>/</span>Pricing</p><h1 id="pph1">₹3,000 per core, per year. That's it.</h1></div>
+      <div><h1 id="pph1">₹3,000 per core, per year. That's it.</h1></div>
       <p class="lede">One flat annual rate per core, with every service included. Start on Starter, or talk to us about Enterprise terms built around how you buy.</p>
     </div>
     <div id="quote">
@@ -1272,7 +1283,6 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 <section class="phero dark spot short" aria-labelledby="qh1">
   <div class="beam"></div><div class="dots"></div>
   <div class="wrap">
-    <p class="crumb"><a href="#/">Home</a><span>/</span>FAQs</p>
     <h1 id="qh1">Frequently asked questions.</h1>
     <div class="fsearch">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
@@ -1312,7 +1322,6 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 <section class="phero dark spot short" aria-labelledby="bh1">
   <div class="beam"></div><div class="dots"></div>
   <div class="wrap">
-    <p class="crumb"><a href="#/">Home</a><span>/</span>Blog</p>
     <h1 id="bh1">Blog</h1>
     <p class="lede">Notes on sovereignty, AI and owning your cloud, from the team building the platform.</p>
     <div class="chips" id="bchips" role="group" aria-label="Filter by tag"></div>
@@ -1329,7 +1338,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 <header class="ahero dark">
   <div class="acover" id="acover"></div>
   <div class="wrap">
-    <p class="crumb"><a href="#/">Home</a><span>/</span><a href="#/blog">Blog</a></p>
+    <p class="back"><a href="#/blog">← All posts</a></p>
     <div class="atags" id="atags"></div>
     <h1 id="atitle"></h1>
     <p class="ameta" id="ameta"></p>
@@ -1354,7 +1363,6 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
   <div class="beam"></div><div class="dots"></div>
   <div class="wrap phgrid ct">
     <div>
-      <p class="crumb"><a href="#/">Home</a><span>/</span>Contact</p>
       <h1 id="ch1">Build your sovereign cloud. Let's get started.</h1>
       <p class="lede">Whether you're an enterprise, a government agency or a technology partner, we're here to help you take full control of your cloud infrastructure.</p>
       <ul class="ctinfo"><li><span>Call us</span><b>011 4084 4965</b></li><li><span>Typical reply</span><b>Within one working day</b></li></ul>
@@ -1395,7 +1403,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
   <div class="wrap">
     <div class="head"><h2 id="oh">Our offices.</h2><p class="lede">Visit us in Delhi, Bengaluru or Mumbai. One number reaches all three: 011 4084 4965.</p></div>
     <div class="ogrid">
-      <article class="office"><div class="omap"><iframe title="Map of the Delhi office" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Awfis%2C+First+Floor%2C+A-24%2F9%2C+Mohan+Cooperative+Industrial+Estate%2C+Mathura+Road%2C+Saidabad%2C+New+Delhi%2C+Delhi+110044&amp;z=15&amp;output=embed"></iframe></div><div class="obody"><h3>Delhi</h3><p>Awfis, First Floor, A-24/9, Mohan Cooperative Industrial Estate, Mathura Road, Saidabad, New Delhi, Delhi 110044</p><a class="ul" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Awfis%2C+First+Floor%2C+A-24%2F9%2C+Mohan+Cooperative+Industrial+Estate%2C+Mathura+Road%2C+Saidabad%2C+New+Delhi%2C+Delhi+110044">Open in Google Maps</a></div></article>
+      <article class="office"><div class="omap"><iframe title="Map of the Delhi office" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Awfis+A-24%2F9+Mohan+Cooperative+Industrial+Estate+Mathura+Road+New+Delhi+110044&amp;z=15&amp;output=embed"></iframe></div><div class="obody"><h3>Delhi</h3><p>Awfis, First Floor, A-24/9, Mohan Cooperative Industrial Estate, Mathura Road, Saidabad, New Delhi, Delhi 110044</p><a class="ul" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Awfis+A-24%2F9+Mohan+Cooperative+Industrial+Estate+Mathura+Road+New+Delhi+110044">Open in Google Maps</a></div></article>
       <article class="office"><div class="omap"><iframe title="Map of the Bengaluru office" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Incubex+INR4%2C+2nd+Floor%2C+777c%2C+100+Feet+Rd%2C+HAL+2nd+Stage%2C+Doopanahalli%2C+Indiranagar%2C+Bengaluru%2C+Karnataka+560038&amp;z=15&amp;output=embed"></iframe></div><div class="obody"><h3>Bengaluru</h3><p>Incubex INR4, 2nd Floor, 777c, 100 Feet Rd, HAL 2nd Stage, Doopanahalli, Indiranagar, Bengaluru, Karnataka 560038</p><a class="ul" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Incubex+INR4%2C+2nd+Floor%2C+777c%2C+100+Feet+Rd%2C+HAL+2nd+Stage%2C+Doopanahalli%2C+Indiranagar%2C+Bengaluru%2C+Karnataka+560038">Open in Google Maps</a></div></article>
       <article class="office"><div class="omap"><iframe title="Map of the Mumbai office" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=91+Springboard+Business+Hub%2C+Plot+No.+D-5%2C+Road+No.+20%2C+Marol+MIDC%2C+Andheri+East%2C+Mumbai%2C+Maharashtra+400093&amp;z=15&amp;output=embed"></iframe></div><div class="obody"><h3>Mumbai</h3><p>91 Springboard Business Hub, Plot No. D-5, Road No. 20, Marol MIDC, Andheri East, Mumbai, Maharashtra 400093</p><a class="ul" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=91+Springboard+Business+Hub%2C+Plot+No.+D-5%2C+Road+No.+20%2C+Marol+MIDC%2C+Andheri+East%2C+Mumbai%2C+Maharashtra+400093">Open in Google Maps</a></div></article>
     </div>
@@ -1893,10 +1901,11 @@ function route() {
 }
 function show(path) {
   let p = pages.find(x => x.dataset.route === path) || pages.find(x => path.startsWith(x.dataset.route + '/') && x.dataset.prefix) || pages[0];
-  pages.forEach(x => { if (x !== p && x.classList.contains('on')) { resetAcc(x); x.dispatchEvent(new Event('pageleave')); } });
+  pages.forEach(x => { if (x !== p && x.classList.contains('on')) { resetAcc(x); $$('form', x).forEach(tidyForm); $$('footer form').forEach(tidyForm); x.dispatchEvent(new Event('pageleave')); } });
   pages.forEach(x => x.classList.toggle('on', x === p));
   $$('.links a').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + p.dataset.route) || a.setAttribute('aria-current', 'page'));
   $$('.links a').forEach(a => { if (a.getAttribute('href') === '#' + p.dataset.route) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  moveInd();
   document.title = (p.dataset.title ? p.dataset.title + ' · ' : '') + 'Sovereign Cloud Platform (concept by Anandita Wagh)';
   scrollTo({ top: 0, behavior: 'auto' });
   const key = p.dataset.route; if (inits[key] && !p.dataset.ready) { p.dataset.ready = 1; inits[key](p, path); } else if (inits[key] && p.dataset.prefix) inits[key](p, path);
@@ -1906,6 +1915,16 @@ function show(path) {
 $$('details').forEach(d => d.dataset.def = d.open ? 1 : 0);
 function resetAcc(root) { $$('details', root).forEach(d => d.open = d.dataset.def === '1'); }
 onView($('.faq.light'), v => { if (!v) resetAcc($('.faq.light')); }, 0);
+/* sliding underline under the current page in the nav */
+const links = $('.links'), ind = document.createElement('span'); ind.className = 'ind'; links.appendChild(ind);
+function moveInd(a) { a = a || $('.links a[aria-current="page"]'); if (!a) { ind.style.opacity = 0; return; } ind.style.left = a.offsetLeft + 'px'; ind.style.width = a.offsetWidth + 'px'; ind.style.opacity = 1; }
+window.SCP_moveInd = moveInd; addEventListener('resize', () => moveInd()); document.fonts && document.fonts.ready.then(() => moveInd());
+/* leaving a page: an untouched form goes back to its starting state; a form with entries keeps them, minus any error marks */
+function tidyForm(f) {
+  const dirty = [...f.elements].some(el => el.type === 'checkbox' || el.type === 'radio' ? el.checked !== el.defaultChecked : el.tagName === 'SELECT' ? [...el.options].some(o => o.selected !== o.defaultSelected) : 'value' in el && el.type !== 'submit' && el.type !== 'button' && el.value !== el.defaultValue);
+  clearErrs(f); const n = $('.note', f); if (n) { n.className = 'note'; n.textContent = ''; }
+  if (!dirty) { f.reset(); f.dispatchEvent(new Event('pristine')); }
+}
 window.SCP = { inits, show };
 addEventListener('hashchange', route);
 
@@ -2136,16 +2155,11 @@ inits['/features'] = p => {
   ub.addEventListener('click', () => { on = !on; ls && ls.set(on); ub.setAttribute('aria-pressed', on); ub.textContent = on ? 'Show the legacy stack' : 'Replace the legacy stack'; cap.textContent = on ? 'One platform, one per-core price, on hardware you own.' : 'Four vendors, four bills, one roadmap you don\'t own.'; });
   /* flips */
   $$('.flip', p).forEach(f => f.addEventListener('click', () => f.setAttribute('aria-pressed', f.getAttribute('aria-pressed') !== 'true')));
-  /* explorer */
-  const tabs = $$('.extabs button', p), items = $('#exitems', p), out = $('#termout', p); let typer;
-  const type = s => { clearInterval(typer); const [ , , , cmd, res] = s; let i = 0; const done = () => { out.innerHTML = `<span class="pr">admin@scp:~$</span> <span class="cm">${cmd}</span>\n${res.map((r, k) => `<span class="${k ? 'dm' : 'okc'}">${k ? '  ' : '✓ '}${r}</span>`).join('\n')}\n\n<span class="pr">admin@scp:~$</span> <span class="cur"></span>`; };
-    if (REDUCE) return done(); typer = setInterval(() => { i += 2; if (i >= cmd.length) { clearInterval(typer); setTimeout(done, 260); out.innerHTML = `<span class="pr">admin@scp:~$</span> <span class="cm">${cmd}</span><span class="cur"></span>`; return; } out.innerHTML = `<span class="pr">admin@scp:~$</span> <span class="cm">${cmd.slice(0, i)}</span><span class="cur"></span>`; }, 22); };
-  const pick = (g, k = 0) => { $$('button', items).forEach((b, j) => b.setAttribute('aria-pressed', j === k)); type(SERV[g][k]); };
-  const show = g => { tabs.forEach((t, j) => { t.setAttribute('aria-selected', j === g); t.tabIndex = j === g ? 0 : -1; }); items.setAttribute('aria-labelledby', 'ext' + g);
-    items.innerHTML = SERV[g].map((s, k) => `<button type="button" aria-pressed="false" style="animation-delay:${k * 50}ms">${icon(s[0], icls[(k + g) % 4])}<b>${s[1]}</b><span>${s[2]}</span></button>`).join('');
-    $$('button', items).forEach((b, k) => { b.addEventListener('click', () => pick(g, k)); b.addEventListener('mouseenter', () => { if (matchMedia('(hover:hover)').matches) pick(g, k); }); }); pick(g); };
-  tabs.forEach((t, j) => { t.addEventListener('click', () => show(j)); t.addEventListener('keydown', e => { if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); const n = (j + (e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : 2)) % 3; tabs[n].focus(); show(n); } }); });
-  show(0);
+  /* core services: three groups as cards */
+  const G = [['vm', 'i1', 'Infrastructure management', 'Run, scale and secure critical workloads with a full suite of foundational cloud services.'],
+    ['rbac', 'i2', 'Administrative control', 'Stay in control with tools designed for enterprise governance and operational efficiency.'],
+    ['gpu', 'i3', 'TIR AI services', 'Accelerate AI workloads with GPU-powered infrastructure and smart automation.']];
+  $('#svcards', p).innerHTML = G.map((g, gi) => `<article class="svcard"><header>${icon(g[0], g[1])}<h3>${g[2]}</h3><p>${g[3]}</p></header><ul>${SERV[gi].map(s => `<li><svg viewBox="0 0 24 24">${IC[s[0]]}</svg><span><b>${s[1]}</b>${s[2]}</span></li>`).join('')}</ul></article>`).join('');
   /* compare */
 
 };
@@ -2270,6 +2284,7 @@ inits['/contact'] = p => {
     $('#wsum', f).textContent = `Thanks, ${$('#w1', f).value.trim().split(' ')[0]}. We'll email ${$('#w2', f).value.trim()} to ${how} for ${cores} cores. You chose: ${goals.join(', ')}.`;
     steps.forEach(x => x.classList.remove('on')); note.textContent = ''; done.hidden = false; f.classList.add('done'); });
   back.addEventListener('click', () => go(s - 1));
+  f.addEventListener('pristine', () => { done.hidden = true; f.classList.remove('done'); delete f.dataset.touched; go(0); });
   $('#wagain', f).addEventListener('click', () => { f.reset(); done.hidden = true; f.classList.remove('done'); go(0); });
   go(0);
 };

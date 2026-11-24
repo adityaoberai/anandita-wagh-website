@@ -211,7 +211,7 @@ footer .lgo{width:150px;height:84px}
 /* ENCRYPTION vault */
 .vault{position:relative;border-radius:24px;background:linear-gradient(180deg,rgba(27,30,40,.9),rgba(15,16,23,.95));box-shadow:inset 0 0 0 1px var(--line2),0 50px 90px -40px rgba(90,72,240,.55);overflow:hidden}
 .vbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:12px;color:var(--dim);flex-wrap:wrap}
-.vbody{position:relative;height:340px;cursor:none;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+.vbody{position:relative;height:340px;cursor:none;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .vbody pre{position:absolute;inset:0;padding:26px 28px;margin:0;font-family:var(--mono);font-size:15px;line-height:1.9;white-space:pre-wrap;word-break:break-all}
 .vbody pre.plain{white-space:pre;word-break:normal;font-size:15px;line-height:2.25;overflow:hidden}
 .cipher{color:#5F67A8}
@@ -736,6 +736,69 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 .links a[aria-current="page"]::after{display:none}
 .links .ind{position:absolute;bottom:-2px;height:2px;border-radius:2px;background:var(--grad);left:0;width:0;opacity:0;transition:left .55s cubic-bezier(.65,0,.35,1),width .55s cubic-bezier(.65,0,.35,1),opacity .35s cubic-bezier(.4,0,.2,1);pointer-events:none}
 @media (min-width:1081px){.svcard header p{min-height:4.65em}}
+/* ===== HERO SCROLL STORY ===== */
+.hero.story{display:block;min-height:0;height:440vh;overflow:visible;padding:0}
+.hero.story::before,.hero.story::after{display:none}
+.hero.story .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.hero.story .pin::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#0A0B10 0%,rgba(10,11,16,.82) 30%,rgba(10,11,16,0) 52%),linear-gradient(0deg,#0A0B10 0%,rgba(10,11,16,0) 18%)}
+.hero.story .stage{position:absolute;top:0;right:0;bottom:0;width:66%}
+.hero.story .stage canvas{width:100%!important;height:100%!important;display:block}
+.hero.story .stage .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:none}
+.hero.story .wrap.hgrid{position:relative;z-index:2;height:100%;display:flex;align-items:center;padding-top:40px;padding-bottom:40px}
+.hero.story .htext{max-width:540px}
+.story{margin-top:46px}
+.sbar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:300px}
+.sbar i{height:3px;border-radius:3px;background:rgba(201,204,232,.16);position:relative;overflow:hidden}
+.sbar i::after{content:"";position:absolute;inset:0;background:var(--grad);transform:scaleX(var(--f,0));transform-origin:left;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.slines{list-style:none;position:relative;height:62px;margin-top:16px}
+.slines li{position:absolute;left:0;right:0;top:0;font-size:23px;line-height:1.3;letter-spacing:-.015em;color:var(--white);opacity:0;transform:translateY(12px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.slines li.on{opacity:1;transform:none}
+.slines li.past{transform:translateY(-12px)}
+.cmp{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:rgba(21,23,31,.85);box-shadow:inset 0 0 0 1px var(--line2);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.cmp.show{opacity:1;transform:none;pointer-events:auto}
+.cmp button{height:42px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:var(--mist);font-size:15px;cursor:pointer;transition:background .4s cubic-bezier(.4,0,.2,1),color .4s}
+.cmp button[aria-pressed="true"]{background:var(--white);color:var(--ink)}
+.cmp button[data-v="pub"][aria-pressed="true"]{background:#FFB547;color:#1A1205}
+.shint{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;color:var(--dim);transition:opacity .6s}
+.shint i{width:22px;height:34px;border-radius:12px;box-shadow:inset 0 0 0 1.5px rgba(201,204,232,.4);position:relative}
+.shint i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--mist);animation:shint 1.8s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes shint{0%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+.hero.story.started .shint{opacity:0}
+/* still version: reduced motion or no 3D */
+.hero.story.static{height:auto}
+.hero.story.static .pin{position:relative;height:auto;min-height:100vh}
+.hero.story.static .stage .still{display:block;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 74%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 74%,transparent)}
+.hero.story.static .sbar,.hero.story.static .cmp,.hero.story.static .shint{display:none}
+.hero.story.static .slines{height:auto;display:grid;gap:8px}
+.hero.story.static .slines li{position:static;opacity:1;transform:none;font-size:17px;color:var(--mist)}
+@media (max-width:1080px){
+  .hero.story{height:400vh}
+  .hero.story .stage{width:100%;height:52%;bottom:auto}
+  .hero.story .pin::after{background:linear-gradient(0deg,#0A0B10 44%,rgba(10,11,16,.6) 54%,rgba(10,11,16,0) 66%)}
+  .hero.story .wrap.hgrid{align-items:flex-end;padding-bottom:40px}
+  .hero.story .htext{max-width:640px}
+  .story{margin-top:26px}
+  .shint{display:none}
+  .hero.story.static .stage{position:relative;height:auto;aspect-ratio:16/10}
+  .hero.story.static .wrap.hgrid{height:auto}
+}
+@media (max-width:640px){
+  .hero.story{height:380vh}
+  .hero.story .stage{height:46%}
+  .hero.story .pin::after{background:linear-gradient(0deg,#0A0B10 50%,rgba(10,11,16,.6) 58%,rgba(10,11,16,0) 66%)}
+  .hero.story h1{font-size:clamp(34px,10vw,46px)}
+  .hero.story .lede{display:none}
+  .hero.story.static .lede{display:block}
+  .hero.story .ctas{margin-top:18px}
+  .hero.story .ctas .btn{flex:1 1 0!important;height:46px;padding:0 12px}
+  .story{margin-top:20px}
+  .slines{height:58px;margin-top:12px}.slines li{font-size:19px}
+  .cmp button{height:38px;padding:0 14px;font-size:14px}
+}
+/* touch screens: no sticky hover lifts after a tap */
+@media (hover:none){.card:hover,.flip:hover,.post:hover{transform:none}.card:hover .mini{transform:translateX(-50%)}.post:hover .cv img{transform:none}}
+.pc{display:none}@media (hover:none){.pf{display:none}.pc{display:inline}}
+@media (max-width:640px){#repair3d.stage3d.tall{aspect-ratio:1/1}}
 
 
 /* TABLET */
@@ -825,18 +888,23 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 <!-- HOME PAGE -->
 <div class="page" data-route="/">
 
-<section class="hero" id="hero" aria-labelledby="h1">
-  <div class="media" id="heromedia" aria-hidden="true"><img class="poster" src="media/hero_poster.jpg" alt="">
-  <video id="herovid" autoplay muted loop playsinline preload="auto" poster="media/hero_poster.jpg"><source src="media/hero.mp4" type="video/mp4"></video></div>
-  <div class="wrap">
-    <h1 id="h1">Run your AI cloud on your own terms.</h1>
-    <p class="lede">Training clusters and inference endpoints on GPUs you own and operate. Your data and your encryption keys stay with you.</p>
-    <div class="ctas"><a class="btn btn-sig" href="#/contact">Request a demo</a><a class="btn btn-ghost" href="#attest">See how attestation works</a></div>
+<section class="hero story" id="hero" aria-labelledby="h1">
+  <div class="pin">
+    <div class="stage" id="herostage" aria-hidden="true"><img class="still" src="media/hero_story_poster.jpg" alt=""></div>
+    <div class="wrap hgrid">
+      <div class="htext">
+        <h1 id="h1">Run your AI cloud on your own terms.</h1>
+        <p class="lede">Training clusters and inference endpoints on GPUs you own and operate. Your data and your encryption keys stay with you.</p>
+        <div class="ctas"><a class="btn btn-sig" href="#/contact">Request a demo</a><a class="btn btn-ghost" href="#attest">See how attestation works</a></div>
+        <div class="story">
+          <div class="sbar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <ol class="slines" aria-live="polite"><li class="on">It starts with a floor you own.</li><li>Your servers, in your building.</li><li>One platform lights up across them.</li><li>A boundary only you control.</li><li>Every workload is checked at the gate.</li><li>Your keys. Your jurisdiction.</li><li>Now compare: public cloud, or yours?</li></ol>
+          <div class="cmp" role="group" aria-label="Compare public cloud with sovereign cloud"><button type="button" data-v="pub" aria-pressed="false">Public cloud</button><button type="button" data-v="sov" aria-pressed="true">Sovereign cloud</button></div>
+        </div>
+      </div>
+    </div>
+    <p class="shint" aria-hidden="true"><i></i>Scroll to build it</p>
   </div>
-  <div class="hud"><div class="wrap">
-    <figcaption>Fig. 1  A workload waits at the gate until its signed report checks out.</figcaption>
-    <div class="log" id="herolog" aria-live="off"></div>
-  </div></div>
 </section>
 
 <section class="proof dark rules" aria-label="Proof">
@@ -878,9 +946,9 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         </dl>
       </div>
       <figure>
-        <div class="stage3d" id="fleet3d" role="img" aria-label="Interactive 3D model of an owned GPU fleet inside a glowing boundary. Drag to rotate; hover a cabinet to see its status.">
+        <div class="stage3d" id="fleet3d" role="img" aria-label="Interactive 3D model of an owned GPU fleet inside a glowing boundary. Drag to rotate; hover or tap a cabinet to see its status.">
           <div class="tip" id="tip1"></div>
-          <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg>Drag to rotate. Hover a cabinet.</span>
+          <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg><span class="pf">Drag to rotate. Hover a cabinet.</span><span class="pc">Swipe sideways to rotate. Tap a cabinet.</span></span>
         </div>
         <figcaption>Fig. 2  The fleet stays the same in every mode. Only the boundary's outside link changes.</figcaption>
       </figure>
@@ -986,9 +1054,9 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       <p class="lede">When a GPU shows warning signs, the platform takes it out of service, moves its jobs, diagnoses it and brings it back. Your team sets the policy. Nothing waits in a ticket queue.</p>
     </div>
     <figure>
-      <div class="stage3d tall" id="repair3d" role="img" aria-label="Interactive 3D fleet. Click any cabinet to inject a fault and watch it repair itself.">
+      <div class="stage3d tall" id="repair3d" role="img" aria-label="Interactive 3D fleet. Click or tap any cabinet to inject a fault and watch it repair itself.">
         <div class="tip" id="tip2"></div>
-        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3"/></svg>Click any cabinet to inject a fault.</span>
+        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3"/></svg><span class="pf">Click any cabinet to inject a fault.</span><span class="pc">Tap a cabinet twice to inject a fault.</span></span>
       </div>
     </figure>
     <div class="steps" id="steps">
@@ -1126,7 +1194,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     </div>
     <figure class="stackfig">
       <div class="stackgl" id="stackgl" role="img" aria-label="A 3D stack: support contract, monitoring add-on, management console and hypervisor licences sitting on your hardware. Replacing them leaves one Sovereign Cloud Platform layer.">
-        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg>Drag to rotate</span>
+        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg><span class="pf">Drag to rotate</span><span class="pc">Swipe sideways to rotate</span></span>
       </div>
       <div class="stackctl">
         <button class="btn btn-ghost sm" id="unbundle" type="button" aria-pressed="false">Replace the legacy stack</button>
@@ -1541,10 +1609,23 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       this.build();
       // interaction
       this.ray = new THREE.Raycaster(); this.mouse = new THREE.Vector2(-9, -9); this.hover = null;
-      r.domElement.addEventListener('pointermove', (e) => { const b = r.domElement.getBoundingClientRect(); this.mouse.set(((e.clientX - b.left) / b.width) * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1); this.px = e.clientX - b.left; this.py = e.clientY - b.top; });
-      r.domElement.addEventListener('pointerleave', () => { this.mouse.set(-9, -9); this.setHover(null); });
+      // touch: let vertical swipes scroll the page, horizontal drags rotate
+      r.domElement.style.touchAction = 'pan-y';
+      const at = (e) => { const b = r.domElement.getBoundingClientRect(); this.px = e.clientX - b.left; this.py = e.clientY - b.top; return new THREE.Vector2((this.px / b.width) * 2 - 1, -(this.py / b.height) * 2 + 1); };
+      r.domElement.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') return; this.mouse.copy(at(e)); });
+      r.domElement.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; this.mouse.set(-9, -9); this.setHover(null); });
       let down = null; r.domElement.addEventListener('pointerdown', (e) => down = [e.clientX, e.clientY]);
-      r.domElement.addEventListener('pointerup', (e) => { if (down && Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 6) this.click(); down = null; });
+      r.domElement.addEventListener('pointerup', (e) => {
+        const tapped = down && Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 10; down = null; if (!tapped) return;
+        if (e.pointerType !== 'touch') { this.click(); return; }
+        // touch: first tap shows a rack's details, a second tap on the same rack acts on it
+        this.touchMode = true; this.ray.setFromCamera(at(e), this.camera);
+        const hits = this.ray.intersectObjects(this.cabs.map(c => c.hit), false), cab = hits.length ? hits[0].object.userData.cab : null;
+        if (cab && cab === this.hover) this.click(); else this.setHover(cab);
+        if (this.hover) this.updateTip(); if (!this.running) this.renderOnce();
+      });
+      r.domElement.addEventListener('pointercancel', () => { down = null; });
+      document.addEventListener('pointerdown', (e) => { if (e.pointerType === 'touch' && this.hover && !r.domElement.contains(e.target)) this.setHover(null); }, { passive: true });
       new ResizeObserver(() => this.resize()).observe(host);
       new IntersectionObserver(([en]) => { en.isIntersecting ? this.start() : this.stop(); }, { threshold: .05 }).observe(host);
       this.clock = new THREE.Clock(); this.renderOnce();
@@ -1577,10 +1658,10 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       const frameMat = new THREE.MeshStandardMaterial({ color: '#2A2D37', metalness: .6, roughness: .38 });
       const sideMat = new THREE.MeshStandardMaterial({ map: T.side, bumpMap: T.sideB, bumpScale: 1.4, metalness: .3, roughness: .62 });
       const topMat = new THREE.MeshStandardMaterial({ map: T.top, bumpMap: T.topB, bumpScale: 1.2, metalness: .3, roughness: .7 });
-      const faceMat = new THREE.MeshStandardMaterial({ map: T.face, emissiveMap: T.faceE, emissive: '#FFFFFF', emissiveIntensity: 1.6, metalness: .45, roughness: .5 });
+      const faceMat = this.faceMat = new THREE.MeshStandardMaterial({ map: T.face, emissiveMap: T.faceE, emissive: '#FFFFFF', emissiveIntensity: 1.6, metalness: .45, roughness: .5 });
       const handleMat = new THREE.MeshStandardMaterial({ color: '#A5AABB', metalness: 1, roughness: .25 });
       const footMat = new THREE.MeshStandardMaterial({ color: '#0E0F14', metalness: .4, roughness: .7 });
-      const blobMat = new THREE.MeshBasicMaterial({ map: T.blob, transparent: true, depthWrite: false });
+      const blobMat = this.blobMat = new THREE.MeshBasicMaterial({ map: T.blob, transparent: true, depthWrite: false });
       const bodyGeo = new RoundedBoxGeometry(CW, CH, CD, 3, .035), ledGeo = new THREE.BoxGeometry(.03, .018, .012);
       const FW = CW - .16, FH = CH - .26, U = 10, uh = FH / U;
       let idx = 0;
@@ -1625,10 +1706,10 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         const p1 = new THREE.Mesh(post, gm); p1.position.set(0, .75, -.6); const p2 = p1.clone(); p2.position.z = .6; const t = new THREE.Mesh(top, gm); t.position.y = 1.5; gg.add(p1, p2, t);
         this.beamMat = new THREE.MeshBasicMaterial({ color: C.s1.clone().multiplyScalar(2.4) });
         const beam = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, 1.2, 10), this.beamMat); beam.rotation.x = Math.PI / 2; beam.position.y = .55; gg.add(beam);
-        gg.position.set(-W / 2 + 1.1, 0, this.gateZ); s.add(gg); this.gateX = gg.position.x;
+        gg.position.set(-W / 2 + 1.1, 0, this.gateZ); s.add(gg); this.gateX = gg.position.x; this.gateGroup = gg;
         this.inPacket = new THREE.Mesh(new THREE.SphereGeometry(.09, 20, 14), new THREE.MeshBasicMaterial({ color: '#FFFFFF', transparent: true, opacity: 0, depthWrite: false })); s.add(this.inPacket); this.route = null; this.loopN = -1;
         const track = new THREE.Mesh(new THREE.BoxGeometry(6, .01, .025), new THREE.MeshBasicMaterial({ color: C.s2.clone().multiplyScalar(.9), transparent: true, opacity: .7 }));
-        track.position.set(this.gateX - 3.1, -.29, this.gateZ); s.add(track);
+        track.position.set(this.gateX - 3.1, -.29, this.gateZ); s.add(track); this.track = track;
       }
       // outside link
       if (o.link) {
@@ -1678,8 +1759,8 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     updateTip() {
       const tip = this.o.tooltip, c = this.hover; if (!tip || !c) return;
       const st = c.state === 'ok' ? 'Healthy' : c.state === 'done' ? 'Back in service' : 'Repairing';
-      tip.innerHTML = `<b>${c.name}</b><span>${c.hw[0]}</span><span>Running <em>${c.hw[1]}</em></span><span>GPU load <em>${c.util}%</em></span><span>Tenant <em>${c.tenant}</em></span><span class="st ${c.state === 'ok' || c.state === 'done' ? 'ok' : 'warn'}">${st}</span>` + (this.o.interactive === 'repair' && (c.state === 'ok' || c.state === 'done') ? '<span class="hint">Click to inject a fault</span>' : '');
-      tip.style.transform = `translate(${Math.min(this.px + 16, this.host.clientWidth - 210)}px, ${Math.max(this.py - 20, 8)}px)`;
+      tip.innerHTML = `<b>${c.name}</b><span>${c.hw[0]}</span><span>Running <em>${c.hw[1]}</em></span><span>GPU load <em>${c.util}%</em></span><span>Tenant <em>${c.tenant}</em></span><span class="st ${c.state === 'ok' || c.state === 'done' ? 'ok' : 'warn'}">${st}</span>` + (this.o.interactive === 'repair' && (c.state === 'ok' || c.state === 'done') ? `<span class="hint">${this.fault ? 'Another rack is being repaired. Try again in a moment.' : this.touchMode ? 'Tap again to inject a fault' : 'Click to inject a fault'}</span>` : '');
+      tip.style.transform = `translate(${Math.max(8, Math.min(this.px + 16, this.host.clientWidth - tip.offsetWidth - 8))}px, ${Math.max(8, Math.min(this.py - 20, this.host.clientHeight - tip.offsetHeight - 8))}px)`;
     }
 
     click() { if (this.o.interactive === 'repair' && this.hover) this.injectFault(this.hover); }
@@ -1731,10 +1812,11 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     }
 
     resize() { const w = this.host.clientWidth, h = this.host.clientHeight; if (!w || !h) return; this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h); this.composer.setSize(w, h); this.bloom.setSize(w, h); this.fit(); if (!this.running) this.renderOnce(); }
-    fit() { const a = this.camera.aspect; const f = a < 1 ? 1.75 : a < 1.4 ? 1.25 : 1; this.camDist = 14.2 * f * (this.o.distScale || 1); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.radius = this.camDist; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
+    fit() { const a = this.camera.aspect; const f = a < 1 ? 1.75 : a < 1.4 ? 1.25 : 1; if (this.o.gate === false && this.o.link !== false && !this.o.story) { const dx = (a < 1 ? 1.9 : 1.05) - this.controls.target.x; this.controls.target.x += dx; this.camera.position.x += dx; } this.camDist = 14.2 * f * (this.o.distScale || 1); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.radius = this.camDist; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
 
     update(dt) {
       this.t += dt; const t = this.t;
+      if (this.o.story) { this.storyUpdate && this.storyUpdate(dt, t); return; }
       // idle sway until user drags
       if (!this.userMoved && !REDUCE) { const az = THREE.MathUtils.degToRad(38 + Math.sin(t * .25) * 9); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.theta = az; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
       this.controls.update();
@@ -1776,7 +1858,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       }
       this.stepFault();
       // hover pick
-      if (this.mouse.x > -2) { this.ray.setFromCamera(this.mouse, this.camera); const hits = this.ray.intersectObjects(this.cabs.map(c => c.hit), false); this.setHover(hits.length ? hits[0].object.userData.cab : null); if (this.hover) this.updateTip(); }
+      if (this.mouse.x > -2) { this.ray.setFromCamera(this.mouse, this.camera); const hits = this.ray.intersectObjects(this.cabs.map(c => c.hit), false); this.setHover(hits.length ? hits[0].object.userData.cab : null); if (this.hover) this.updateTip(); } else if (this.touchMode && this.hover) this.updateTip();
     }
 
     renderOnce() { this.update(0); this.composer.render(); }
@@ -1784,6 +1866,116 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     stop() { this.running = false; }
   }
   window.Fleet = Fleet;
+  /* Hero scroll story: the platform assembles step by step, then compares public and sovereign cloud */
+  const eio = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  const seg = (p, a, b) => eio((p - a) / (b - a));
+  function tagSprite(text, color) {
+    const c = document.createElement('canvas'); c.width = 640; c.height = 120; const g = c.getContext('2d');
+    g.font = '500 44px Geist, system-ui'; const w = Math.min(620, g.measureText(text).width + 84);
+    g.fillStyle = 'rgba(14,15,22,.92)'; g.beginPath(); g.roundRect((640 - w) / 2, 14, w, 92, 46); g.fill(); g.strokeStyle = color; g.lineWidth = 4; g.stroke();
+    g.fillStyle = color; g.beginPath(); g.arc((640 - w) / 2 + 40, 60, 9, 0, 7); g.fill();
+    g.fillStyle = '#F2F3FA'; g.textBaseline = 'middle'; g.fillText(text, (640 - w) / 2 + 62, 62);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, opacity: 0 })); sp.scale.set(2.6, .49, 1); sp.renderOrder = 10; return sp;
+  }
+  class HeroStory {
+    constructor(host, opts = {}) {
+      this.o = opts; this.p = 0; this.pT = 0; this.pub = 0; this.pubT = 0; this.step = -1;
+      const F = this.f = new Fleet(host, { story: true, gate: true, link: false, interactive: 'none', mode: 1 });
+      F.controls.enabled = false; F.userMoved = true; F.renderer.domElement.style.cursor = 'default';
+      const s = F.scene, W = F.W, D = F.D, CH = F.CH;
+      // lock on the front-right of the platform, and the key
+      const lockPos = this.lockPos = new THREE.Vector3(W / 2 - 1.0, 0, D / 2 - .55);
+      const lock = this.lock = new THREE.Group(); lock.position.copy(lockPos); s.add(lock);
+      lock.add(new THREE.Mesh(new RoundedBoxGeometry(.46, .22, .46, 3, .05), new THREE.MeshPhysicalMaterial({ color: '#262A35', metalness: .7, roughness: .35 }))); lock.children[0].position.y = .11;
+      this.ringMat = new THREE.MeshBasicMaterial({ color: C.s1.clone().multiplyScalar(.4) });
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(.16, .022, 10, 40), this.ringMat); ring.rotation.x = Math.PI / 2; ring.position.y = .225; lock.add(ring);
+      const km = new THREE.MeshPhysicalMaterial({ color: '#D9DCF0', metalness: 1, roughness: .22, clearcoat: .6, emissive: '#5A48F0', emissiveIntensity: .35 });
+      const key = this.key = new THREE.Group();
+      const head = new THREE.Mesh(new THREE.TorusGeometry(.2, .06, 14, 40), km); head.position.y = .62; key.add(head);
+      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(.04, .04, .7, 14), km); shaft.position.y = .12; key.add(shaft);
+      const t1 = new THREE.Mesh(new THREE.BoxGeometry(.14, .06, .05), km); t1.position.set(.08, -.06, 0); key.add(t1);
+      const t2 = new THREE.Mesh(new THREE.BoxGeometry(.1, .06, .05), km); t2.position.set(.06, .06, 0); key.add(t2);
+      s.add(key);
+      // the distant public-cloud provider
+      const prov = this.prov = new THREE.Group(); prov.position.set(W / 2 + 4.6, 0, -D / 2 - 3.6); s.add(prov);
+      const pb = new THREE.Mesh(new RoundedBoxGeometry(2.6, 3.4, 2, 3, .06), new THREE.MeshPhysicalMaterial({ color: '#2B2E3A', metalness: .5, roughness: .45, transparent: true, opacity: 0 })); pb.position.y = 1.7; prov.add(pb); this.provBody = pb;
+      const wmat = this.provWin = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FFB547').multiplyScalar(1.2), transparent: true, opacity: 0 });
+      for (let r = 0; r < 6; r++) for (let q = 0; q < 4; q++) { const w = new THREE.Mesh(new THREE.BoxGeometry(.34, .16, .01), wmat); w.position.set(-.84 + q * .56, .6 + r * .46, 1.006); prov.add(w); }
+      this.provTag = tagSprite('Provider, abroad', '#FFB547'); this.provTag.position.set(0, 4.1, 0); this.provTag.scale.set(3.4, .64, 1); prov.add(this.provTag);
+      // lines out to the provider, with data flowing and tags attaching
+      const end = prov.position.clone().add(new THREE.Vector3(-.9, 3.0, .6));
+      this.lines = []; this.flow = [];
+      const lmat = this.lineMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FFB547').multiplyScalar(1.5), transparent: true, opacity: .9 });
+      [0, 3, 5, 7].map(i => F.cabs[i % F.cabs.length]).forEach((c, i) => {
+        const a = new THREE.Vector3(c.x, CH + .08, c.z), m = a.clone().lerp(end, .5).add(new THREE.Vector3(0, 3.2 + i * .35, 0));
+        const curve = new THREE.QuadraticBezierCurve3(a, m, end); const geo = new THREE.TubeGeometry(curve, 80, .022, 6, false);
+        const mesh = new THREE.Mesh(geo, lmat); geo.setDrawRange(0, 0); s.add(mesh); this.lines.push({ curve, geo, mesh, n: geo.index.count });
+        const pk = new THREE.Mesh(new THREE.SphereGeometry(.05, 10, 8), new THREE.MeshBasicMaterial({ color: '#FFE2B0', transparent: true, opacity: 0 })); s.add(pk); this.flow.push({ pk, curve, k: i / 4 });
+      });
+      this.tags = [['Foreign law applies', 0, .3], ['Provider holds your keys', 2, .55], ['Data copied abroad', 3, .78]].map(([t, li, u]) => { const sp = tagSprite(t, '#FF8A95'); sp.position.copy(this.lines[li].curve.getPoint(u)).add(new THREE.Vector3(0, .35, 0)); s.add(sp); return sp; });
+      this.keyCurve = new THREE.QuadraticBezierCurve3(lockPos.clone().add(new THREE.Vector3(0, .55, 0)), lockPos.clone().lerp(end, .5).add(new THREE.Vector3(0, 4.2, 0)), end.clone().add(new THREE.Vector3(0, .3, 0)));
+      // the one workload that crosses the gate in step 5
+      this.wl = new THREE.Mesh(new THREE.SphereGeometry(.09, 20, 14), new THREE.MeshBasicMaterial({ color: '#FFFFFF', transparent: true, opacity: 0, depthWrite: false })); s.add(this.wl);
+      F.storyUpdate = (dt, t) => this.tick(dt, t);
+      this.apply(0); F.renderOnce();
+    }
+    setProgress(p) { this.pT = clamp(p); this.f.start(); }
+    setPublic(on) { this.pubTw = { from: this.pub, to: on ? 1 : 0, t0: performance.now(), d: REDUCE ? 1 : 1700 }; this.f.start(); }
+    tick(dt, t) {
+      // scroll progress is smoothed so any jump in scrolling still eases
+      this.p += (this.pT - this.p) * (REDUCE ? 1 : 1 - Math.exp(-dt * 4.2)); if (Math.abs(this.pT - this.p) < 1e-4) this.p = this.pT;
+      if (this.pubTw) { const k = Math.min(1, (performance.now() - this.pubTw.t0) / this.pubTw.d); this.pub = this.pubTw.from + (this.pubTw.to - this.pubTw.from) * eio(k); if (k >= 1) this.pubTw = null; }
+      this.apply(t);
+    }
+    apply(t) {
+      const F = this.f, p = this.p, pub = this.pub, CH = F.CH, n = F.cabs.length;
+      const step = p < .06 ? 0 : p < .22 ? 1 : p < .36 ? 2 : p < .5 ? 3 : p < .64 ? 4 : p < .8 ? 5 : 6;
+      if (step !== this.step) { this.step = step; this.o.onStep && this.o.onStep(step); }
+      // 2: servers rise, one after another
+      const minX = Math.min(...F.cabs.map(c => c.x)), maxX = Math.max(...F.cabs.map(c => c.x));
+      F.cabs.forEach((c, i) => {
+        const order = (c.x - minX) / Math.max(1, maxX - minX) * .7 + c.row * .3, u = seg(p, .06 + order * .08, .14 + order * .08);
+        c.g.position.y = c.baseY - (1 - u) * (CH + .4); c.g.visible = u > .001;
+        // 3: the platform lights up in a wave
+        const w = seg(p, .22 + order * .07, .29 + order * .07), led = w * (1 - pub * .25);
+        c.leds.forEach((l, k) => { const v = Math.sin(c.seed + k * 1.7 + t * (.6 + (k % 3) * .35)); l.material.color.copy(C.green).multiplyScalar((v > -.75 ? 2.2 : .6) * led + .08); });
+        c.emat.color.copy(c.col).multiplyScalar(.15 + 1.75 * w);
+      });
+      F.faceMat.emissiveIntensity = 1.6 * seg(p, .22, .36);
+      // 4: the boundary draws itself; it dims when the data goes public
+      const b = seg(p, .36, .5), nd = F.dashes.length, glowK = 1 + seg(p, .7, .78) * .6;
+      F.dashes.forEach((d, i) => { const v = clamp((b * 1.08 - i / nd) * 18); d.visible = v > .01; const pulse = .75 + .25 * Math.sin((i / nd * 6 - t * .2) * Math.PI * 2); d.material.color.copy(d.userData.base).lerp(new THREE.Color('#3A3D55'), pub * .8).multiplyScalar(v * (.8 + 1.0 * pulse) * glowK * (1 - pub * .45)); d.scale.y = d.scale.z = .4 + .6 * v; });
+      // 5: the gate rises and switches on; one workload passes and turns green
+      const g = seg(p, .5, .58); F.gateGroup.scale.set(1, Math.max(.001, g), 1); F.gateGroup.visible = g > .002; F.track.material.opacity = .7 * g;
+      const wp = seg(p, .56, .64), gx = F.gateX, gz = F.gateZ;
+      const ok = wp > .55 ? eio((wp - .55) / .2) : 0;
+      F.beamMat.color.copy(C.s1).lerp(C.green, ok * (1 - seg(p, .68, .74))).multiplyScalar(2.4 * seg(p, .54, .58));
+      this.wl.position.set(gx - 3 + wp * 4.4, .08, gz); this.wl.material.opacity = (wp > 0 && wp < 1 ? Math.min(1, wp * 6, (1 - wp) * 6) : 0); this.wl.material.color.set(ok > .5 ? '#BFF5DC' : '#FFFFFF');
+      // 6: the key descends, turns and locks
+      const kd = seg(p, .64, .73), kt = seg(p, .73, .78), lp = this.lockPos;
+      this.lock.scale.setScalar(Math.max(.001, seg(p, .62, .66))); this.ringMat.color.copy(C.s1).lerp(C.green, kt).lerp(C.red, pub).multiplyScalar(.5 + 1.6 * kt);
+      const kp = new THREE.Vector3(lp.x, .55 + (1 - kd) * 3.2, lp.z), out = this.keyCurve.getPoint(eio(pub)); kp.lerp(out, pub);
+      this.key.position.copy(kp); this.key.visible = kd > .001; this.key.rotation.y = kt * Math.PI / 2 * (1 - pub) + pub * 1.2; this.key.rotation.z = pub * .5;
+      this.key.children.forEach(m => { m.material.emissiveIntensity = .35 + .5 * kt * (1 - pub); });
+      // 7: public cloud: lines out to the provider, tags attach; sovereign pulls it all back
+      this.lines.forEach((L, i) => L.geo.setDrawRange(0, Math.floor(L.n * clamp(pub * 1.25 - i * .08))));
+      this.flow.forEach(fl => { const u = (fl.k + t * .18) % 1; fl.pk.position.copy(fl.curve.getPoint(u)); fl.pk.material.opacity = clamp((pub - .8) * 5); });
+      this.tags.forEach((sp, i) => { const v = clamp((pub - .55 - i * .1) * 4); sp.material.opacity = v; sp.position.y += 0; sp.scale.set(3.4 * (.9 + .1 * v), .64 * (.9 + .1 * v), 1); });
+      const pv = eio(clamp(pub * 1.4)); this.provBody.material.opacity = pv; this.provWin.opacity = pv; this.provTag.material.opacity = pv; this.prov.visible = pv > .01;
+      // camera: low and close at the start, easing back as the platform assembles, wide for the comparison
+      const K = [[0, 11.5, 68, 30, 0, .1, .4], [.2, 17, 59, 33, 0, .7, .3], [.5, 18, 56, 37, -.2, .7, .4], [.68, 15.5, 57, 32, .6, .5, .9], [.84, 19, 55, 38, .3, .7, .2], [1, 19, 55, 38, .3, .7, .2]];
+      let a = K[0], z = K[K.length - 1]; for (let i = 0; i < K.length - 1; i++) if (p >= K[i][0] && p <= K[i + 1][0]) { a = K[i]; z = K[i + 1]; break; }
+      const u = eio((p - a[0]) / Math.max(1e-6, z[0] - a[0])), L = (i) => a[i] + (z[i] - a[i]) * u;
+      const r = (L(1) + pub * 9) * (F.camDist / 14.2), phi = L(2) - pub * 4, th = L(3) + pub * 2;
+      const tgt = new THREE.Vector3(L(4) + pub * 4.4, L(5) + pub * 1.6, L(6) - pub * 2.6);
+      F.camera.position.setFromSphericalCoords(r, THREE.MathUtils.degToRad(phi), THREE.MathUtils.degToRad(th)).add(tgt); F.camera.lookAt(tgt);
+      // pause the loop when nothing is moving and the view is settled
+      if (Math.abs(this.pT - this.p) < 1e-4 && !this.pubTw && (p < .2 || REDUCE)) { /* lights still flicker after step 3 */ }
+    }
+  }
+  window.HeroStory = HeroStory;
+
   /* Legacy stack (Features hero): four licence layers on your hardware, replaced by one platform slab */
   class LegacyStack {
     constructor(host) {
@@ -1793,7 +1985,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       const s = this.scene = new THREE.Scene(); const pm = new THREE.PMREMGenerator(r); s.environment = pm.fromScene(new RoomEnvironment(), .04).texture; s.environmentIntensity = .45;
       const cam = this.camera = new THREE.PerspectiveCamera(28, w / h, .1, 100); this.dist = 16; cam.position.setFromSphericalCoords(this.dist, THREE.MathUtils.degToRad(56), THREE.MathUtils.degToRad(40));
       const ctl = this.controls = new OrbitControls(cam, r.domElement); ctl.enableZoom = false; ctl.enablePan = false; ctl.enableDamping = true; ctl.dampingFactor = .08; ctl.rotateSpeed = .5;
-      ctl.minPolarAngle = THREE.MathUtils.degToRad(35); ctl.maxPolarAngle = THREE.MathUtils.degToRad(72); ctl.target.set(0, 2.05, 0); ctl.update();
+      ctl.minPolarAngle = THREE.MathUtils.degToRad(35); ctl.maxPolarAngle = THREE.MathUtils.degToRad(72); ctl.target.set(0, 2.05, 0); ctl.update(); r.domElement.style.touchAction = 'pan-y';
       ctl.addEventListener('start', () => this.userMoved = true);
       s.add(new THREE.HemisphereLight('#AEB8FF', '#06070B', .55));
       const key = new THREE.DirectionalLight('#E6EBFF', 1.6); key.position.set(-5, 9, 6); s.add(key);
@@ -1953,17 +2145,19 @@ $$('form:not(.wizard)').forEach(bindForm);
 
 /* ================= HOME ================= */
 inits['/'] = () => {
-  /* hero: video log + cursor light + parallax */
-  const hero = $('#hero'), hv = $('#herovid'), hlog = $('#herolog'), media = $('#heromedia');
-  const tenants = ['acme-research', 'gov-analytics', 'bank-risk', 'health-ml']; let ti = 0, last = 0, cs = 41;
-  const addLog = () => { const ts = `14:${String(2 + Math.floor(cs / 60)).padStart(2, '0')}:${String(cs % 60).padStart(2, '0')}`; cs += 10; const el = document.createElement('div'); el.innerHTML = `${ts}  <span class="ok">attested</span>  workload admitted to ${tenants[ti++ % 4]}`; hlog.appendChild(el); while (hlog.children.length > 3) hlog.firstChild.remove(); };
-  addLog();
-  if (REDUCE) { hv.removeAttribute('autoplay'); hv.pause(); }
+  /* hero: the platform assembles as you scroll, then public vs. sovereign */
+  const hero = $('#hero'), stage = $('#herostage'), hlines = $$('.slines li', hero), hbars = $$('.sbar i', hero), cmp = $('.cmp', hero);
+  const gl3 = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+  if (REDUCE || !gl3 || !window.HeroStory) { hero.classList.add('static'); }
   else {
-    (function tick() { const t = hv.currentTime || 0; [3.3, 10.3].forEach(m => { if (last < m && t >= m) addLog(); }); last = t; requestAnimationFrame(tick); })();
-    onView(hero, v => v ? hv.play().catch(() => { }) : hv.pause(), .05);
-    hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; hero.style.setProperty('--mx', x * 100 + '%'); hero.style.setProperty('--my', y * 100 + '%'); if (innerWidth > 1080) media.style.transform = `translate(${(x - .5) * -18}px,${(y - .5) * -12}px) scale(1.02)`; });
-    hero.addEventListener('pointerleave', () => media.style.transform = '');
+    let hs = null, cur = 0;
+    const onStep = i => { cur = i; hlines.forEach((l, k) => { l.classList.toggle('on', k === i); l.classList.toggle('past', k < i); }); cmp.classList.toggle('show', i === 6); };
+    const prog = () => { const r = hero.getBoundingClientRect(), span = r.height - innerHeight; return span > 0 ? clamp01(-r.top / span) : 0; };
+    const clamp01 = x => Math.max(0, Math.min(1, x));
+    const upd = () => { const p = prog(); hero.classList.toggle('started', p > .01); hbars.forEach((b, k) => b.style.setProperty('--f', clamp01((p - [0, .06, .22, .36, .5, .64, .8][k]) / ([.06, .22, .36, .5, .64, .8, 1][k] - [0, .06, .22, .36, .5, .64, .8][k])))); hs && hs.setProgress(p); };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { hs = new HeroStory(stage, { onStep }); upd(); });
+    addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+    $$('button', cmp).forEach(b => b.addEventListener('click', () => { const pub = b.dataset.v === 'pub'; $$('button', cmp).forEach(x => x.setAttribute('aria-pressed', x === b)); hs && hs.setPublic(pub); }));
   }
 
   /* 3D fleets (lazy) */

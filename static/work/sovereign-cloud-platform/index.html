@@ -80,8 +80,8 @@ figcaption{font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:1
 .notice button{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;border:0;border-radius:8px;background:transparent;color:var(--dim);font-size:18px;line-height:1;cursor:pointer}.notice button:hover{color:var(--white);background:rgba(255,255,255,.06)}
 .notice[hidden]{display:none}
 .notice b{color:var(--mist);font-weight:500}
-.nav{position:sticky;top:0;z-index:60;transition:transform .35s cubic-bezier(.4,0,.2,1),border-color .3s,background .3s;background:rgba(10,11,16,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
-.nav.hide{transform:translateY(-100%)}
+.nav{position:sticky;top:0;z-index:60;background:rgba(10,11,16,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:transform .55s cubic-bezier(.65,0,.35,1),opacity .45s cubic-bezier(.65,0,.35,1),border-color .3s,background .3s}
+.nav.hide{transform:translateY(-100%);opacity:0}
 .nav.scrolled{border-color:var(--line);background:rgba(10,11,16,.88)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:20px}
 .logo{display:flex;align-items:center;gap:10px}
@@ -278,7 +278,7 @@ footer .lgo{width:150px;height:84px}
 /* PRICING */
 .plans{display:grid;grid-template-columns:1.15fr 1fr;gap:20px;position:relative}
 .plan{position:relative;border-radius:24px;padding:34px;background:rgba(21,23,31,.85);box-shadow:inset 0 0 0 1px var(--line2);display:flex;flex-direction:column;gap:22px;isolation:isolate}
-.plan.feature::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1px;z-index:-1;background:conic-gradient(from var(--a,0deg),transparent 0 55%,var(--s1),var(--s2),var(--s3),transparent 92%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 6s linear infinite}
+.plan.feature::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1px;z-index:-1;background:conic-gradient(from var(--a,0deg),transparent 0 55%,var(--s1),var(--s2),var(--s3),transparent 92%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 16s linear infinite}
 @property --a{syntax:"<angle>";initial-value:0deg;inherits:false}
 @keyframes rot{to{--a:360deg}}
 .ptop{display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -466,7 +466,7 @@ footer .bot{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);di
 
 /* pricing quote card */
 .qcard{border-radius:24px;padding:24px;background:rgba(21,23,31,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px var(--line2),0 40px 90px -40px rgba(90,72,240,.8);display:grid;gap:18px;position:relative;isolation:isolate}
-.qcard::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1px;z-index:-1;background:conic-gradient(from var(--a,0deg),transparent 0 55%,var(--s1),var(--s2),var(--s3),transparent 92%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 6s linear infinite}
+.qcard::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1px;z-index:-1;background:conic-gradient(from var(--a,0deg),transparent 0 55%,var(--s1),var(--s2),var(--s3),transparent 92%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 16s linear infinite}
 .qcard .btn{width:100%}
 .addons{border:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .addons legend{font-size:14px;color:var(--mist);margin-bottom:10px}
@@ -741,15 +741,17 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 .hero.story::before,.hero.story::after{display:none}
 .hero.story .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .hero.story .pin::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#0A0B10 0%,rgba(10,11,16,.82) 30%,rgba(10,11,16,0) 52%),linear-gradient(0deg,#0A0B10 0%,rgba(10,11,16,0) 18%)}
-.hero.story .stage{position:absolute;top:0;right:0;bottom:0;width:66%}
+.hero.story .stage{position:absolute;top:0;right:0;bottom:0;left:0;width:100%}
+.hero.story.static .stage{left:auto;width:66%}
 .hero.story .stage canvas{width:100%!important;height:100%!important;display:block}
 .hero.story .stage .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:none}
-.hero.story .wrap.hgrid{position:relative;z-index:2;height:100%;display:flex;align-items:center;padding-top:40px;padding-bottom:40px}
+.hero.story .wrap.hgrid{position:relative;z-index:2;height:100%;margin-top:0!important;display:flex;align-items:center;padding-top:40px;padding-bottom:40px}
 .hero.story .htext{max-width:540px}
+.hero.story h1{font-size:min(clamp(50px,6.6vw,96px),11vh)}
 .story{margin-top:46px}
-.sbar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:300px}
+.sbar{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:300px}
 .sbar i{height:3px;border-radius:3px;background:rgba(201,204,232,.16);position:relative;overflow:hidden}
-.sbar i::after{content:"";position:absolute;inset:0;background:var(--grad);transform:scaleX(var(--f,0));transform-origin:left;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.sbar i::after{content:"";position:absolute;inset:0;background:var(--grad);background-size:var(--bw,100%) 100%;background-position:var(--bx,0) 0;clip-path:inset(0 calc((1 - var(--f,0)) * 100%) 0 0);transition:clip-path .5s cubic-bezier(.4,0,.2,1)}
 .slines{list-style:none;position:relative;height:62px;margin-top:16px}
 .slines li{position:absolute;left:0;right:0;top:0;font-size:23px;line-height:1.3;letter-spacing:-.015em;color:var(--white);opacity:0;transform:translateY(12px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
 .slines li.on{opacity:1;transform:none}
@@ -758,7 +760,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 .cmp.show{opacity:1;transform:none;pointer-events:auto}
 .cmp button{height:42px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:var(--mist);font-size:15px;cursor:pointer;transition:background .4s cubic-bezier(.4,0,.2,1),color .4s}
 .cmp button[aria-pressed="true"]{background:var(--white);color:var(--ink)}
-.cmp button[data-v="pub"][aria-pressed="true"]{background:#FFB547;color:#1A1205}
+.cmp button[data-v="pub"][aria-pressed="true"]{background:#FF6B79;color:#1A0609}
 .shint{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;color:var(--dim);transition:opacity .6s}
 .shint i{width:22px;height:34px;border-radius:12px;box-shadow:inset 0 0 0 1.5px rgba(201,204,232,.4);position:relative}
 .shint i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--mist);animation:shint 1.8s cubic-bezier(.4,0,.2,1) infinite}
@@ -771,7 +773,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 .hero.story.static .sbar,.hero.story.static .cmp,.hero.story.static .shint{display:none}
 .hero.story.static .slines{height:auto;display:grid;gap:8px}
 .hero.story.static .slines li{position:static;opacity:1;transform:none;font-size:17px;color:var(--mist)}
-@media (max-width:1080px){
+@media (max-width:1080px) and (max-aspect-ratio:5/4),(max-width:700px){
   .hero.story{height:400vh}
   .hero.story .stage{width:100%;height:52%;bottom:auto}
   .hero.story .pin::after{background:linear-gradient(0deg,#0A0B10 44%,rgba(10,11,16,.6) 54%,rgba(10,11,16,0) 66%)}
@@ -799,6 +801,31 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 @media (hover:none){.card:hover,.flip:hover,.post:hover{transform:none}.card:hover .mini{transform:translateX(-50%)}.post:hover .cv img{transform:none}}
 .pc{display:none}@media (hover:none){.pf{display:none}.pc{display:inline}}
 @media (max-width:640px){#repair3d.stage3d.tall{aspect-ratio:1/1}}
+/* hero on short landscape screens: size the type to the height so nothing is cut off */
+@media (min-aspect-ratio:5/4) and (max-height:820px){
+  .hero.story .wrap.hgrid{padding-top:84px;padding-bottom:24px}
+  .hero.story h1{font-size:min(clamp(44px,6.6vw,96px),8.6vh)}
+  .hero.story .lede{font-size:16px;margin-top:14px}
+  .hero.story .ctas{margin-top:20px}
+  .hero.story .story{margin-top:22px}
+  .hero.story .shint{display:none}
+}
+/* Fig. 3: animated gate */
+.stage3d.gate3d{width:100%;aspect-ratio:5/4;cursor:default}
+.gate3d .gfall{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gate3d.live .gfall{display:none}
+@media (max-width:640px){.stage3d.gate3d{aspect-ratio:1/1}}
+.tnote{max-width:760px;margin:18px auto 0;font-size:13px;line-height:1.55;color:#6B6E85;text-align:center}
+/* closing call to action (replaces the per-page form) */
+.signup.cta{padding:130px 0 140px;text-align:center}
+.signup.cta::before{background:radial-gradient(60% 70% at 50% 100%,rgba(90,72,240,.3),transparent 70%)}
+.signup.cta .suglow{right:auto;left:50%;top:auto;bottom:-520px;transform:translateX(-50%)}
+.signup.cta .sugrid{display:flex;flex-direction:column;align-items:center}
+.signup.cta h2{max-width:20ch;margin:0 auto;font-size:clamp(34px,4.4vw,60px);letter-spacing:-.035em;line-height:1.02}
+.signup.cta .lede{max-width:56ch;margin:22px auto 0}
+.signup.cta .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.signup.cta .fine{margin-top:18px;font-size:13px;color:var(--dim)}
+@media (max-width:640px){.signup.cta{padding:88px 0 96px}.signup.cta .ctas .btn{flex:1 1 0}}
 
 
 /* TABLET */
@@ -1022,7 +1049,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         <div class="checks"><i></i><span>Integrity and configuration checks keep running</span></div>
       </div>
       <figure>
-        <div class="tilt" id="tiltimg"><img src="media/gate.jpg" alt="A brushed-metal gate with a cyan laser beam; a sphere of light waits beneath it" loading="lazy"><div class="glare"></div></div>
+        <div class="stage3d gate3d" id="gate3d" role="img" aria-label="Animated 3D gate. A workload waits while its machine boots, its signed report is checked at the gate, and only then does it pass through to your fleet. With a tampered machine, the gate turns red and the workload is turned back."><img class="gfall" src="media/gate.jpg" alt="" loading="lazy"></div>
         <figcaption>Fig. 3  Nothing crosses the gate until the report checks out.</figcaption>
       </figure>
     </div>
@@ -1327,13 +1354,14 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       <table class="ctable">
         <thead><tr><th scope="col">Feature</th><th scope="col">VMware</th><th scope="col">Nutanix</th><th scope="col" class="us">Sovereign Cloud Platform</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Price</th><td>$$$</td><td>$$$</td><td class="us"><b>₹3,000 per core/year</b></td></tr>
-          <tr><th scope="row">Lock-in</th><td class="n">Yes</td><td class="n">Yes</td><td class="us y">No</td></tr>
+          <tr><th scope="row">Price per core, per year</th><td>about ₹33,000</td><td>about ₹43,000</td><td class="us"><b>₹3,000</b></td></tr>
+          <tr><th scope="row">No vendor lock-in</th><td class="n">Locked in</td><td class="n">Locked in</td><td class="us y">No lock-in</td></tr>
           <tr><th scope="row">DPDP compliance</th><td class="n">No</td><td class="n">No</td><td class="us y">Yes</td></tr>
           <tr><th scope="row">Open source</th><td class="n">No</td><td class="n">No</td><td class="us y">Yes</td></tr>
         </tbody>
       </table>
     </div>
+    <p class="tnote">VMware: Cloud Foundation list price, about $350 per core per year. Nutanix: Cloud Infrastructure Pro, about $450 per core per year in typical enterprise deals, as Nutanix doesn't publish list prices. Converted at ₹95 to the US dollar, November 2026. Actual quotes vary with term and scale.</p>
   </div>
 </section>
 </div>
@@ -1473,24 +1501,13 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 
 <!-- shared signup band (cloned into [data-signup]) -->
 <template id="signup">
-<section class="signup dark" aria-label="Get started">
+<section class="signup cta dark" aria-label="Get started">
   <div class="suglow" aria-hidden="true"></div>
   <div class="wrap sugrid">
-    <div>
-      <h2>Build your own sovereign cloud from ₹3,000 per core per year*</h2>
-      <p class="lede">Experience a seamless transition to future-proof infrastructure with clear, transparent pricing, flexible licensing and complete security. Protect everything you own with sovereign infrastructure, built to lower your total cost of ownership.</p>
-      <form class="demo su" novalidate>
-        <div class="two">
-          <div class="field"><label data-for="n">Name <i class="req" aria-hidden="true">*</i></label><input data-id="n" autocomplete="name" placeholder="Your name" required></div>
-          <div class="field"><label data-for="e">Work email <i class="req" aria-hidden="true">*</i></label><input data-id="e" type="email" autocomplete="email" placeholder="you@company.com" required></div>
-        </div>
-        <div class="field"><label data-for="p">Contact number <small>optional</small></label><div class="phone"><span>+91</span><input data-id="p" type="tel" autocomplete="tel-national" placeholder="98765 43210"></div></div>
-        <label class="agree"><input type="checkbox" data-id="a" required><span>You agree to our friendly <a class="ul" href="#/contact">privacy policy</a>.</span></label>
-        <button class="btn btn-sig" type="submit">Get started</button>
-        <p class="note" role="status"></p>
-        <p class="fine">*Conditions apply.</p>
-      </form>
-    </div>
+    <h2>Build your own sovereign cloud from ₹3,000 per core per year.</h2>
+    <p class="lede">Transparent pricing, flexible licensing and complete security, on infrastructure you own. Tell us about your setup and we'll show you the platform on workloads like yours.</p>
+    <div class="ctas"><a class="btn btn-sig" href="#/contact" data-demo>Request a demo</a><a class="btn btn-ghost" href="#/pricing" data-hide-on="/pricing">See pricing</a></div>
+    <p class="fine">Starting list price. Conditions apply.</p>
   </div>
 </section>
 </template>
@@ -1516,7 +1533,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         <form class="nl" novalidate aria-labelledby="nlh"><div class="nlrow"><label for="nle" class="sr">Work email</label><input id="nle" type="email" autocomplete="email" placeholder="you@company.com" required><button class="btn btn-sig" type="submit">Subscribe</button></div><p class="note" role="status"></p></form>
       </div>
     </div>
-    <div class="bot"><span>Concept redesign by Anandita Wagh, 2026. Not affiliated with or endorsed by E2E Networks.</span><span>Original brand identity designed by Anandita Wagh for E2E Networks.</span></div>
+    <div class="bot"><span>Concept redesign by Anandita Wagh, 2026. Not affiliated with or endorsed by E2E Networks.</span><span>Original identity designed by Anandita Wagh for E2E Networks in 2025.</span></div>
   </div>
 </footer>
 
@@ -1719,15 +1736,50 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         this.linkEnd = new THREE.Mesh(new THREE.TorusGeometry(.22, .025, 8, 40), new THREE.MeshBasicMaterial({ color: '#7C82B8' })); this.linkEnd.rotation.x = Math.PI / 2; this.linkEnd.position.set(x0 + dir * (len + .25), -.2, -D / 4); s.add(this.linkEnd);
         // what the link leads to, per mode: your office network (private), a region (sovereign), nothing (air-gapped)
         const ex = x0 + dir * (len + .4), ez = -D / 4;
-        const office = this.endP = new THREE.Group(); const om = new THREE.MeshStandardMaterial({ color: '#2A2E3A', metalness: .5, roughness: .45 });
-        const ob = new THREE.Mesh(new RoundedBoxGeometry(.62, .8, .5, 2, .03), om); ob.position.y = .2; office.add(ob);
-        const wm = new THREE.MeshBasicMaterial({ color: new THREE.Color('#9FDBFF').multiplyScalar(1.4) });
-        for (let r = 0; r < 4; r++) for (let q = 0; q < 3; q++) { const w = new THREE.Mesh(new THREE.BoxGeometry(.11, .07, .01), wm); w.position.set(-.18 + q * .18, -.05 + r * .17, .255); office.add(w); }
-        office.position.set(ex, -.3, ez); s.add(office);
-        const region = this.endS = new THREE.Group(); const pm2 = new THREE.MeshBasicMaterial({ color: C.s3.clone().multiplyScalar(1.6) });
-        const pin = new THREE.Mesh(new THREE.ConeGeometry(.09, .32, 20), pm2); pin.rotation.x = Math.PI; pin.position.y = .1; region.add(pin);
-        const head = new THREE.Mesh(new THREE.SphereGeometry(.12, 20, 14), pm2); head.position.y = .3; region.add(head);
-        region.position.set(ex, -.2, ez); s.add(region);
+        // private: your corporate office tower (glass floors, lit windows, lobby canopy)
+        const office = this.endP = new THREE.Group(); const glass = new THREE.MeshPhysicalMaterial({ color: '#1B2030', metalness: .2, roughness: .08, clearcoat: 1, transmission: 0, envMapIntensity: 1.4 });
+        const slabM = new THREE.MeshStandardMaterial({ color: '#3A3F4E', metalness: .6, roughness: .4 });
+        const winOn = new THREE.MeshBasicMaterial({ color: new THREE.Color('#C8D8F5').multiplyScalar(.62) }), winOff = new THREE.MeshBasicMaterial({ color: '#2A3247' });
+        const OW = .78, OD = .62, FL = 5, FH = .3;
+        for (let f = 0; f < FL; f++) {
+          const y = .08 + f * FH;
+          const body = new THREE.Mesh(new THREE.BoxGeometry(OW - .04, FH - .05, OD - .04), glass); body.position.y = y + FH / 2; office.add(body);
+          const slab = new THREE.Mesh(new RoundedBoxGeometry(OW, .05, OD, 2, .012), slabM); slab.position.y = y; office.add(slab);
+          for (let q = 0; q < 5; q++) { const lit = ((f * 7 + q * 3) % 5) !== 0; const w = new THREE.Mesh(new THREE.PlaneGeometry(.11, FH - .11), lit ? winOn : winOff); w.position.set(-OW / 2 + .1 + q * .145, y + FH / 2 + .005, OD / 2 - .015); office.add(w);
+            if (q < 4) { const w2 = new THREE.Mesh(new THREE.PlaneGeometry(.1, FH - .11), ((f + q) % 3) ? winOn : winOff); w2.rotation.y = Math.PI / 2; w2.position.set(OW / 2 - .015, y + FH / 2 + .005, -OD / 2 + .1 + q * .14); office.add(w2); } }
+        }
+        const roof = new THREE.Mesh(new RoundedBoxGeometry(OW + .02, .07, OD + .02, 2, .015), slabM); roof.position.y = .08 + FL * FH; office.add(roof);
+        const plant = new THREE.Mesh(new RoundedBoxGeometry(.3, .14, .22, 2, .02), slabM); plant.position.set(-.12, .08 + FL * FH + .1, -.08); office.add(plant);
+        const canopy = new THREE.Mesh(new RoundedBoxGeometry(.36, .03, .16, 2, .01), slabM); canopy.position.set(0, .22, OD / 2 + .07); office.add(canopy);
+        const door = new THREE.Mesh(new THREE.PlaneGeometry(.22, .14), new THREE.MeshBasicMaterial({ color: new THREE.Color('#9FDBFF').multiplyScalar(.8) })); door.position.set(0, .13, OD / 2 - .01); office.add(door);
+        const ob = new THREE.Mesh(new THREE.PlaneGeometry(OW * 2.4, OD * 2.4), this.blobMat); ob.rotation.x = -Math.PI / 2; ob.position.y = .002; office.add(ob);
+        this.endPTag = tagSprite('Your office network', '#9FDBFF'); this.endPTag.scale.set(2.1, .4, 1); this.endPTag.position.set(0, .08 + FL * FH + .55, 0); office.add(this.endPTag);
+        office.position.set(ex + .25, -.3, ez); s.add(office);
+        // sovereign: a cloud region data centre inside the region's boundary
+        const region = this.endS = new THREE.Group();
+        const hallM = new THREE.MeshStandardMaterial({ map: getTex().side, metalness: .45, roughness: .5, color: '#C9CEDC' }), hallTop = new THREE.MeshStandardMaterial({ color: '#2B2F3B', metalness: .5, roughness: .55 });
+        const HW2 = 1.25, HD = .78, HH = .42;
+        const hall = new THREE.Mesh(new RoundedBoxGeometry(HW2, HH, HD, 2, .02), [hallM, hallM, hallTop, hallTop, hallM, hallM]); hall.position.y = HH / 2; region.add(hall);
+        const band = new THREE.Mesh(new THREE.BoxGeometry(HW2 + .004, .025, HD + .004), new THREE.MeshBasicMaterial({ color: C.s3.clone().multiplyScalar(1.7) })); band.position.y = HH - .06; region.add(band);
+        const finM = new THREE.MeshStandardMaterial({ color: '#3B4050', metalness: .7, roughness: .35 });
+        for (let q = 0; q < 9; q++) { const fin = new THREE.Mesh(new THREE.BoxGeometry(.018, HH - .1, .03), finM); fin.position.set(-HW2 / 2 + .1 + q * (HW2 - .2) / 8, HH / 2 - .03, HD / 2 + .012); region.add(fin); }
+        this.fans = [];
+        const chM = new THREE.MeshStandardMaterial({ color: '#4A4F5E', metalness: .6, roughness: .4 }), fanM = new THREE.MeshStandardMaterial({ color: '#15171E', metalness: .3, roughness: .6 });
+        for (let q = 0; q < 4; q++) for (let r2 = 0; r2 < 2; r2++) {
+          const ch = new THREE.Mesh(new RoundedBoxGeometry(.22, .1, .22, 2, .02), chM); ch.position.set(-.42 + q * .28, HH + .05, -.16 + r2 * .32); region.add(ch);
+          const fan = new THREE.Group(); fan.position.set(ch.position.x, HH + .102, ch.position.z);
+          fan.add(new THREE.Mesh(new THREE.CylinderGeometry(.085, .085, .008, 24), fanM));
+          for (let k = 0; k < 3; k++) { const bl = new THREE.Mesh(new THREE.BoxGeometry(.15, .004, .03), chM); bl.rotation.y = k * Math.PI / 3; bl.position.y = .006; fan.add(bl); }
+          region.add(fan); this.fans.push(fan);
+        }
+        const dock = new THREE.Mesh(new THREE.PlaneGeometry(.3, .16), new THREE.MeshBasicMaterial({ color: new THREE.Color('#9FDBFF').multiplyScalar(1.1) })); dock.position.set(.38, .1, HD / 2 + .002); region.add(dock);
+        const rb = new THREE.Mesh(new THREE.PlaneGeometry(HW2 * 2.2, HD * 2.6), this.blobMat); rb.rotation.x = -Math.PI / 2; rb.position.y = .002; region.add(rb);
+        // the region's boundary: a dashed ring on the ground around the building
+        this.regionDash = []; const RR = .95;
+        for (let k = 0; k < 40; k++) { const ang = k / 40 * Math.PI * 2; const d = new THREE.Mesh(new THREE.BoxGeometry(.09, .01, .022), new THREE.MeshBasicMaterial({ color: sig(k / 40).multiplyScalar(1.6) })); d.position.set(Math.cos(ang) * RR * 1.15, .006, Math.sin(ang) * RR * .82); d.rotation.y = -ang + Math.PI / 2; region.add(d); this.regionDash.push(d); }
+        this.endSTag = tagSprite('Cloud region in India', '#B79BFF'); this.endSTag.scale.set(2.1, .4, 1); this.endSTag.position.set(0, HH + .75, 0); region.add(this.endSTag);
+        region.position.set(ex + .55, -.3, ez); s.add(region);
+        this.endATag = tagSprite('No outside connection', '#FF8A95'); this.endATag.scale.set(2.1, .4, 1); this.endATag.position.set(x0 + dir * len / 2, .55, -D / 4); s.add(this.endATag);
         this.sparkMat = new THREE.MeshBasicMaterial({ color: C.red.clone().multiplyScalar(2.5), transparent: true, opacity: 0 });
         this.spark = new THREE.Mesh(new THREE.SphereGeometry(.07, 12, 10), this.sparkMat); this.spark.position.set(x0 + dir * len / 2, -.2, -D / 4); s.add(this.spark);
         this.linkPkt = new THREE.Mesh(new THREE.SphereGeometry(.055, 12, 10), new THREE.MeshBasicMaterial({ color: '#CFEFFF' })); s.add(this.linkPkt); this.linkX0 = x0; this.linkLen = len;
@@ -1812,7 +1864,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     }
 
     resize() { const w = this.host.clientWidth, h = this.host.clientHeight; if (!w || !h) return; this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h); this.composer.setSize(w, h); this.bloom.setSize(w, h); this.fit(); if (!this.running) this.renderOnce(); }
-    fit() { const a = this.camera.aspect; const f = a < 1 ? 1.75 : a < 1.4 ? 1.25 : 1; if (this.o.gate === false && this.o.link !== false && !this.o.story) { const dx = (a < 1 ? 1.9 : 1.05) - this.controls.target.x; this.controls.target.x += dx; this.camera.position.x += dx; } this.camDist = 14.2 * f * (this.o.distScale || 1); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.radius = this.camDist; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
+    fit() { const wide = this.o.story && !matchMedia('(max-width:1080px) and (max-aspect-ratio:5/4),(max-width:700px)').matches; const a = this.camera.aspect * (wide ? .66 : 1); this.camera.filmOffset = wide ? -3.05 * this.camera.aspect : 0; this.camera.updateProjectionMatrix(); const f = a < 1 ? 1.75 : a < 1.4 ? 1.25 : 1; if (this.o.gate === false && this.o.link !== false && !this.o.story) { const dx = (a < 1 ? 2.35 : 1.95) - this.controls.target.x; this.controls.target.x += dx; this.camera.position.x += dx; } this.camDist = 14.2 * f * (this.o.distScale || 1) * (this.o.gate === false && this.o.link !== false && !this.o.story ? (a < 1 ? 1.12 : 1.14) : 1); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.radius = this.camDist; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
 
     update(dt) {
       this.t += dt; const t = this.t;
@@ -1853,7 +1905,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         this.linkB.scale.y = 1 - k * .55; this.linkB.position.x = x0 + dr * (L - (L / 4) * (1 - k * .55)); this.linkB.material = this.linkMat;
         this.sparkMat.opacity = k * (.7 + .3 * Math.sin(t * 6)); this.linkEnd.material.color.set(k > .5 ? '#3A3D55' : '#8C91C4');
         const m = this.o.mode; this.endPk = (this.endPk || 0) + ((m === 0 ? 1 : 0) - (this.endPk || 0)) * .1; this.endSk = (this.endSk || 0) + ((m === 1 ? 1 : 0) - (this.endSk || 0)) * .1;
-        this.endP.scale.setScalar(Math.max(.001, this.endPk)); this.endS.scale.setScalar(Math.max(.001, this.endSk)); this.endS.position.y = -.2 + Math.sin(t * 2) * .04; this.linkEnd.visible = m !== 0;
+        this.endP.scale.setScalar(Math.max(.001, this.endPk)); this.endS.scale.setScalar(Math.max(.001, this.endSk)); this.endP.visible = this.endPk > .01; this.endS.visible = this.endSk > .01; this.endPTag.material.opacity = clamp((this.endPk - .6) * 2.5); this.endSTag.material.opacity = clamp((this.endSk - .6) * 2.5); this.endAk = (this.endAk || 0) + ((m === 2 ? 1 : 0) - (this.endAk || 0)) * .1; this.endATag.material.opacity = clamp((this.endAk - .5) * 2); this.endATag.visible = this.endAk > .02; this.fans.forEach((f, i) => f.rotation.y += dt * (6 + i % 3)); this.regionDash.forEach((d, i) => d.material.color.copy(sig(i / 40)).multiplyScalar(.7 + .9 * (.5 + .5 * Math.sin(i / 40 * Math.PI * 4 - t * 1.5)))); this.linkEnd.visible = m === 2;
         const u = (t * .35) % 1; this.linkPkt.visible = k < .3; this.linkPkt.position.set(x0 + dr * (.1 + u * (L - .2)), -.2, -this.D / 4);
       }
       this.stepFault();
@@ -1900,18 +1952,18 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       // the distant public-cloud provider
       const prov = this.prov = new THREE.Group(); prov.position.set(W / 2 + 4.6, 0, -D / 2 - 3.6); s.add(prov);
       const pb = new THREE.Mesh(new RoundedBoxGeometry(2.6, 3.4, 2, 3, .06), new THREE.MeshPhysicalMaterial({ color: '#2B2E3A', metalness: .5, roughness: .45, transparent: true, opacity: 0 })); pb.position.y = 1.7; prov.add(pb); this.provBody = pb;
-      const wmat = this.provWin = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FFB547').multiplyScalar(1.2), transparent: true, opacity: 0 });
+      const wmat = this.provWin = new THREE.MeshBasicMaterial({ color: new THREE.Color('#C9D3EC').multiplyScalar(1.1), transparent: true, opacity: 0 });
       for (let r = 0; r < 6; r++) for (let q = 0; q < 4; q++) { const w = new THREE.Mesh(new THREE.BoxGeometry(.34, .16, .01), wmat); w.position.set(-.84 + q * .56, .6 + r * .46, 1.006); prov.add(w); }
-      this.provTag = tagSprite('Provider, abroad', '#FFB547'); this.provTag.position.set(0, 4.1, 0); this.provTag.scale.set(3.4, .64, 1); prov.add(this.provTag);
+      this.provTag = tagSprite('Provider, abroad', '#FF8A95'); this.provTag.position.set(0, 4.1, 0); this.provTag.scale.set(3.4, .64, 1); prov.add(this.provTag);
       // lines out to the provider, with data flowing and tags attaching
       const end = prov.position.clone().add(new THREE.Vector3(-.9, 3.0, .6));
       this.lines = []; this.flow = [];
-      const lmat = this.lineMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FFB547').multiplyScalar(1.5), transparent: true, opacity: .9 });
+      const lmat = this.lineMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FF5D6C').multiplyScalar(1.4), transparent: true, opacity: .9 });
       [0, 3, 5, 7].map(i => F.cabs[i % F.cabs.length]).forEach((c, i) => {
         const a = new THREE.Vector3(c.x, CH + .08, c.z), m = a.clone().lerp(end, .5).add(new THREE.Vector3(0, 3.2 + i * .35, 0));
         const curve = new THREE.QuadraticBezierCurve3(a, m, end); const geo = new THREE.TubeGeometry(curve, 80, .022, 6, false);
         const mesh = new THREE.Mesh(geo, lmat); geo.setDrawRange(0, 0); s.add(mesh); this.lines.push({ curve, geo, mesh, n: geo.index.count });
-        const pk = new THREE.Mesh(new THREE.SphereGeometry(.05, 10, 8), new THREE.MeshBasicMaterial({ color: '#FFE2B0', transparent: true, opacity: 0 })); s.add(pk); this.flow.push({ pk, curve, k: i / 4 });
+        const pk = new THREE.Mesh(new THREE.SphereGeometry(.05, 10, 8), new THREE.MeshBasicMaterial({ color: '#FFC9CF', transparent: true, opacity: 0 })); s.add(pk); this.flow.push({ pk, curve, k: i / 4 });
       });
       this.tags = [['Foreign law applies', 0, .3], ['Provider holds your keys', 2, .55], ['Data copied abroad', 3, .78]].map(([t, li, u]) => { const sp = tagSprite(t, '#FF8A95'); sp.position.copy(this.lines[li].curve.getPoint(u)).add(new THREE.Vector3(0, .35, 0)); s.add(sp); return sp; });
       this.keyCurve = new THREE.QuadraticBezierCurve3(lockPos.clone().add(new THREE.Vector3(0, .55, 0)), lockPos.clone().lerp(end, .5).add(new THREE.Vector3(0, 4.2, 0)), end.clone().add(new THREE.Vector3(0, .3, 0)));
@@ -1964,7 +2016,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       this.tags.forEach((sp, i) => { const v = clamp((pub - .55 - i * .1) * 4); sp.material.opacity = v; sp.position.y += 0; sp.scale.set(3.4 * (.9 + .1 * v), .64 * (.9 + .1 * v), 1); });
       const pv = eio(clamp(pub * 1.4)); this.provBody.material.opacity = pv; this.provWin.opacity = pv; this.provTag.material.opacity = pv; this.prov.visible = pv > .01;
       // camera: low and close at the start, easing back as the platform assembles, wide for the comparison
-      const K = [[0, 11.5, 68, 30, 0, .1, .4], [.2, 17, 59, 33, 0, .7, .3], [.5, 18, 56, 37, -.2, .7, .4], [.68, 15.5, 57, 32, .6, .5, .9], [.84, 19, 55, 38, .3, .7, .2], [1, 19, 55, 38, .3, .7, .2]];
+      const K = [[0, 21, 60, 31, .2, .3, .2], [.2, 17, 59, 33, 0, .7, .3], [.5, 18, 56, 37, -.2, .7, .4], [.68, 15.5, 57, 32, .6, .5, .9], [.84, 19, 55, 38, .3, .7, .2], [1, 19, 55, 38, .3, .7, .2]];
       let a = K[0], z = K[K.length - 1]; for (let i = 0; i < K.length - 1; i++) if (p >= K[i][0] && p <= K[i + 1][0]) { a = K[i]; z = K[i + 1]; break; }
       const u = eio((p - a[0]) / Math.max(1e-6, z[0] - a[0])), L = (i) => a[i] + (z[i] - a[i]) * u;
       const r = (L(1) + pub * 9) * (F.camDist / 14.2), phi = L(2) - pub * 4, th = L(3) + pub * 2;
@@ -2031,7 +2083,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         const gr = g.createLinearGradient(0, 0, W, W); gr.addColorStop(0, '#3FB6F2'); gr.addColorStop(.55, '#5A48F0'); gr.addColorStop(1, '#9B5CF6'); g.fillStyle = gr; g.fillRect(0, 0, W, W);
         const hl = g.createLinearGradient(0, 0, W * .6, W * .6); hl.addColorStop(0, 'rgba(255,255,255,.3)'); hl.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = hl; g.fillRect(0, 0, W, W);
         // the Sovereign Cloud Platform logo, drawn from the same paths as the site logo, in white
-        const sc = 3.1; g.save(); g.translate(64 + 2 * sc, 64 + 2 * sc); g.scale(sc, sc);
+        const sc = 1.55; g.save(); g.translate(72, 72); g.scale(sc, sc);
         g.strokeStyle = '#fff'; g.lineWidth = 3.4; g.lineCap = g.lineJoin = 'round';
         g.stroke(new Path2D('M68.6 33 C66.5 25 71 18.5 79.7 18.3 C82 8 90 2.9 100.3 2.9 C108 2.9 113.5 7 115.7 12.3 C118.5 9.6 122.5 8.6 126 9.2 M148 36.6 C151 39 152.5 43 151.7 47.4 C150.7 54 146.5 59.4 140 59.4 L80.5 59.4 C78.6 59.4 77.3 58 77.3 56.4'));
         g.fillStyle = '#fff'; g.fill(new Path2D('M141.4 7.1 C142.6 17.5 145.6 20.5 156.8 21.7 C145.6 22.9 142.6 25.9 141.4 36.3 C140.2 25.9 137.2 22.9 126 21.7 C137.2 20.5 140.2 17.5 141.4 7.1Z'));
@@ -2060,6 +2112,119 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     stop() { this.running = false; }
   }
   window.LegacyStack = LegacyStack;
+
+  /* Attestation gate (Fig. 3): driven by the same scroll progress as the four steps beside it */
+  class AttestGate {
+    constructor(host) {
+      this.host = host; this.per = 0; this.perT = 0; this.bad = 0; this.badT = 0; this.t = 0; this.running = false; this.mx = 0; this.my = 0;
+      const w = host.clientWidth, h = host.clientHeight;
+      const r = this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+      r.setPixelRatio(Math.min(devicePixelRatio || 1, 1.75)); r.setSize(w, h); r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.05; r.outputColorSpace = THREE.SRGBColorSpace;
+      host.appendChild(r.domElement); r.domElement.style.display = 'block'; r.domElement.style.touchAction = 'pan-y';
+      const s = this.scene = new THREE.Scene(); s.background = new THREE.Color('#0A0B10');
+      const pm = new THREE.PMREMGenerator(r); s.environment = pm.fromScene(new RoomEnvironment(), 0.04).texture; s.environmentIntensity = .4;
+      this.camera = new THREE.PerspectiveCamera(28, w / h, .1, 100);
+      s.add(new THREE.HemisphereLight('#8C9BFF', '#05060A', .4));
+      const key = new THREE.DirectionalLight('#DCE3FF', 1.3); key.position.set(-5, 9, 7); s.add(key);
+      const rim = new THREE.PointLight('#5A48F0', 14, 22, 1.6); rim.position.set(5, 1.6, -4); s.add(rim);
+      const fill = new THREE.PointLight('#3FB6F2', 14, 18, 1.6); fill.position.set(-5, 2.5, 4); s.add(fill);
+      const comp = this.composer = new EffectComposer(r); comp.addPass(new RenderPass(s, this.camera));
+      this.bloom = new UnrealBloomPass(new THREE.Vector2(w, h), .75, .5, .78); comp.addPass(this.bloom); comp.addPass(new OutputPass());
+      const T = getTex();
+      // floor
+      const glow = new THREE.Mesh(new THREE.PlaneGeometry(18, 12), new THREE.MeshBasicMaterial({ map: radialTexture([[0, 'rgba(90,72,240,.3)'], [.5, 'rgba(63,182,242,.06)'], [1, 'rgba(0,0,0,0)']]), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+      glow.rotation.x = -Math.PI / 2; glow.position.y = -.21; s.add(glow);
+      const plinth = new THREE.Mesh(new RoundedBoxGeometry(7.4, .2, 2.8, 4, .08), new THREE.MeshStandardMaterial({ color: '#1A1C24', metalness: .75, roughness: .32 })); plinth.position.y = -.1; s.add(plinth);
+      const tt = T.tile.clone(); tt.needsUpdate = true; tt.repeat.set(7.2 / .75, 2.6 / .75);
+      const tiles = new THREE.Mesh(new THREE.PlaneGeometry(7.2, 2.6), new THREE.MeshStandardMaterial({ map: tt, metalness: .45, roughness: .55 })); tiles.rotation.x = -Math.PI / 2; tiles.position.y = .002; s.add(tiles);
+      // the lane the workload travels along
+      this.lane = []; for (let i = 0; i < 26; i++) { const m = new THREE.Mesh(new THREE.BoxGeometry(.16, .012, .03), new THREE.MeshBasicMaterial({ color: sig(i / 25).multiplyScalar(1.2) })); m.position.set(-3.2 + i * .256, .008, 0); s.add(m); this.lane.push(m); }
+      // gate: two brushed posts, a header, LED strips, a light curtain and a scanning bar
+      const gm = new THREE.MeshPhysicalMaterial({ color: '#AEB2C2', metalness: 1, roughness: .42 }), G = this.gate = new THREE.Group(); s.add(G);
+      const GH = 1.9, GZ = .95;
+      [-1, 1].forEach(z => { const p = new THREE.Mesh(new RoundedBoxGeometry(.2, GH, .2, 3, .04), gm); p.position.set(0, GH / 2, z * GZ); G.add(p); });
+      const head = new THREE.Mesh(new RoundedBoxGeometry(.24, .2, GZ * 2 + .2, 3, .05), gm); head.position.y = GH + .05; G.add(head);
+      this.strips = [-1, 1].map(z => { const m = new THREE.Mesh(new THREE.BoxGeometry(.03, GH - .3, .03), new THREE.MeshBasicMaterial({ color: C.s1.clone() })); m.position.set(-.105, GH / 2, z * (GZ - .06)); G.add(m); return m; });
+      const curtTex = canvasTex(64, 256, (g, cw, ch) => { const gr = g.createLinearGradient(0, 0, 0, ch); gr.addColorStop(0, 'rgba(255,255,255,.0)'); gr.addColorStop(.15, 'rgba(255,255,255,.55)'); gr.addColorStop(.85, 'rgba(255,255,255,.55)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.fillRect(0, 0, cw, ch); g.fillStyle = 'rgba(255,255,255,.9)'; for (let y = 6; y < ch; y += 14) g.fillRect(0, y, cw, 1.5); });
+      this.curtMat = new THREE.MeshBasicMaterial({ map: curtTex, color: C.s1.clone(), transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide });
+      const curt = new THREE.Mesh(new THREE.PlaneGeometry(GZ * 2 - .2, GH - .2), this.curtMat); curt.rotation.y = Math.PI / 2; curt.position.y = GH / 2; G.add(curt);
+      this.scanMat = new THREE.MeshBasicMaterial({ color: C.s1.clone().multiplyScalar(3), transparent: true, opacity: 0 });
+      this.scan = new THREE.Mesh(new THREE.CylinderGeometry(.018, .018, GZ * 2 - .2, 10), this.scanMat); this.scan.rotation.x = Math.PI / 2; G.add(this.scan);
+      // status screen on the near post
+      this.scr = document.createElement('canvas'); this.scr.width = 512; this.scr.height = 256; this.scrTex = new THREE.CanvasTexture(this.scr); this.scrTex.colorSpace = THREE.SRGBColorSpace;
+      const panel = new THREE.Mesh(new RoundedBoxGeometry(.08, .7, 1.3, 2, .03), new THREE.MeshStandardMaterial({ color: '#20232D', metalness: .6, roughness: .4 })); panel.position.set(-.2, 1.3, GZ + .8); G.add(panel);
+      const scr = new THREE.Mesh(new THREE.PlaneGeometry(1.2, .6), new THREE.MeshBasicMaterial({ map: this.scrTex, toneMapped: false })); scr.rotation.y = -Math.PI / 2; scr.position.set(-.245, 1.3, GZ + .8); G.add(scr);
+      const arm = new THREE.Mesh(new THREE.BoxGeometry(.06, .06, .4), gm); arm.position.set(-.12, 1.3, GZ + .2); G.add(arm);
+      G.rotation.y = 0;
+      // the workload: an orb with measurement rings
+      this.orbMat = new THREE.MeshPhysicalMaterial({ color: '#AEB8F5', emissive: '#5A48F0', emissiveIntensity: .75, metalness: .1, roughness: .15, clearcoat: 1, transparent: true, opacity: 0 });
+      this.orb = new THREE.Mesh(new THREE.SphereGeometry(.26, 32, 24), this.orbMat); s.add(this.orb);
+      this.halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: radialTexture([[0, 'rgba(255,255,255,.9)'], [.35, 'rgba(160,150,255,.35)'], [1, 'rgba(0,0,0,0)']]), color: C.s2.clone(), transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })); this.halo.scale.set(1.5, 1.5, 1); s.add(this.halo);
+      this.rings = [0, 1, 2].map(i => { const m = new THREE.Mesh(new THREE.TorusGeometry(.36 + i * .1, .008, 8, 64), new THREE.MeshBasicMaterial({ color: C.s1.clone().multiplyScalar(1.6), transparent: true, opacity: 0 })); s.add(m); return m; });
+      // the signed report: a small card with a seal
+      const rep = canvasTex(256, 320, (g, cw, ch) => { g.fillStyle = '#F2F4FF'; g.beginPath(); g.roundRect(0, 0, cw, ch, 22); g.fill(); g.fillStyle = '#C9CEE6'; for (let i = 0; i < 6; i++) g.fillRect(28, 40 + i * 30, i % 2 ? 140 : 190, 10); const gr = g.createLinearGradient(140, 220, 230, 300); gr.addColorStop(0, '#3FB6F2'); gr.addColorStop(1, '#9B5CF6'); g.fillStyle = gr; g.beginPath(); g.arc(186, 260, 38, 0, 7); g.fill(); g.strokeStyle = '#fff'; g.lineWidth = 9; g.beginPath(); g.moveTo(168, 260); g.lineTo(182, 274); g.lineTo(206, 246); g.stroke(); });
+      this.card = new THREE.Mesh(new THREE.PlaneGeometry(.34, .425), new THREE.MeshBasicMaterial({ map: rep, transparent: true, opacity: 0, side: THREE.DoubleSide, toneMapped: false })); s.add(this.card);
+      // your fleet on the far side of the gate
+      const rack = this.rack = new THREE.Group(); rack.position.set(2.5, 0, 0); s.add(rack);
+      const rb = new THREE.Mesh(new RoundedBoxGeometry(.9, 1.9, 1.05, 3, .03), new THREE.MeshPhysicalMaterial({ color: '#262A33', metalness: .45, roughness: .5, clearcoat: .15 })); rb.position.y = .95; rack.add(rb);
+      const face = new THREE.Mesh(new THREE.PlaneGeometry(.76, 1.68), new THREE.MeshStandardMaterial({ map: T.face, emissiveMap: T.faceE, emissive: '#FFFFFF', emissiveIntensity: 1.2, metalness: .45, roughness: .5 })); face.rotation.y = -Math.PI / 2; face.position.set(-.452, .95, 0); rack.add(face); this.rackFace = face;
+      const re = new THREE.Mesh(new THREE.BoxGeometry(.03, .03, 1.06), new THREE.MeshBasicMaterial({ color: C.s3.clone().multiplyScalar(1.8) })); re.position.set(-.45, 1.86, 0); rack.add(re);
+      const blob = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 2.1), new THREE.MeshBasicMaterial({ map: T.blob, transparent: true, depthWrite: false })); blob.rotation.x = -Math.PI / 2; blob.position.y = .004; rack.add(blob);
+      this.lastScr = ''; this.drawScreen('boot', 0);
+      host.addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; const b = host.getBoundingClientRect(); this.mx = (e.clientX - b.left) / b.width - .5; this.my = (e.clientY - b.top) / b.height - .5; });
+      host.addEventListener('pointerleave', () => { this.mx = this.my = 0; });
+      new ResizeObserver(() => this.resize()).observe(host);
+      new IntersectionObserver(([en]) => { en.isIntersecting ? this.start() : this.stop(); }, { threshold: .05 }).observe(host);
+      this.clock = new THREE.Clock(); this.resize(); this.apply(); this.composer.render();
+    }
+    drawScreen(state) {
+      if (state === this.lastScr) return; this.lastScr = state;
+      const g = this.scr.getContext('2d'), W = 512, H = 256; g.fillStyle = '#0C0E15'; g.fillRect(0, 0, W, H);
+      const M = { boot: ['Measuring boot', '#9FDBFF', '…'], report: ['Report signed', '#B79BFF', '✓'], check: ['Checking policy', '#9FDBFF', '…'], match: ['Policy match', '#3DDC97', '✓'], admit: ['Admitted', '#3DDC97', '✓'], bad: ['Blocked', '#FF5D6C', '✕'] }[state];
+      g.fillStyle = M[1]; g.globalAlpha = .14; g.fillRect(0, 0, W, H); g.globalAlpha = 1;
+      g.font = '600 30px Geist, system-ui'; g.fillStyle = '#8B90AE'; g.fillText('ATTESTATION', 36, 64);
+      g.font = '600 50px Geist, system-ui'; g.fillStyle = M[1]; g.fillText(M[2] + '  ' + M[0], 36, 150);
+      g.fillStyle = 'rgba(201,204,232,.18)'; g.fillRect(36, 192, W - 72, 8); g.fillStyle = M[1]; g.fillRect(36, 192, (W - 72) * ({ boot: .2, report: .45, check: .65, match: .85, admit: 1, bad: 1 }[state]), 8);
+      this.scrTex.needsUpdate = true;
+    }
+    set(per, bad) { this.perT = clamp(per / 4); this.badT = bad ? 1 : 0; this.start(); }
+    resize() { const w = this.host.clientWidth, h = this.host.clientHeight; if (!w || !h) return; this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h); this.composer.setSize(w, h); this.bloom.setSize(w, h); if (!this.running) { this.apply(); this.composer.render(); } }
+    apply() {
+      const p = this.per * 4, bad = this.bad, t = this.t, ok = 1 - bad;
+      const boot = seg(p, 0, 1), sent = seg(p, 1, 1.8), scanK = clamp((p - 2) / .9), verdict = seg(p, 2.7, 3), go = seg(p, 3, 4);
+      // gate lights come up as the machine boots
+      const base = C.s1.clone().lerp(C.green, verdict * ok * (go > 0 ? 1 : .6)).lerp(C.red, verdict * bad);
+      this.strips.forEach(m => m.material.color.copy(base).multiplyScalar(.3 + 1.9 * boot));
+      const open = go * ok; this.curtMat.color.copy(base); this.curtMat.opacity = boot * (.55 - .45 * open) * (.85 + .15 * Math.sin(t * 6)) + bad * verdict * .25;
+      this.curtMat.map.offset.y = -t * .15;
+      // scanning bar sweeps during the check, then keeps a slow patrol ("checks keep running")
+      const sweep = scanK > 0 && scanK < 1 ? .5 - .5 * Math.cos(scanK * Math.PI * 4) : (p > 3 ? .5 - .5 * Math.cos(t * .9) : 0);
+      this.scan.position.y = .2 + sweep * 1.5; this.scanMat.color.copy(base).multiplyScalar(3); this.scanMat.opacity = (scanK > 0 ? 1 : 0) * (p > 3 && !bad ? .55 : 1);
+      // the orb: waits in front of the gate, then passes through, or is turned back
+      const xOk = -2.3 + go * 4.05, xBad = -2.3 + Math.sin(clamp(go * 1.3) * Math.PI) * .95, x = xOk * ok + xBad * bad;
+      const y = .62 + Math.sin(t * 1.6) * .05 * (1 - go * ok);
+      this.orb.position.set(x, y, 0); this.halo.position.copy(this.orb.position);
+      const into = ok * seg(go, .82, 1), vis = boot * (1 - into);
+      this.orbMat.opacity = vis; this.halo.material.opacity = vis * .5;
+      const oc = C.s2.clone().lerp(C.green, verdict * ok * go).lerp(C.red, bad * verdict);
+      this.orbMat.emissive.copy(oc); this.halo.material.color.copy(oc);
+      this.rings.forEach((m, i) => { const k = (t * .5 + i / 3) % 1; m.position.copy(this.orb.position); m.rotation.set(Math.PI / 2 + Math.sin(t + i) * .5, i, 0); m.scale.setScalar(.8 + k * .5); m.material.opacity = (1 - k) * .8 * (1 - seg(p, .8, 1.2)) * boot; });
+      // the report flies from the orb to the gate's screen
+      const cp = new THREE.Vector3(-.4, 1.3, 1.75), ap = this.orb.position.clone().add(new THREE.Vector3(0, .3, .2));
+      const cu = eio(sent); const pos = ap.clone().lerp(cp, cu); pos.y += Math.sin(cu * Math.PI) * .5; this.card.position.copy(pos);
+      this.card.rotation.set(0, -.5 - cu * 1.1, Math.sin(t * 2) * .05); this.card.material.opacity = sent > 0 ? Math.min(1, sent * 5) * (1 - seg(p, 1.8, 2.05)) : 0; this.card.scale.setScalar(1 - cu * .35);
+      // the rack lights up when the workload arrives
+      this.rackFace.material.emissiveIntensity = .5 + 1.4 * into;
+      this.lane.forEach((m, i) => { const u = i / 25; const lit = ok * go > u - .45 ? 1 : .35; m.material.color.copy(sig(u)).multiplyScalar((.5 + .8 * boot) * lit * (1 - bad * verdict * (u > .45 ? .7 : 0))); });
+      this.drawScreen(bad && p > 2.7 ? 'bad' : p > 3.85 ? 'admit' : p > 2.7 ? 'match' : p > 2 ? 'check' : p > 1 ? 'report' : 'boot');
+      // camera: a gentle three-quarter view that drifts with the pointer
+      const th = -.78 + this.mx * .22 + Math.sin(t * .2) * .04, ph = 1.14 + this.my * .1, R = this.camera.aspect < 1.05 ? 14.5 : this.camera.aspect < 1.3 ? 11.2 : 10.4;
+      this.camera.position.set(Math.sin(th) * R * Math.sin(ph), Math.cos(ph) * R, Math.cos(th) * R * Math.sin(ph)); this.camera.lookAt(.05, .8, .35);
+    }
+    start() { if (this.running) return; this.running = true; this.clock.getDelta(); const loop = () => { if (!this.running) return; const dt = Math.min(.05, this.clock.getDelta()); this.t += REDUCE ? 0 : dt; const k = REDUCE ? 1 : 1 - Math.exp(-dt * 3.2); this.per += (this.perT - this.per) * k; this.bad += (this.badT - this.bad) * k; this.apply(); this.composer.render(); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+    stop() { this.running = false; }
+  }
+  window.AttestGate = AttestGate;
 
 })();
 </script>
@@ -2119,6 +2284,15 @@ function tidyForm(f) {
 }
 window.SCP = { inits, show };
 addEventListener('hashchange', route);
+/* a link to the page you're already on: glide to its top, or to the form on the contact page */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#/"]'); if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  const href = a.getAttribute('href'), cur = location.hash || '#/'; if (href !== cur) return;
+  e.preventDefault();
+  const form = href === '#/contact' ? $('.page.on form.wizard') : null;
+  if (form) { const y = form.getBoundingClientRect().top + scrollY - 110; scrollTo({ top: Math.max(0, y), behavior: REDUCE ? 'auto' : 'smooth' }); if (matchMedia('(hover:hover)').matches) { const f = $('input', form); f && setTimeout(() => f.focus({ preventScroll: true }), 450); } }
+  else scrollTo({ top: 0, behavior: REDUCE ? 'auto' : 'smooth' });
+});
 
 /* ---------- forms ---------- */
 function fieldErr(el, msg) {
@@ -2147,6 +2321,9 @@ $$('form:not(.wizard)').forEach(bindForm);
 inits['/'] = () => {
   /* hero: the platform assembles as you scroll, then public vs. sovereign */
   const hero = $('#hero'), stage = $('#herostage'), hlines = $$('.slines li', hero), hbars = $$('.sbar i', hero), cmp = $('.cmp', hero);
+  /* one gradient spread across all seven progress segments */
+  const sizeBars = () => { const bar = $('.sbar', hero); if (!bar) return; const W = bar.clientWidth; hbars.forEach(b => { b.style.setProperty('--bw', W + 'px'); b.style.setProperty('--bx', -b.offsetLeft + 'px'); }); };
+  sizeBars(); addEventListener('resize', sizeBars); document.fonts && document.fonts.ready.then(sizeBars);
   const gl3 = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
   if (REDUCE || !gl3 || !window.HeroStory) { hero.classList.add('static'); }
   else {
@@ -2198,17 +2375,15 @@ inits['/'] = () => {
 
   /* attestation */
   const flow = $('#flow'), conns = $$('.conn', flow), steps = [$('#s1'), $('#s2'), $('#s3'), $('#s4')]; let tampered = false;
-  function attest() { const r = flow.getBoundingClientRect(); const p = REDUCE ? 1 : Math.max(0, Math.min(1, (innerHeight * .92 - r.top) / (r.height * .85))); const per = p * 4;
+  const gHost = $('#gate3d'); let gate = null;
+  if (gHost && gl3 && window.AttestGate) { gHost.classList.add('live'); gate = new AttestGate(gHost); }
+  function attest() { const r = flow.getBoundingClientRect(); const p = REDUCE ? 1 : Math.max(0, Math.min(1, (innerHeight * .92 - r.top) / (r.height * .85))); const per = p * 4; gate && gate.set(per, tampered);
     steps.forEach((s, i) => s.classList.toggle('done', per > i + .6 && !(tampered && i >= 2)));
     conns.forEach((c, i) => c.style.setProperty('--p', (tampered && i === 2 ? 0 : Math.max(0, Math.min(1, per - i - .6))) * 100 + '%'));
     steps[2].classList.toggle('bad', tampered); $('.st', steps[2]).textContent = tampered ? 'mismatch' : 'match';
     steps[3].classList.toggle('off', tampered); $('.st', steps[3]).textContent = tampered ? 'blocked' : 'admitted'; }
   addEventListener('scroll', () => requestAnimationFrame(attest), { passive: true }); attest();
   $('#tamper').addEventListener('click', e => { tampered = !tampered; e.currentTarget.setAttribute('aria-checked', tampered); attest(); });
-  const tilt = $('#tiltimg');
-  if (!REDUCE) { tilt.addEventListener('pointermove', e => { const r = tilt.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; tilt.style.setProperty('--ry', (x - .5) * 10 + 'deg'); tilt.style.setProperty('--rx', (.5 - y) * 8 + 'deg'); tilt.style.setProperty('--gx', x * 100 + '%'); tilt.style.setProperty('--gy', y * 100 + '%'); });
-    tilt.addEventListener('pointerleave', () => { tilt.style.setProperty('--rx', '0deg'); tilt.style.setProperty('--ry', '0deg'); }); }
-
   /* vault: drag-to-decrypt */
   const vault = $('#vault'), vbody = $('#vbody'), cipher = $('#cipher'), plain = $('#plain');
   const P = [
@@ -2317,11 +2492,9 @@ const icls = ['i1', 'i2', 'i3', 'i4'];
 /* shared: signup bands, spotlights, peaks parallax */
 const tpl = $('#signup'); let sid = 0;
 $$('[data-signup]').forEach(slot => {
-  const n = ++sid, frag = tpl.content.cloneNode(true);
-  $$('[data-id]', frag).forEach(el => { el.id = `su${n}${el.dataset.id}`; el.removeAttribute('data-id'); });
-  $$('[data-for]', frag).forEach(el => { el.htmlFor = `su${n}${el.dataset.for}`; el.removeAttribute('data-for'); });
-  const sec = frag.firstElementChild; slot.replaceWith(frag);
-  bindForm($('form', sec));
+  const frag = tpl.content.cloneNode(true), route = slot.closest('.page') && slot.closest('.page').dataset.route;
+  $$('[data-hide-on]', frag).forEach(el => { if (el.dataset.hideOn === route) el.remove(); });
+  slot.replaceWith(frag);
 });
 $$('.phero.spot,.promocard.spot').forEach(c => { if (REDUCE) return; c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); c.style.setProperty('--x', Math.max(12, Math.min(88, ((e.clientX - r.left) / r.width) * 100)) + '%'); }); });
 

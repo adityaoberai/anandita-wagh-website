@@ -519,7 +519,7 @@ footer .bot{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);di
 .navhidden .progress{top:0}
 .progress i{display:block;height:100%;width:var(--p,0%);background:var(--grad);box-shadow:0 0 12px rgba(90,72,240,.8)}
 .ahero{padding:110px 0 76px;overflow:hidden;isolation:isolate}
-.acover{position:absolute;inset:0;z-index:-1;opacity:.85;background:#0A0B10 right -8vw center/auto 118% no-repeat}
+.acover{position:absolute;inset:0;z-index:-1;opacity:.95;background:#0A0B10 right center/auto 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 28%,#000 58%);mask-image:linear-gradient(90deg,transparent 28%,#000 58%)}
 .ahero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--graphite) 40%,rgba(10,11,16,.55) 62%,rgba(10,11,16,0)),linear-gradient(0deg,var(--graphite),transparent 40%)}
 .ahero h1{font-size:clamp(40px,5vw,68px);letter-spacing:-.045em;line-height:1.02;max-width:20ch;margin-top:18px}
 .ahero .ptags span{background:rgba(255,255,255,.08);color:#C9D2FF}
@@ -840,6 +840,8 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 @media (max-width:640px){.risks{gap:6px;margin-top:10px}.risks li{font-size:12px;padding:6px 10px 6px 22px}.risks li::before{left:9px;width:7px;height:7px;margin-top:-3.5px}}
 /* tablet: mode details sit below the description in two even columns */
 @media (max-width:1080px){.modeinfo{display:flex!important;flex-direction:column;gap:18px}.modeinfo dl{grid-template-columns:1fr 1fr;gap:16px 32px;max-width:560px}}
+.cv img{object-position:72% 50%}
+@media (max-width:760px){.acover{background-size:cover;background-position:70% center;opacity:.4;-webkit-mask-image:none;mask-image:none}}
 
 
 /* TABLET */
@@ -2622,7 +2624,7 @@ inits['/faq'] = p => {
 
 /* ---------- BLOG ---------- */
 const POSTS = [
-  { slug: 'india-digital-independence-ai', img: 'media/blog_independence.svg', alt: 'A key held inside a sealed boundary, with the outside link cut.', title: 'Sovereign Cloud: India\'s Key to Digital Independence in the AI Age', author: 'Kesava Reddy', date: 'May 30, 2025', read: '4 min read', tags: ['Sovereign Cloud', 'Digital Independence', 'AI'],
+  { slug: 'india-digital-independence-ai', img: 'media/blog_independence.jpg', alt: 'A brushed-metal key on a plinth inside a glowing dashed ring, beside a severed cable.', title: 'Sovereign Cloud: India\'s Key to Digital Independence in the AI Age', author: 'Kesava Reddy', date: 'May 30, 2025', read: '4 min read', tags: ['Sovereign Cloud', 'Digital Independence', 'AI'],
     ex: 'AI runs on data, and the data that matters most to a country is the data it can least afford to lose control of.',
     body: [['Introduction', `<p class="lead">AI runs on data, and the data that matters most to a country, from citizen records to financial flows and health systems, is the data it can least afford to lose control of. As India builds AI into public services and industry, where that data lives and whose laws govern it has become a strategic question.</p><p>Sovereign cloud answers that question directly: infrastructure that keeps data, models and operations inside the country and under Indian jurisdiction.</p>`],
       ['Why AI raises the stakes', `<p>Training and running models concentrates enormous amounts of sensitive data in one place. When that place is controlled by a foreign provider, it can be subject to external laws, access requests and service decisions made elsewhere. For regulated sectors, that is a risk that compounds with every new model.</p><blockquote>Digital independence isn't about building everything alone. It's about deciding who holds the keys.</blockquote>`],
@@ -2632,7 +2634,7 @@ const POSTS = [
         <li>${icon('lock', 'i2')}<b>Isolation you can prove</b><span>Air-gapped options, role-based access and encryption, with an audit trail.</span></li>
         <li>${icon('model', 'i3')}<b>Models that stay home</b><span>Training, registries and inference that never leave your jurisdiction.</span></li></ul>`],
       ['The way forward', `<p>The countries that lead in AI will be the ones that can build on their own data with confidence. A sovereign cloud gives Indian enterprises and government the foundation to do exactly that, at a predictable cost and on infrastructure they control.</p>`]] },
-  { slug: 'e2e-sovereign-cloud-platform', img: 'media/blog_platform.svg', alt: 'Eight server racks inside a dashed boundary, entered through a single gate.', title: 'E2E Sovereign Cloud Platform: Revolutionizing Cloud Sovereignty', author: 'Aleena Santhosh', date: 'May 16, 2025', read: '7 min read', tags: ['E2E Sovereign Cloud Platform'],
+  { slug: 'e2e-sovereign-cloud-platform', img: 'media/blog_platform.jpg', alt: 'Eight server racks inside a glowing dashed boundary, entered through a single metal gate with a cyan light curtain.', title: 'E2E Sovereign Cloud Platform: Revolutionizing Cloud Sovereignty', author: 'Aleena Santhosh', date: 'May 16, 2025', read: '7 min read', tags: ['E2E Sovereign Cloud Platform'],
     ex: 'Data sovereignty today is an essential feature of the cloud, not an afterthought.',
     body: [['Introduction', `<p class="lead">Data sovereignty today is an essential feature of the cloud, not an afterthought. Data sovereignty is the idea that data is subject to the laws and regulations of the country where it is generated and stored.</p><p>Organizations with strong data sovereignty can protect their data from cyberattacks while also controlling access. A sovereign cloud provider should help enterprises navigate the complex web of ever-changing regulations and give them greater control over their data. E2E Sovereign Cloud Platform is built for tomorrow's enterprises that aim to achieve complete control over their data and infrastructure.</p><p>In an age when geopolitical tensions could escalate anytime, organizations relying on foreign cloud providers could face service disruptions and compliance challenges. For future-focused organizations, the decision is a no-brainer: sovereign cloud is the way forward.</p>`],
       ['What is the E2E Sovereign Cloud Platform?', `<p>E2E's Sovereign Cloud Platform is an AI-optimized cloud solution that gives enterprises, governments and data centers full control over their digital infrastructure. It enables organizations to build public and private cloud ecosystems with complete autonomy, security and scalability.</p>`],
@@ -2658,7 +2660,7 @@ const POSTS = [
         <li>${icon('hand', 'i4')}<b>Highly customizable</b><span>Flexible configuration adapts to your technical requirements and business processes.</span></li>
         <li>${icon('dr', 'i1')}<b>Disaster recovery ready</b><span>Built-in backup, replication and automated failover protect business continuity.</span></li></ul>`],
       ['Get started', `<p>With increasing concerns around data sovereignty, regulatory compliance and AI-driven workloads, enterprises and governments need a trusted cloud platform that offers complete control over their infrastructure. E2E Sovereign Cloud Platform delivers that control across public, private and hybrid environments, so organizations can build the cloud they need on their own terms.</p>`]] },
-  { slug: 'what-is-sovereign-cloud', img: 'media/blog_sovereign.svg', alt: 'Data inside a dashed boundary, with an arrow from outside stopped at the line.', title: 'What is Sovereign Cloud? Everything You Need to Know!', author: 'Aleena Santhosh', date: 'May 02, 2025', read: '11 min read', tags: ['Sovereign Cloud', 'Data Sovereignty'],
+  { slug: 'what-is-sovereign-cloud', img: 'media/blog_sovereign.jpg', alt: 'A glass cube holding a cloud and servers inside a dashed ring; a beam from outside scatters at the line.', title: 'What is Sovereign Cloud? Everything You Need to Know!', author: 'Aleena Santhosh', date: 'May 02, 2025', read: '11 min read', tags: ['Sovereign Cloud', 'Data Sovereignty'],
     ex: 'A plain-language guide to sovereign cloud: what it is, how it differs from public cloud, and how to evaluate a provider.',
     body: [['Introduction', `<p class="lead">Sovereign cloud has moved from a niche requirement to a board-level question. This guide explains what it means in practice, why residency alone isn't enough, and what to ask a provider before you sign.</p>`],
       ['What is a sovereign cloud?', `<p>Think of it as a cloud with a passport. Every part of it, from the servers and storage to the people who operate it and the contracts that govern it, sits inside one jurisdiction. The organization using it decides who can reach its data, and national law is the only law that applies.</p><p>That matters most when the data is sensitive by nature: citizen records, financial transactions, patient histories, or the training data and weights behind an AI model.</p>`],

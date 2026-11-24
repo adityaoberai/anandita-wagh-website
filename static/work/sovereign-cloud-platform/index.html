@@ -211,7 +211,7 @@ footer .lgo{width:150px;height:84px}
 /* ENCRYPTION vault */
 .vault{position:relative;border-radius:24px;background:linear-gradient(180deg,rgba(27,30,40,.9),rgba(15,16,23,.95));box-shadow:inset 0 0 0 1px var(--line2),0 50px 90px -40px rgba(90,72,240,.55);overflow:hidden}
 .vbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:12px;color:var(--dim);flex-wrap:wrap}
-.vbody{position:relative;height:340px;cursor:none;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+.vbody{position:relative;height:340px;cursor:none;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .vbody pre{position:absolute;inset:0;padding:26px 28px;margin:0;font-family:var(--mono);font-size:15px;line-height:1.9;white-space:pre-wrap;word-break:break-all}
 .vbody pre.plain{white-space:pre;word-break:normal;font-size:15px;line-height:2.25;overflow:hidden}
 .cipher{color:#5F67A8}
@@ -795,6 +795,10 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
   .slines{height:58px;margin-top:12px}.slines li{font-size:19px}
   .cmp button{height:38px;padding:0 14px;font-size:14px}
 }
+/* touch screens: no sticky hover lifts after a tap */
+@media (hover:none){.card:hover,.flip:hover,.post:hover{transform:none}.card:hover .mini{transform:translateX(-50%)}.post:hover .cv img{transform:none}}
+.pc{display:none}@media (hover:none){.pf{display:none}.pc{display:inline}}
+@media (max-width:640px){#repair3d.stage3d.tall{aspect-ratio:1/1}}
 
 
 /* TABLET */
@@ -942,9 +946,9 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         </dl>
       </div>
       <figure>
-        <div class="stage3d" id="fleet3d" role="img" aria-label="Interactive 3D model of an owned GPU fleet inside a glowing boundary. Drag to rotate; hover a cabinet to see its status.">
+        <div class="stage3d" id="fleet3d" role="img" aria-label="Interactive 3D model of an owned GPU fleet inside a glowing boundary. Drag to rotate; hover or tap a cabinet to see its status.">
           <div class="tip" id="tip1"></div>
-          <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg>Drag to rotate. Hover a cabinet.</span>
+          <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg><span class="pf">Drag to rotate. Hover a cabinet.</span><span class="pc">Swipe sideways to rotate. Tap a cabinet.</span></span>
         </div>
         <figcaption>Fig. 2  The fleet stays the same in every mode. Only the boundary's outside link changes.</figcaption>
       </figure>
@@ -1050,9 +1054,9 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       <p class="lede">When a GPU shows warning signs, the platform takes it out of service, moves its jobs, diagnoses it and brings it back. Your team sets the policy. Nothing waits in a ticket queue.</p>
     </div>
     <figure>
-      <div class="stage3d tall" id="repair3d" role="img" aria-label="Interactive 3D fleet. Click any cabinet to inject a fault and watch it repair itself.">
+      <div class="stage3d tall" id="repair3d" role="img" aria-label="Interactive 3D fleet. Click or tap any cabinet to inject a fault and watch it repair itself.">
         <div class="tip" id="tip2"></div>
-        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3"/></svg>Click any cabinet to inject a fault.</span>
+        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="3"/></svg><span class="pf">Click any cabinet to inject a fault.</span><span class="pc">Tap a cabinet twice to inject a fault.</span></span>
       </div>
     </figure>
     <div class="steps" id="steps">
@@ -1190,7 +1194,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     </div>
     <figure class="stackfig">
       <div class="stackgl" id="stackgl" role="img" aria-label="A 3D stack: support contract, monitoring add-on, management console and hypervisor licences sitting on your hardware. Replacing them leaves one Sovereign Cloud Platform layer.">
-        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg>Drag to rotate</span>
+        <span class="hint3d"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 13V5a2 2 0 0 1 4 0v6M12 11V4a2 2 0 0 1 4 0v7M16 11V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-6-3.5L3.5 13a2 2 0 0 1 3.4-2L8 13"/></svg><span class="pf">Drag to rotate</span><span class="pc">Swipe sideways to rotate</span></span>
       </div>
       <div class="stackctl">
         <button class="btn btn-ghost sm" id="unbundle" type="button" aria-pressed="false">Replace the legacy stack</button>
@@ -1605,10 +1609,23 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       this.build();
       // interaction
       this.ray = new THREE.Raycaster(); this.mouse = new THREE.Vector2(-9, -9); this.hover = null;
-      r.domElement.addEventListener('pointermove', (e) => { const b = r.domElement.getBoundingClientRect(); this.mouse.set(((e.clientX - b.left) / b.width) * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1); this.px = e.clientX - b.left; this.py = e.clientY - b.top; });
-      r.domElement.addEventListener('pointerleave', () => { this.mouse.set(-9, -9); this.setHover(null); });
+      // touch: let vertical swipes scroll the page, horizontal drags rotate
+      r.domElement.style.touchAction = 'pan-y';
+      const at = (e) => { const b = r.domElement.getBoundingClientRect(); this.px = e.clientX - b.left; this.py = e.clientY - b.top; return new THREE.Vector2((this.px / b.width) * 2 - 1, -(this.py / b.height) * 2 + 1); };
+      r.domElement.addEventListener('pointermove', (e) => { if (e.pointerType === 'touch') return; this.mouse.copy(at(e)); });
+      r.domElement.addEventListener('pointerleave', (e) => { if (e.pointerType === 'touch') return; this.mouse.set(-9, -9); this.setHover(null); });
       let down = null; r.domElement.addEventListener('pointerdown', (e) => down = [e.clientX, e.clientY]);
-      r.domElement.addEventListener('pointerup', (e) => { if (down && Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 6) this.click(); down = null; });
+      r.domElement.addEventListener('pointerup', (e) => {
+        const tapped = down && Math.hypot(e.clientX - down[0], e.clientY - down[1]) < 10; down = null; if (!tapped) return;
+        if (e.pointerType !== 'touch') { this.click(); return; }
+        // touch: first tap shows a rack's details, a second tap on the same rack acts on it
+        this.touchMode = true; this.ray.setFromCamera(at(e), this.camera);
+        const hits = this.ray.intersectObjects(this.cabs.map(c => c.hit), false), cab = hits.length ? hits[0].object.userData.cab : null;
+        if (cab && cab === this.hover) this.click(); else this.setHover(cab);
+        if (this.hover) this.updateTip(); if (!this.running) this.renderOnce();
+      });
+      r.domElement.addEventListener('pointercancel', () => { down = null; });
+      document.addEventListener('pointerdown', (e) => { if (e.pointerType === 'touch' && this.hover && !r.domElement.contains(e.target)) this.setHover(null); }, { passive: true });
       new ResizeObserver(() => this.resize()).observe(host);
       new IntersectionObserver(([en]) => { en.isIntersecting ? this.start() : this.stop(); }, { threshold: .05 }).observe(host);
       this.clock = new THREE.Clock(); this.renderOnce();
@@ -1742,8 +1759,8 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     updateTip() {
       const tip = this.o.tooltip, c = this.hover; if (!tip || !c) return;
       const st = c.state === 'ok' ? 'Healthy' : c.state === 'done' ? 'Back in service' : 'Repairing';
-      tip.innerHTML = `<b>${c.name}</b><span>${c.hw[0]}</span><span>Running <em>${c.hw[1]}</em></span><span>GPU load <em>${c.util}%</em></span><span>Tenant <em>${c.tenant}</em></span><span class="st ${c.state === 'ok' || c.state === 'done' ? 'ok' : 'warn'}">${st}</span>` + (this.o.interactive === 'repair' && (c.state === 'ok' || c.state === 'done') ? '<span class="hint">Click to inject a fault</span>' : '');
-      tip.style.transform = `translate(${Math.min(this.px + 16, this.host.clientWidth - 210)}px, ${Math.max(this.py - 20, 8)}px)`;
+      tip.innerHTML = `<b>${c.name}</b><span>${c.hw[0]}</span><span>Running <em>${c.hw[1]}</em></span><span>GPU load <em>${c.util}%</em></span><span>Tenant <em>${c.tenant}</em></span><span class="st ${c.state === 'ok' || c.state === 'done' ? 'ok' : 'warn'}">${st}</span>` + (this.o.interactive === 'repair' && (c.state === 'ok' || c.state === 'done') ? `<span class="hint">${this.fault ? 'Another rack is being repaired. Try again in a moment.' : this.touchMode ? 'Tap again to inject a fault' : 'Click to inject a fault'}</span>` : '');
+      tip.style.transform = `translate(${Math.max(8, Math.min(this.px + 16, this.host.clientWidth - tip.offsetWidth - 8))}px, ${Math.max(8, Math.min(this.py - 20, this.host.clientHeight - tip.offsetHeight - 8))}px)`;
     }
 
     click() { if (this.o.interactive === 'repair' && this.hover) this.injectFault(this.hover); }
@@ -1795,7 +1812,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     }
 
     resize() { const w = this.host.clientWidth, h = this.host.clientHeight; if (!w || !h) return; this.camera.aspect = w / h; this.camera.updateProjectionMatrix(); this.renderer.setSize(w, h); this.composer.setSize(w, h); this.bloom.setSize(w, h); this.fit(); if (!this.running) this.renderOnce(); }
-    fit() { const a = this.camera.aspect; const f = a < 1 ? 1.75 : a < 1.4 ? 1.25 : 1; this.camDist = 14.2 * f * (this.o.distScale || 1); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.radius = this.camDist; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
+    fit() { const a = this.camera.aspect; const f = a < 1 ? 1.75 : a < 1.4 ? 1.25 : 1; if (this.o.gate === false && this.o.link !== false && !this.o.story) { const dx = (a < 1 ? 1.9 : 1.05) - this.controls.target.x; this.controls.target.x += dx; this.camera.position.x += dx; } this.camDist = 14.2 * f * (this.o.distScale || 1); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.radius = this.camDist; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
 
     update(dt) {
       this.t += dt; const t = this.t;
@@ -1841,7 +1858,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       }
       this.stepFault();
       // hover pick
-      if (this.mouse.x > -2) { this.ray.setFromCamera(this.mouse, this.camera); const hits = this.ray.intersectObjects(this.cabs.map(c => c.hit), false); this.setHover(hits.length ? hits[0].object.userData.cab : null); if (this.hover) this.updateTip(); }
+      if (this.mouse.x > -2) { this.ray.setFromCamera(this.mouse, this.camera); const hits = this.ray.intersectObjects(this.cabs.map(c => c.hit), false); this.setHover(hits.length ? hits[0].object.userData.cab : null); if (this.hover) this.updateTip(); } else if (this.touchMode && this.hover) this.updateTip();
     }
 
     renderOnce() { this.update(0); this.composer.render(); }
@@ -1968,7 +1985,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       const s = this.scene = new THREE.Scene(); const pm = new THREE.PMREMGenerator(r); s.environment = pm.fromScene(new RoomEnvironment(), .04).texture; s.environmentIntensity = .45;
       const cam = this.camera = new THREE.PerspectiveCamera(28, w / h, .1, 100); this.dist = 16; cam.position.setFromSphericalCoords(this.dist, THREE.MathUtils.degToRad(56), THREE.MathUtils.degToRad(40));
       const ctl = this.controls = new OrbitControls(cam, r.domElement); ctl.enableZoom = false; ctl.enablePan = false; ctl.enableDamping = true; ctl.dampingFactor = .08; ctl.rotateSpeed = .5;
-      ctl.minPolarAngle = THREE.MathUtils.degToRad(35); ctl.maxPolarAngle = THREE.MathUtils.degToRad(72); ctl.target.set(0, 2.05, 0); ctl.update();
+      ctl.minPolarAngle = THREE.MathUtils.degToRad(35); ctl.maxPolarAngle = THREE.MathUtils.degToRad(72); ctl.target.set(0, 2.05, 0); ctl.update(); r.domElement.style.touchAction = 'pan-y';
       ctl.addEventListener('start', () => this.userMoved = true);
       s.add(new THREE.HemisphereLight('#AEB8FF', '#06070B', .55));
       const key = new THREE.DirectionalLight('#E6EBFF', 1.6); key.position.set(-5, 9, 6); s.add(key);

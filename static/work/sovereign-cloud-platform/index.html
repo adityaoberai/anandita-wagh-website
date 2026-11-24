@@ -511,25 +511,16 @@ footer .bot{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);di
 .post.big .ex{font-size:16px}
 .post.big .pm{margin-top:10px}
 .cv{background:#0A0B10}
-.cv::before,.cv::after{content:"";position:absolute;inset:-30%;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
-.post:hover .cv::before{transform:rotate(8deg) scale(1.06)}
-.post:hover .cv::after{transform:translate(4%,-3%)}
-.cv.c1::before{background:radial-gradient(40% 30% at 30% 60%,rgba(159,219,255,.95),transparent 70%),radial-gradient(35% 45% at 65% 40%,rgba(90,72,240,.9),transparent 70%),radial-gradient(30% 30% at 80% 80%,rgba(155,92,246,.8),transparent 70%);filter:blur(10px)}
-.cv.c1::after{background:repeating-radial-gradient(circle at 20% 120%,transparent 0 22px,rgba(255,255,255,.14) 23px 24px);opacity:.7}
-.cv.c2::before{background:conic-gradient(from 210deg at 50% 70%,#0A0B10,#3FB6F2 60deg,#5A48F0 120deg,#9B5CF6 170deg,#0A0B10 220deg);filter:blur(28px)}
-.cv.c2::after{background:repeating-linear-gradient(115deg,transparent 0 30px,rgba(255,255,255,.09) 31px 32px)}
-.cv.c3::before{background:radial-gradient(60% 40% at 50% 100%,rgba(255,181,71,.75),transparent 70%),radial-gradient(50% 50% at 20% 30%,rgba(63,182,242,.8),transparent 70%),radial-gradient(45% 50% at 85% 25%,rgba(155,92,246,.85),transparent 70%);filter:blur(16px)}
-.cv.c3::after{background:var(--dots);opacity:.35;inset:0}
-.cv .cvt{position:absolute;left:20px;bottom:16px;z-index:1;font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:12px;color:rgba(255,255,255,.85)}
+.cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.post:hover .cv img{transform:scale(1.04)}
 
 /* article */
 .progress{position:fixed;left:0;right:0;top:70px;height:3px;z-index:61;pointer-events:none;transition:top .35s cubic-bezier(.4,0,.2,1)}
 .navhidden .progress{top:0}
 .progress i{display:block;height:100%;width:var(--p,0%);background:var(--grad);box-shadow:0 0 12px rgba(90,72,240,.8)}
 .ahero{padding:110px 0 76px;overflow:hidden;isolation:isolate}
-.acover{position:absolute;inset:0;z-index:-1;opacity:.55}
-.acover::before,.acover::after{inset:-20%}
-.ahero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--graphite) 25%,rgba(10,11,16,.4)),linear-gradient(0deg,var(--graphite),transparent 50%)}
+.acover{position:absolute;inset:0;z-index:-1;opacity:.85;background:#0A0B10 right -8vw center/auto 118% no-repeat}
+.ahero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--graphite) 40%,rgba(10,11,16,.55) 62%,rgba(10,11,16,0)),linear-gradient(0deg,var(--graphite),transparent 40%)}
 .ahero h1{font-size:clamp(40px,5vw,68px);letter-spacing:-.045em;line-height:1.02;max-width:20ch;margin-top:18px}
 .ahero .ptags span{background:rgba(255,255,255,.08);color:#C9D2FF}
 .ameta{margin-top:24px;color:var(--dim);font-size:15px}.ameta b{color:var(--white);font-weight:500}
@@ -745,6 +736,65 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 .links a[aria-current="page"]::after{display:none}
 .links .ind{position:absolute;bottom:-2px;height:2px;border-radius:2px;background:var(--grad);left:0;width:0;opacity:0;transition:left .55s cubic-bezier(.65,0,.35,1),width .55s cubic-bezier(.65,0,.35,1),opacity .35s cubic-bezier(.4,0,.2,1);pointer-events:none}
 @media (min-width:1081px){.svcard header p{min-height:4.65em}}
+/* ===== HERO SCROLL STORY ===== */
+.hero.story{display:block;min-height:0;height:440vh;overflow:visible;padding:0}
+.hero.story::before,.hero.story::after{display:none}
+.hero.story .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.hero.story .pin::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#0A0B10 0%,rgba(10,11,16,.82) 30%,rgba(10,11,16,0) 52%),linear-gradient(0deg,#0A0B10 0%,rgba(10,11,16,0) 18%)}
+.hero.story .stage{position:absolute;top:0;right:0;bottom:0;width:66%}
+.hero.story .stage canvas{width:100%!important;height:100%!important;display:block}
+.hero.story .stage .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:none}
+.hero.story .wrap.hgrid{position:relative;z-index:2;height:100%;display:flex;align-items:center;padding-top:40px;padding-bottom:40px}
+.hero.story .htext{max-width:540px}
+.story{margin-top:46px}
+.sbar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:300px}
+.sbar i{height:3px;border-radius:3px;background:rgba(201,204,232,.16);position:relative;overflow:hidden}
+.sbar i::after{content:"";position:absolute;inset:0;background:var(--grad);transform:scaleX(var(--f,0));transform-origin:left;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.slines{list-style:none;position:relative;height:62px;margin-top:16px}
+.slines li{position:absolute;left:0;right:0;top:0;font-size:23px;line-height:1.3;letter-spacing:-.015em;color:var(--white);opacity:0;transform:translateY(12px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.slines li.on{opacity:1;transform:none}
+.slines li.past{transform:translateY(-12px)}
+.cmp{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:rgba(21,23,31,.85);box-shadow:inset 0 0 0 1px var(--line2);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.cmp.show{opacity:1;transform:none;pointer-events:auto}
+.cmp button{height:42px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:var(--mist);font-size:15px;cursor:pointer;transition:background .4s cubic-bezier(.4,0,.2,1),color .4s}
+.cmp button[aria-pressed="true"]{background:var(--white);color:var(--ink)}
+.cmp button[data-v="pub"][aria-pressed="true"]{background:#FFB547;color:#1A1205}
+.shint{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;color:var(--dim);transition:opacity .6s}
+.shint i{width:22px;height:34px;border-radius:12px;box-shadow:inset 0 0 0 1.5px rgba(201,204,232,.4);position:relative}
+.shint i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--mist);animation:shint 1.8s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes shint{0%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+.hero.story.started .shint{opacity:0}
+/* still version: reduced motion or no 3D */
+.hero.story.static{height:auto}
+.hero.story.static .pin{position:relative;height:auto;min-height:100vh}
+.hero.story.static .stage .still{display:block;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 74%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 14%,#000 74%,transparent)}
+.hero.story.static .sbar,.hero.story.static .cmp,.hero.story.static .shint{display:none}
+.hero.story.static .slines{height:auto;display:grid;gap:8px}
+.hero.story.static .slines li{position:static;opacity:1;transform:none;font-size:17px;color:var(--mist)}
+@media (max-width:1080px){
+  .hero.story{height:400vh}
+  .hero.story .stage{width:100%;height:52%;bottom:auto}
+  .hero.story .pin::after{background:linear-gradient(0deg,#0A0B10 44%,rgba(10,11,16,.6) 54%,rgba(10,11,16,0) 66%)}
+  .hero.story .wrap.hgrid{align-items:flex-end;padding-bottom:40px}
+  .hero.story .htext{max-width:640px}
+  .story{margin-top:26px}
+  .shint{display:none}
+  .hero.story.static .stage{position:relative;height:auto;aspect-ratio:16/10}
+  .hero.story.static .wrap.hgrid{height:auto}
+}
+@media (max-width:640px){
+  .hero.story{height:380vh}
+  .hero.story .stage{height:46%}
+  .hero.story .pin::after{background:linear-gradient(0deg,#0A0B10 50%,rgba(10,11,16,.6) 58%,rgba(10,11,16,0) 66%)}
+  .hero.story h1{font-size:clamp(34px,10vw,46px)}
+  .hero.story .lede{display:none}
+  .hero.story.static .lede{display:block}
+  .hero.story .ctas{margin-top:18px}
+  .hero.story .ctas .btn{flex:1 1 0!important;height:46px;padding:0 12px}
+  .story{margin-top:20px}
+  .slines{height:58px;margin-top:12px}.slines li{font-size:19px}
+  .cmp button{height:38px;padding:0 14px;font-size:14px}
+}
 
 
 /* TABLET */
@@ -834,18 +884,23 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 <!-- HOME PAGE -->
 <div class="page" data-route="/">
 
-<section class="hero" id="hero" aria-labelledby="h1">
-  <div class="media" id="heromedia" aria-hidden="true"><img class="poster" src="media/hero_poster.jpg" alt="">
-  <video id="herovid" autoplay muted loop playsinline preload="auto" poster="media/hero_poster.jpg"><source src="media/hero.mp4" type="video/mp4"></video></div>
-  <div class="wrap">
-    <h1 id="h1">Run your AI cloud on your own terms.</h1>
-    <p class="lede">Training clusters and inference endpoints on GPUs you own and operate. Your data and your encryption keys stay with you.</p>
-    <div class="ctas"><a class="btn btn-sig" href="#/contact">Request a demo</a><a class="btn btn-ghost" href="#attest">See how attestation works</a></div>
+<section class="hero story" id="hero" aria-labelledby="h1">
+  <div class="pin">
+    <div class="stage" id="herostage" aria-hidden="true"><img class="still" src="media/hero_story_poster.jpg" alt=""></div>
+    <div class="wrap hgrid">
+      <div class="htext">
+        <h1 id="h1">Run your AI cloud on your own terms.</h1>
+        <p class="lede">Training clusters and inference endpoints on GPUs you own and operate. Your data and your encryption keys stay with you.</p>
+        <div class="ctas"><a class="btn btn-sig" href="#/contact">Request a demo</a><a class="btn btn-ghost" href="#attest">See how attestation works</a></div>
+        <div class="story">
+          <div class="sbar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <ol class="slines" aria-live="polite"><li class="on">It starts with a floor you own.</li><li>Your servers, in your building.</li><li>One platform lights up across them.</li><li>A boundary only you control.</li><li>Every workload is checked at the gate.</li><li>Your keys. Your jurisdiction.</li><li>Now compare: public cloud, or yours?</li></ol>
+          <div class="cmp" role="group" aria-label="Compare public cloud with sovereign cloud"><button type="button" data-v="pub" aria-pressed="false">Public cloud</button><button type="button" data-v="sov" aria-pressed="true">Sovereign cloud</button></div>
+        </div>
+      </div>
+    </div>
+    <p class="shint" aria-hidden="true"><i></i>Scroll to build it</p>
   </div>
-  <div class="hud"><div class="wrap">
-    <figcaption>Fig. 1  A workload waits at the gate until its signed report checks out.</figcaption>
-    <div class="log" id="herolog" aria-live="off"></div>
-  </div></div>
 </section>
 
 <section class="proof dark rules" aria-label="Proof">
@@ -1586,10 +1641,10 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
       const frameMat = new THREE.MeshStandardMaterial({ color: '#2A2D37', metalness: .6, roughness: .38 });
       const sideMat = new THREE.MeshStandardMaterial({ map: T.side, bumpMap: T.sideB, bumpScale: 1.4, metalness: .3, roughness: .62 });
       const topMat = new THREE.MeshStandardMaterial({ map: T.top, bumpMap: T.topB, bumpScale: 1.2, metalness: .3, roughness: .7 });
-      const faceMat = new THREE.MeshStandardMaterial({ map: T.face, emissiveMap: T.faceE, emissive: '#FFFFFF', emissiveIntensity: 1.6, metalness: .45, roughness: .5 });
+      const faceMat = this.faceMat = new THREE.MeshStandardMaterial({ map: T.face, emissiveMap: T.faceE, emissive: '#FFFFFF', emissiveIntensity: 1.6, metalness: .45, roughness: .5 });
       const handleMat = new THREE.MeshStandardMaterial({ color: '#A5AABB', metalness: 1, roughness: .25 });
       const footMat = new THREE.MeshStandardMaterial({ color: '#0E0F14', metalness: .4, roughness: .7 });
-      const blobMat = new THREE.MeshBasicMaterial({ map: T.blob, transparent: true, depthWrite: false });
+      const blobMat = this.blobMat = new THREE.MeshBasicMaterial({ map: T.blob, transparent: true, depthWrite: false });
       const bodyGeo = new RoundedBoxGeometry(CW, CH, CD, 3, .035), ledGeo = new THREE.BoxGeometry(.03, .018, .012);
       const FW = CW - .16, FH = CH - .26, U = 10, uh = FH / U;
       let idx = 0;
@@ -1634,10 +1689,10 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
         const p1 = new THREE.Mesh(post, gm); p1.position.set(0, .75, -.6); const p2 = p1.clone(); p2.position.z = .6; const t = new THREE.Mesh(top, gm); t.position.y = 1.5; gg.add(p1, p2, t);
         this.beamMat = new THREE.MeshBasicMaterial({ color: C.s1.clone().multiplyScalar(2.4) });
         const beam = new THREE.Mesh(new THREE.CylinderGeometry(.03, .03, 1.2, 10), this.beamMat); beam.rotation.x = Math.PI / 2; beam.position.y = .55; gg.add(beam);
-        gg.position.set(-W / 2 + 1.1, 0, this.gateZ); s.add(gg); this.gateX = gg.position.x;
+        gg.position.set(-W / 2 + 1.1, 0, this.gateZ); s.add(gg); this.gateX = gg.position.x; this.gateGroup = gg;
         this.inPacket = new THREE.Mesh(new THREE.SphereGeometry(.09, 20, 14), new THREE.MeshBasicMaterial({ color: '#FFFFFF', transparent: true, opacity: 0, depthWrite: false })); s.add(this.inPacket); this.route = null; this.loopN = -1;
         const track = new THREE.Mesh(new THREE.BoxGeometry(6, .01, .025), new THREE.MeshBasicMaterial({ color: C.s2.clone().multiplyScalar(.9), transparent: true, opacity: .7 }));
-        track.position.set(this.gateX - 3.1, -.29, this.gateZ); s.add(track);
+        track.position.set(this.gateX - 3.1, -.29, this.gateZ); s.add(track); this.track = track;
       }
       // outside link
       if (o.link) {
@@ -1744,6 +1799,7 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
 
     update(dt) {
       this.t += dt; const t = this.t;
+      if (this.o.story) { this.storyUpdate && this.storyUpdate(dt, t); return; }
       // idle sway until user drags
       if (!this.userMoved && !REDUCE) { const az = THREE.MathUtils.degToRad(38 + Math.sin(t * .25) * 9); const sp = new THREE.Spherical().setFromVector3(this.camera.position.clone().sub(this.controls.target)); sp.theta = az; this.camera.position.setFromSpherical(sp).add(this.controls.target); }
       this.controls.update();
@@ -1793,6 +1849,116 @@ form.demo .agree,form.wizard .agree{margin:4px 0 18px}
     stop() { this.running = false; }
   }
   window.Fleet = Fleet;
+  /* Hero scroll story: the platform assembles step by step, then compares public and sovereign cloud */
+  const eio = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  const seg = (p, a, b) => eio((p - a) / (b - a));
+  function tagSprite(text, color) {
+    const c = document.createElement('canvas'); c.width = 640; c.height = 120; const g = c.getContext('2d');
+    g.font = '500 44px Geist, system-ui'; const w = Math.min(620, g.measureText(text).width + 84);
+    g.fillStyle = 'rgba(14,15,22,.92)'; g.beginPath(); g.roundRect((640 - w) / 2, 14, w, 92, 46); g.fill(); g.strokeStyle = color; g.lineWidth = 4; g.stroke();
+    g.fillStyle = color; g.beginPath(); g.arc((640 - w) / 2 + 40, 60, 9, 0, 7); g.fill();
+    g.fillStyle = '#F2F3FA'; g.textBaseline = 'middle'; g.fillText(text, (640 - w) / 2 + 62, 62);
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace;
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthTest: false, opacity: 0 })); sp.scale.set(2.6, .49, 1); sp.renderOrder = 10; return sp;
+  }
+  class HeroStory {
+    constructor(host, opts = {}) {
+      this.o = opts; this.p = 0; this.pT = 0; this.pub = 0; this.pubT = 0; this.step = -1;
+      const F = this.f = new Fleet(host, { story: true, gate: true, link: false, interactive: 'none', mode: 1 });
+      F.controls.enabled = false; F.userMoved = true; F.renderer.domElement.style.cursor = 'default';
+      const s = F.scene, W = F.W, D = F.D, CH = F.CH;
+      // lock on the front-right of the platform, and the key
+      const lockPos = this.lockPos = new THREE.Vector3(W / 2 - 1.0, 0, D / 2 - .55);
+      const lock = this.lock = new THREE.Group(); lock.position.copy(lockPos); s.add(lock);
+      lock.add(new THREE.Mesh(new RoundedBoxGeometry(.46, .22, .46, 3, .05), new THREE.MeshPhysicalMaterial({ color: '#262A35', metalness: .7, roughness: .35 }))); lock.children[0].position.y = .11;
+      this.ringMat = new THREE.MeshBasicMaterial({ color: C.s1.clone().multiplyScalar(.4) });
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(.16, .022, 10, 40), this.ringMat); ring.rotation.x = Math.PI / 2; ring.position.y = .225; lock.add(ring);
+      const km = new THREE.MeshPhysicalMaterial({ color: '#D9DCF0', metalness: 1, roughness: .22, clearcoat: .6, emissive: '#5A48F0', emissiveIntensity: .35 });
+      const key = this.key = new THREE.Group();
+      const head = new THREE.Mesh(new THREE.TorusGeometry(.2, .06, 14, 40), km); head.position.y = .62; key.add(head);
+      const shaft = new THREE.Mesh(new THREE.CylinderGeometry(.04, .04, .7, 14), km); shaft.position.y = .12; key.add(shaft);
+      const t1 = new THREE.Mesh(new THREE.BoxGeometry(.14, .06, .05), km); t1.position.set(.08, -.06, 0); key.add(t1);
+      const t2 = new THREE.Mesh(new THREE.BoxGeometry(.1, .06, .05), km); t2.position.set(.06, .06, 0); key.add(t2);
+      s.add(key);
+      // the distant public-cloud provider
+      const prov = this.prov = new THREE.Group(); prov.position.set(W / 2 + 4.6, 0, -D / 2 - 3.6); s.add(prov);
+      const pb = new THREE.Mesh(new RoundedBoxGeometry(2.6, 3.4, 2, 3, .06), new THREE.MeshPhysicalMaterial({ color: '#2B2E3A', metalness: .5, roughness: .45, transparent: true, opacity: 0 })); pb.position.y = 1.7; prov.add(pb); this.provBody = pb;
+      const wmat = this.provWin = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FFB547').multiplyScalar(1.2), transparent: true, opacity: 0 });
+      for (let r = 0; r < 6; r++) for (let q = 0; q < 4; q++) { const w = new THREE.Mesh(new THREE.BoxGeometry(.34, .16, .01), wmat); w.position.set(-.84 + q * .56, .6 + r * .46, 1.006); prov.add(w); }
+      this.provTag = tagSprite('Provider, abroad', '#FFB547'); this.provTag.position.set(0, 4.1, 0); this.provTag.scale.set(3.4, .64, 1); prov.add(this.provTag);
+      // lines out to the provider, with data flowing and tags attaching
+      const end = prov.position.clone().add(new THREE.Vector3(-.9, 3.0, .6));
+      this.lines = []; this.flow = [];
+      const lmat = this.lineMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#FFB547').multiplyScalar(1.5), transparent: true, opacity: .9 });
+      [0, 3, 5, 7].map(i => F.cabs[i % F.cabs.length]).forEach((c, i) => {
+        const a = new THREE.Vector3(c.x, CH + .08, c.z), m = a.clone().lerp(end, .5).add(new THREE.Vector3(0, 3.2 + i * .35, 0));
+        const curve = new THREE.QuadraticBezierCurve3(a, m, end); const geo = new THREE.TubeGeometry(curve, 80, .022, 6, false);
+        const mesh = new THREE.Mesh(geo, lmat); geo.setDrawRange(0, 0); s.add(mesh); this.lines.push({ curve, geo, mesh, n: geo.index.count });
+        const pk = new THREE.Mesh(new THREE.SphereGeometry(.05, 10, 8), new THREE.MeshBasicMaterial({ color: '#FFE2B0', transparent: true, opacity: 0 })); s.add(pk); this.flow.push({ pk, curve, k: i / 4 });
+      });
+      this.tags = [['Foreign law applies', 0, .3], ['Provider holds your keys', 2, .55], ['Data copied abroad', 3, .78]].map(([t, li, u]) => { const sp = tagSprite(t, '#FF8A95'); sp.position.copy(this.lines[li].curve.getPoint(u)).add(new THREE.Vector3(0, .35, 0)); s.add(sp); return sp; });
+      this.keyCurve = new THREE.QuadraticBezierCurve3(lockPos.clone().add(new THREE.Vector3(0, .55, 0)), lockPos.clone().lerp(end, .5).add(new THREE.Vector3(0, 4.2, 0)), end.clone().add(new THREE.Vector3(0, .3, 0)));
+      // the one workload that crosses the gate in step 5
+      this.wl = new THREE.Mesh(new THREE.SphereGeometry(.09, 20, 14), new THREE.MeshBasicMaterial({ color: '#FFFFFF', transparent: true, opacity: 0, depthWrite: false })); s.add(this.wl);
+      F.storyUpdate = (dt, t) => this.tick(dt, t);
+      this.apply(0); F.renderOnce();
+    }
+    setProgress(p) { this.pT = clamp(p); this.f.start(); }
+    setPublic(on) { this.pubTw = { from: this.pub, to: on ? 1 : 0, t0: performance.now(), d: REDUCE ? 1 : 1700 }; this.f.start(); }
+    tick(dt, t) {
+      // scroll progress is smoothed so any jump in scrolling still eases
+      this.p += (this.pT - this.p) * (REDUCE ? 1 : 1 - Math.exp(-dt * 4.2)); if (Math.abs(this.pT - this.p) < 1e-4) this.p = this.pT;
+      if (this.pubTw) { const k = Math.min(1, (performance.now() - this.pubTw.t0) / this.pubTw.d); this.pub = this.pubTw.from + (this.pubTw.to - this.pubTw.from) * eio(k); if (k >= 1) this.pubTw = null; }
+      this.apply(t);
+    }
+    apply(t) {
+      const F = this.f, p = this.p, pub = this.pub, CH = F.CH, n = F.cabs.length;
+      const step = p < .06 ? 0 : p < .22 ? 1 : p < .36 ? 2 : p < .5 ? 3 : p < .64 ? 4 : p < .8 ? 5 : 6;
+      if (step !== this.step) { this.step = step; this.o.onStep && this.o.onStep(step); }
+      // 2: servers rise, one after another
+      const minX = Math.min(...F.cabs.map(c => c.x)), maxX = Math.max(...F.cabs.map(c => c.x));
+      F.cabs.forEach((c, i) => {
+        const order = (c.x - minX) / Math.max(1, maxX - minX) * .7 + c.row * .3, u = seg(p, .06 + order * .08, .14 + order * .08);
+        c.g.position.y = c.baseY - (1 - u) * (CH + .4); c.g.visible = u > .001;
+        // 3: the platform lights up in a wave
+        const w = seg(p, .22 + order * .07, .29 + order * .07), led = w * (1 - pub * .25);
+        c.leds.forEach((l, k) => { const v = Math.sin(c.seed + k * 1.7 + t * (.6 + (k % 3) * .35)); l.material.color.copy(C.green).multiplyScalar((v > -.75 ? 2.2 : .6) * led + .08); });
+        c.emat.color.copy(c.col).multiplyScalar(.15 + 1.75 * w);
+      });
+      F.faceMat.emissiveIntensity = 1.6 * seg(p, .22, .36);
+      // 4: the boundary draws itself; it dims when the data goes public
+      const b = seg(p, .36, .5), nd = F.dashes.length, glowK = 1 + seg(p, .7, .78) * .6;
+      F.dashes.forEach((d, i) => { const v = clamp((b * 1.08 - i / nd) * 18); d.visible = v > .01; const pulse = .75 + .25 * Math.sin((i / nd * 6 - t * .2) * Math.PI * 2); d.material.color.copy(d.userData.base).lerp(new THREE.Color('#3A3D55'), pub * .8).multiplyScalar(v * (.8 + 1.0 * pulse) * glowK * (1 - pub * .45)); d.scale.y = d.scale.z = .4 + .6 * v; });
+      // 5: the gate rises and switches on; one workload passes and turns green
+      const g = seg(p, .5, .58); F.gateGroup.scale.set(1, Math.max(.001, g), 1); F.gateGroup.visible = g > .002; F.track.material.opacity = .7 * g;
+      const wp = seg(p, .56, .64), gx = F.gateX, gz = F.gateZ;
+      const ok = wp > .55 ? eio((wp - .55) / .2) : 0;
+      F.beamMat.color.copy(C.s1).lerp(C.green, ok * (1 - seg(p, .68, .74))).multiplyScalar(2.4 * seg(p, .54, .58));
+      this.wl.position.set(gx - 3 + wp * 4.4, .08, gz); this.wl.material.opacity = (wp > 0 && wp < 1 ? Math.min(1, wp * 6, (1 - wp) * 6) : 0); this.wl.material.color.set(ok > .5 ? '#BFF5DC' : '#FFFFFF');
+      // 6: the key descends, turns and locks
+      const kd = seg(p, .64, .73), kt = seg(p, .73, .78), lp = this.lockPos;
+      this.lock.scale.setScalar(Math.max(.001, seg(p, .62, .66))); this.ringMat.color.copy(C.s1).lerp(C.green, kt).lerp(C.red, pub).multiplyScalar(.5 + 1.6 * kt);
+      const kp = new THREE.Vector3(lp.x, .55 + (1 - kd) * 3.2, lp.z), out = this.keyCurve.getPoint(eio(pub)); kp.lerp(out, pub);
+      this.key.position.copy(kp); this.key.visible = kd > .001; this.key.rotation.y = kt * Math.PI / 2 * (1 - pub) + pub * 1.2; this.key.rotation.z = pub * .5;
+      this.key.children.forEach(m => { m.material.emissiveIntensity = .35 + .5 * kt * (1 - pub); });
+      // 7: public cloud: lines out to the provider, tags attach; sovereign pulls it all back
+      this.lines.forEach((L, i) => L.geo.setDrawRange(0, Math.floor(L.n * clamp(pub * 1.25 - i * .08))));
+      this.flow.forEach(fl => { const u = (fl.k + t * .18) % 1; fl.pk.position.copy(fl.curve.getPoint(u)); fl.pk.material.opacity = clamp((pub - .8) * 5); });
+      this.tags.forEach((sp, i) => { const v = clamp((pub - .55 - i * .1) * 4); sp.material.opacity = v; sp.position.y += 0; sp.scale.set(3.4 * (.9 + .1 * v), .64 * (.9 + .1 * v), 1); });
+      const pv = eio(clamp(pub * 1.4)); this.provBody.material.opacity = pv; this.provWin.opacity = pv; this.provTag.material.opacity = pv; this.prov.visible = pv > .01;
+      // camera: low and close at the start, easing back as the platform assembles, wide for the comparison
+      const K = [[0, 11.5, 68, 30, 0, .1, .4], [.2, 17, 59, 33, 0, .7, .3], [.5, 18, 56, 37, -.2, .7, .4], [.68, 15.5, 57, 32, .6, .5, .9], [.84, 19, 55, 38, .3, .7, .2], [1, 19, 55, 38, .3, .7, .2]];
+      let a = K[0], z = K[K.length - 1]; for (let i = 0; i < K.length - 1; i++) if (p >= K[i][0] && p <= K[i + 1][0]) { a = K[i]; z = K[i + 1]; break; }
+      const u = eio((p - a[0]) / Math.max(1e-6, z[0] - a[0])), L = (i) => a[i] + (z[i] - a[i]) * u;
+      const r = (L(1) + pub * 9) * (F.camDist / 14.2), phi = L(2) - pub * 4, th = L(3) + pub * 2;
+      const tgt = new THREE.Vector3(L(4) + pub * 4.4, L(5) + pub * 1.6, L(6) - pub * 2.6);
+      F.camera.position.setFromSphericalCoords(r, THREE.MathUtils.degToRad(phi), THREE.MathUtils.degToRad(th)).add(tgt); F.camera.lookAt(tgt);
+      // pause the loop when nothing is moving and the view is settled
+      if (Math.abs(this.pT - this.p) < 1e-4 && !this.pubTw && (p < .2 || REDUCE)) { /* lights still flicker after step 3 */ }
+    }
+  }
+  window.HeroStory = HeroStory;
+
   /* Legacy stack (Features hero): four licence layers on your hardware, replaced by one platform slab */
   class LegacyStack {
     constructor(host) {
@@ -1962,17 +2128,19 @@ $$('form:not(.wizard)').forEach(bindForm);
 
 /* ================= HOME ================= */
 inits['/'] = () => {
-  /* hero: video log + cursor light + parallax */
-  const hero = $('#hero'), hv = $('#herovid'), hlog = $('#herolog'), media = $('#heromedia');
-  const tenants = ['acme-research', 'gov-analytics', 'bank-risk', 'health-ml']; let ti = 0, last = 0, cs = 41;
-  const addLog = () => { const ts = `14:${String(2 + Math.floor(cs / 60)).padStart(2, '0')}:${String(cs % 60).padStart(2, '0')}`; cs += 10; const el = document.createElement('div'); el.innerHTML = `${ts}  <span class="ok">attested</span>  workload admitted to ${tenants[ti++ % 4]}`; hlog.appendChild(el); while (hlog.children.length > 3) hlog.firstChild.remove(); };
-  addLog();
-  if (REDUCE) { hv.removeAttribute('autoplay'); hv.pause(); }
+  /* hero: the platform assembles as you scroll, then public vs. sovereign */
+  const hero = $('#hero'), stage = $('#herostage'), hlines = $$('.slines li', hero), hbars = $$('.sbar i', hero), cmp = $('.cmp', hero);
+  const gl3 = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+  if (REDUCE || !gl3 || !window.HeroStory) { hero.classList.add('static'); }
   else {
-    (function tick() { const t = hv.currentTime || 0; [3.3, 10.3].forEach(m => { if (last < m && t >= m) addLog(); }); last = t; requestAnimationFrame(tick); })();
-    onView(hero, v => v ? hv.play().catch(() => { }) : hv.pause(), .05);
-    hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; hero.style.setProperty('--mx', x * 100 + '%'); hero.style.setProperty('--my', y * 100 + '%'); if (innerWidth > 1080) media.style.transform = `translate(${(x - .5) * -18}px,${(y - .5) * -12}px) scale(1.02)`; });
-    hero.addEventListener('pointerleave', () => media.style.transform = '');
+    let hs = null, cur = 0;
+    const onStep = i => { cur = i; hlines.forEach((l, k) => { l.classList.toggle('on', k === i); l.classList.toggle('past', k < i); }); cmp.classList.toggle('show', i === 6); };
+    const prog = () => { const r = hero.getBoundingClientRect(), span = r.height - innerHeight; return span > 0 ? clamp01(-r.top / span) : 0; };
+    const clamp01 = x => Math.max(0, Math.min(1, x));
+    const upd = () => { const p = prog(); hero.classList.toggle('started', p > .01); hbars.forEach((b, k) => b.style.setProperty('--f', clamp01((p - [0, .06, .22, .36, .5, .64, .8][k]) / ([.06, .22, .36, .5, .64, .8, 1][k] - [0, .06, .22, .36, .5, .64, .8][k])))); hs && hs.setProgress(p); };
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { hs = new HeroStory(stage, { onStep }); upd(); });
+    addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
+    $$('button', cmp).forEach(b => b.addEventListener('click', () => { const pub = b.dataset.v === 'pub'; $$('button', cmp).forEach(x => x.setAttribute('aria-pressed', x === b)); hs && hs.setPublic(pub); }));
   }
 
   /* 3D fleets (lazy) */
@@ -2199,7 +2367,7 @@ inits['/faq'] = p => {
 
 /* ---------- BLOG ---------- */
 const POSTS = [
-  { slug: 'india-digital-independence-ai', cv: 'c3', title: 'Sovereign Cloud: India\'s Key to Digital Independence in the AI Age', author: 'Kesava Reddy', date: 'May 30, 2025', read: '4 min read', tags: ['Sovereign Cloud', 'Digital Independence', 'AI'],
+  { slug: 'india-digital-independence-ai', img: 'media/blog_independence.svg', alt: 'A key held inside a sealed boundary, with the outside link cut.', title: 'Sovereign Cloud: India\'s Key to Digital Independence in the AI Age', author: 'Kesava Reddy', date: 'May 30, 2025', read: '4 min read', tags: ['Sovereign Cloud', 'Digital Independence', 'AI'],
     ex: 'AI runs on data, and the data that matters most to a country is the data it can least afford to lose control of.',
     body: [['Introduction', `<p class="lead">AI runs on data, and the data that matters most to a country, from citizen records to financial flows and health systems, is the data it can least afford to lose control of. As India builds AI into public services and industry, where that data lives and whose laws govern it has become a strategic question.</p><p>Sovereign cloud answers that question directly: infrastructure that keeps data, models and operations inside the country and under Indian jurisdiction.</p>`],
       ['Why AI raises the stakes', `<p>Training and running models concentrates enormous amounts of sensitive data in one place. When that place is controlled by a foreign provider, it can be subject to external laws, access requests and service decisions made elsewhere. For regulated sectors, that is a risk that compounds with every new model.</p><blockquote>Digital independence isn't about building everything alone. It's about deciding who holds the keys.</blockquote>`],
@@ -2209,7 +2377,7 @@ const POSTS = [
         <li>${icon('lock', 'i2')}<b>Isolation you can prove</b><span>Air-gapped options, role-based access and encryption, with an audit trail.</span></li>
         <li>${icon('model', 'i3')}<b>Models that stay home</b><span>Training, registries and inference that never leave your jurisdiction.</span></li></ul>`],
       ['The way forward', `<p>The countries that lead in AI will be the ones that can build on their own data with confidence. A sovereign cloud gives Indian enterprises and government the foundation to do exactly that, at a predictable cost and on infrastructure they control.</p>`]] },
-  { slug: 'e2e-sovereign-cloud-platform', cv: 'c2', title: 'E2E Sovereign Cloud Platform: Revolutionizing Cloud Sovereignty', author: 'Aleena Santhosh', date: 'May 16, 2025', read: '7 min read', tags: ['E2E Sovereign Cloud Platform'],
+  { slug: 'e2e-sovereign-cloud-platform', img: 'media/blog_platform.svg', alt: 'Eight server racks inside a dashed boundary, entered through a single gate.', title: 'E2E Sovereign Cloud Platform: Revolutionizing Cloud Sovereignty', author: 'Aleena Santhosh', date: 'May 16, 2025', read: '7 min read', tags: ['E2E Sovereign Cloud Platform'],
     ex: 'Data sovereignty today is an essential feature of the cloud, not an afterthought.',
     body: [['Introduction', `<p class="lead">Data sovereignty today is an essential feature of the cloud, not an afterthought. Data sovereignty is the idea that data is subject to the laws and regulations of the country where it is generated and stored.</p><p>Organizations with strong data sovereignty can protect their data from cyberattacks while also controlling access. A sovereign cloud provider should help enterprises navigate the complex web of ever-changing regulations and give them greater control over their data. E2E Sovereign Cloud Platform is built for tomorrow's enterprises that aim to achieve complete control over their data and infrastructure.</p><p>In an age when geopolitical tensions could escalate anytime, organizations relying on foreign cloud providers could face service disruptions and compliance challenges. For future-focused organizations, the decision is a no-brainer: sovereign cloud is the way forward.</p>`],
       ['What is the E2E Sovereign Cloud Platform?', `<p>E2E's Sovereign Cloud Platform is an AI-optimized cloud solution that gives enterprises, governments and data centers full control over their digital infrastructure. It enables organizations to build public and private cloud ecosystems with complete autonomy, security and scalability.</p>`],
@@ -2235,7 +2403,7 @@ const POSTS = [
         <li>${icon('hand', 'i4')}<b>Highly customizable</b><span>Flexible configuration adapts to your technical requirements and business processes.</span></li>
         <li>${icon('dr', 'i1')}<b>Disaster recovery ready</b><span>Built-in backup, replication and automated failover protect business continuity.</span></li></ul>`],
       ['Get started', `<p>With increasing concerns around data sovereignty, regulatory compliance and AI-driven workloads, enterprises and governments need a trusted cloud platform that offers complete control over their infrastructure. E2E Sovereign Cloud Platform delivers that control across public, private and hybrid environments, so organizations can build the cloud they need on their own terms.</p>`]] },
-  { slug: 'what-is-sovereign-cloud', cv: 'c1', title: 'What is Sovereign Cloud? Everything You Need to Know!', author: 'Aleena Santhosh', date: 'May 02, 2025', read: '11 min read', tags: ['Sovereign Cloud', 'Data Sovereignty'],
+  { slug: 'what-is-sovereign-cloud', img: 'media/blog_sovereign.svg', alt: 'Data inside a dashed boundary, with an arrow from outside stopped at the line.', title: 'What is Sovereign Cloud? Everything You Need to Know!', author: 'Aleena Santhosh', date: 'May 02, 2025', read: '11 min read', tags: ['Sovereign Cloud', 'Data Sovereignty'],
     ex: 'A plain-language guide to sovereign cloud: what it is, how it differs from public cloud, and how to evaluate a provider.',
     body: [['Introduction', `<p class="lead">Sovereign cloud has moved from a niche requirement to a board-level question. This guide explains what it means in practice, why residency alone isn't enough, and what to ask a provider before you sign.</p>`],
       ['What is a sovereign cloud?', `<p>Think of it as a cloud with a passport. Every part of it, from the servers and storage to the people who operate it and the contracts that govern it, sits inside one jurisdiction. The organization using it decides who can reach its data, and national law is the only law that applies.</p><p>That matters most when the data is sensitive by nature: citizen records, financial transactions, patient histories, or the training data and weights behind an AI model.</p>`],
@@ -2246,7 +2414,7 @@ const POSTS = [
         <li>${icon('eye', 'i2')}<b>Every action is auditable</b><span>Who did what, on which machine, is logged and reviewable.</span></li>
         <li>${icon('net', 'i3')}<b>Disconnection is an option</b><span>Air-gapped sites run without any outside link at all.</span></li></ul>`],
       ['Questions to ask a provider', `<ul class="dots2"><li>Where is data stored and processed, including backups and logs?</li><li>Which country's law governs the provider and its parent company?</li><li>Can anyone outside the jurisdiction access the platform, even for support?</li><li>Which regulations does it already meet, and can it show evidence?</li><li>What would an auditor see if they asked for a change history today?</li></ul><p>If the answers are vague, the cloud probably isn't sovereign.</p>`]] }];
-const card = (b, big) => `<a class="post${big ? ' big' : ''}" href="#/post/${b.slug}"><div class="cv ${b.cv}"><span class="cvt">${b.read}</span></div><div class="pb"><div class="ptags">${b.tags.map(t => `<span>${t}</span>`).join('')}</div><h3>${b.title}</h3>${big ? `<p class="ex">${b.ex}</p>` : ''}<p class="pm">${b.author} · ${b.date}</p></div></a>`;
+const card = (b, big) => `<a class="post${big ? ' big' : ''}" href="#/post/${b.slug}"><div class="cv"><img src="${b.img}" alt="${b.alt}" loading="lazy"></div><div class="pb"><div class="ptags">${b.tags.map(t => `<span>${t}</span>`).join('')}</div><h3>${b.title}</h3>${big ? `<p class="ex">${b.ex}</p>` : ''}<p class="pm">${b.author} · ${b.date}</p></div></a>`;
 inits['/blog'] = p => {
   const tags = ['All', ...new Set(POSTS.flatMap(b => b.tags))], ch = $('#bchips', p), list = $('#posts', p);
   ch.innerHTML = tags.map((t, i) => `<button type="button" aria-pressed="${!i}">${t}</button>`).join('');
@@ -2259,7 +2427,7 @@ inits['/post'] = (p, path) => {
   const b = POSTS.find(x => x.slug === path.split('/')[2]) || POSTS[0];
   document.title = b.title + ' · Sovereign Cloud Platform (concept by Anandita Wagh)';
   $$('.links a').forEach(a => { if (a.getAttribute('href') === '#/blog') a.setAttribute('aria-current', 'page'); });
-  $('#acover', p).className = 'acover cv ' + b.cv;
+  $('#acover', p).style.backgroundImage = `url("${b.img}")`;
   $('#atags', p).innerHTML = `<div class="ptags">${b.tags.map(t => `<span>${t}</span>`).join('')}</div>`;
   $('#atitle', p).textContent = b.title;
   $('#ameta', p).innerHTML = `By <b>${b.author}</b> · ${b.date} · ${b.read}`;
